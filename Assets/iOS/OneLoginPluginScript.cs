@@ -141,6 +141,22 @@ public class OLGetPhoneResult {
     public int status;
 }
 
+[Serializable]
+public class OLOnePassResult {
+    public string process_id;
+    public string accesscode;
+    public string operatorType;
+    public string phone;
+    public string errorMsg;
+}
+
+[Serializable]
+public class OLValidateOnePassResult {
+    public string result;
+    public string status;
+    public string error_msg;
+}
+
 public class OneLoginPluginScript : MonoBehaviour {
 
     // 注册回调
@@ -187,7 +203,27 @@ public class OneLoginPluginScript : MonoBehaviour {
     [DllImport("__Internal")]
     private static extern void showAlertMessage(string message);
 
+    // 注册 OnePass 的回调
+    [DllImport("__Internal")]
+    private static extern void registerOnepassCallback(string objName, string verifyPhoneCallbackName, string validatePhoneCallbackName);
+
+    // OnePass 初始化
+    [DllImport("__Internal")]
+    private static extern void initOnePass(string customID, double timeout);
+
+    // 获取校验是否为本机号码的 token
+    [DllImport("__Internal")]
+    private static extern void verifyPhoneNumber(string phoneNumber);
+
+    // 校验是否为本机号码
+    [DllImport("__Internal")]
+    private static extern void validateOnePassAccessCode(string accessCode, string customId, string processId, string phone, string operatorType);
+
     private OLRequestTokenResult requestTokenResult = null;
+    private OLOnePassResult onepassResult = null;
+
+    private const string OnePassCustomId = "3996159873d7ccc36f25803b88dda97a";
+    private const string OnePassPhone = "18627096173";
     // private DateTime currentDT;
 
 	// Use this for initialization
@@ -196,6 +232,7 @@ public class OneLoginPluginScript : MonoBehaviour {
         string sv = sdkVersion();
         Console.WriteLine("============ sdk version: {0} ============ ", sv);
         registerCallback("Main Camera", "requestTokenFinished", "getPhoneFinished");
+        registerOnepassCallback("Main Camera", "onepassFinished", "validateOnepassFinished");
 	}
 	
 	// Update is called once per frame
@@ -212,6 +249,12 @@ public class OneLoginPluginScript : MonoBehaviour {
                 	popupButtonClicked();
                 } else if (OnePointColliderObject().name == "浮窗模式") {
                 	floatWindowButtonClicked();
+                } else if (OnePointColliderObject().name == "OnePass初始化") {
+                	onepassInitClicked();
+                } else if (OnePointColliderObject().name == "验证是否为本机号码") {
+                	validateOnepassAccessCodeClicked();
+                } else if (OnePointColliderObject().name == "获取校验是否为本机号码的token") {
+                    getOnepassAccessCodeClicked();
                 }
             }
         }
@@ -566,5 +609,52 @@ public class OneLoginPluginScript : MonoBehaviour {
 
     void clickCheckbox(string param) {
         Console.WriteLine("============ clickCheckbox: {0} ============ ", param);
+    }
+
+    void onepassInitClicked() {
+        initOnePass(OnePassCustomId, 10);
+    }
+
+    void getOnepassAccessCodeClicked() {
+        verifyPhoneNumber(OnePassPhone);
+    }
+
+    void onepassFinished(string result) {
+        Console.WriteLine("============ onepass result: {0} ============ ", result);
+        
+        onepassResult = JsonUtility.FromJson<OLOnePassResult>(result);
+        if (null != onepassResult) {
+            Console.WriteLine("============ process_id: {0}, accesscode: {1}, operatorType: {2}, phone: {3} ============ ", onepassResult.process_id, onepassResult.accesscode, onepassResult.operatorType, onepassResult.phone);
+        }
+
+        if (null == onepassResult.errorMsg) {  // 取 accesscode 成功
+            showAlertMessage("onepass accesscode 获取成功");
+        } else {                                // 取 accesscode 失败
+            showAlertMessage("onepass accesscode 获取失败");
+        }
+    }
+
+    void validateOnepassAccessCodeClicked() {
+        if (null != onepassResult.accesscode) {
+            validateOnePassAccessCode(onepassResult.accesscode, OnePassCustomId, onepassResult.process_id, onepassResult.phone, onepassResult.operatorType);
+        } else {
+             showAlertMessage("accesscode 获取失败，请先重新获取 accesscode");
+        }
+    }
+
+    void validateOnepassFinished(string result) {
+        Console.WriteLine("============ validate onepass result: {0} ============ ", result);
+
+        OLValidateOnePassResult validateResult = JsonUtility.FromJson<OLValidateOnePassResult>(result);
+        if ("200" == validateResult.status) {     
+            if ("0" == validateResult.result) {
+                showAlertMessage("校验成功");
+            } else {
+                showAlertMessage("非本机号码");
+            }
+        } else {                                // 取号失败
+            string message = "校验失败: " + validateResult.error_msg;
+            showAlertMessage(message);
+        }
     }
 }

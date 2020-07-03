@@ -24,6 +24,12 @@ extern "C"{
     extern bool isPreGetTokenResultValidate();
     extern void setRequestTimeout(double timeout);
     extern char* sdkVersion();
+
+    extern void registerOnepassCallback(const char *objName, const char *verifyPhoneCallbackName, const char *validatePhoneCallbackName);
+    extern void initOnePass(const char *customID, double timeout);
+    extern void verifyPhoneNumber(const char *phoneNumber);
+    extern void validateOnePassAccessCode(const char *accessCode, const char *customId, const char *processId, const char *phone, const char *operatorType);
+                                 
     extern void validateToken(const char *token, const char *appID, const char *processID, const char *authcode);
     extern void showAlertMessage(const char *message);
 #if defined(__cplusplus)
@@ -40,13 +46,18 @@ extern "C"{
 
 @end
 
-@interface OneLoginUnityPlugin ()
+@interface OneLoginUnityPlugin () <GOPManagerDelegate>
 
 @property (nonatomic, copy) NSString *objName;
 @property (nonatomic, copy) NSString *requestTokenCallbackName;
 @property (nonatomic, copy) NSString *getPhoneCallbackName;
 
 @property (nonatomic, assign) NSTimeInterval timeInterval;
+
+@property (nonatomic, copy) NSString *verifyPhoneCallbackName;
+@property (nonatomic, copy) NSString *validatePhoneCallbackName;
+
+@property (nonatomic, strong) GOPManager *gopManager;
 
 @end
 
@@ -525,6 +536,47 @@ extern "C"{
     return [OneLoginPro sdkVersion];
 }
 
+- (void)registerOnepassCallback:(NSString *)objName verifyPhoneCallbackName:(NSString *)verifyPhoneCallbackName validatePhoneCallbackName:(NSString *)validatePhoneCallbackName {
+    NSLog(@"============ register onepass callback ==============");
+    
+    self.objName = objName;
+    self.verifyPhoneCallbackName = verifyPhoneCallbackName;
+    self.validatePhoneCallbackName = validatePhoneCallbackName;
+}
+
+- (void)initWithCustiomId:(NSString * _Nonnull)customID timeout:(NSTimeInterval)timeout {
+    // 防抖，防止短时间内多次点击
+    NSTimeInterval currentTimeInterval = [[NSDate date] timeIntervalSince1970];
+    if (currentTimeInterval - self.timeInterval < OLMinTimeInterval) {
+        return;
+    }
+    self.timeInterval = currentTimeInterval;
+    
+    self.gopManager = [[GOPManager alloc] initWithCustomID:customID timeout:timeout];
+    self.gopManager.delegate = self;
+}
+
+- (void)verifyPhoneNumber:(NSString *)phoneNumber {
+    // 防抖，防止短时间内多次点击
+    NSTimeInterval currentTimeInterval = [[NSDate date] timeIntervalSince1970];
+    if (currentTimeInterval - self.timeInterval < OLMinTimeInterval) {
+        return;
+    }
+    self.timeInterval = currentTimeInterval;
+    
+    [self.gopManager verifyPhoneNumber:phoneNumber];
+}
+
+// MARK: GOPManagerDelegate
+
+- (void)gtOnePass:(GOPManager *)manager didReceiveDataToVerify:(NSDictionary *)data {
+    [self unitySendMessage:self.objName method:self.verifyPhoneCallbackName msgDict:data];
+}
+
+- (void)gtOnePass:(GOPManager *)manager errorHandler:(GOPError *)error {
+    [self unitySendMessage:self.objName method:self.verifyPhoneCallbackName msgDict:@{@"errorMsg":error.description ?: @"onepass failed"}];
+}
+
 // MARK: Validate Token
 
 - (void)validateToken:(NSString *)token appID:(NSString *)appID processID:(NSString *)processID authcode:(NSString *)authcode {
@@ -566,6 +618,57 @@ extern "C"{
     dispatch_async(dispatch_get_main_queue(), ^{
         [self unitySendMessage:self.objName method:self.getPhoneCallbackName msgDict:result];
     });
+}
+
+// MARK: Validate Onepass Token
+
+- (void)validateOnePassAccessCode:(NSString *)accessCode customId:(NSString *)customId processId:(NSString *)processId phone:(NSString *)phone operatorType:(NSString *)operatorType {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if ([self isValidString:accessCode]) {
+        params[@"accesscode"] = accessCode;
+    }
+    if ([self isValidString:customId]) {
+        params[@"id_2_sign"] = customId;
+    }
+    if ([self isValidString:processId]) {
+        params[@"process_id"] = processId;
+    }
+    if ([self isValidString:operatorType]) {
+        params[@"operatorType"] = operatorType;
+    }
+    if ([self isValidString:phone]) {
+        params[@"phone"] = phone;
+    }
+    NSURL *url = [NSURL URLWithString:@"http://onepass.geetest.com/v2.0/result"];
+    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
+    req.HTTPMethod = @"POST";
+    req.HTTPBody = [NSJSONSerialization dataWithJSONObject:params options:0 error:nil];
+    NSURLSessionDataTask *task = [NSURLSession.sharedSession dataTaskWithRequest:req completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSLog(@"verify onepass result: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (nil != data) {
+                NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:(NSJSONReadingOptions)0 error:nil];
+                if (result[@"status"] && [@(200) isEqual:result[@"status"]]) {
+                    if (result[@"result"] && [@"0" isEqual:result[@"result"]]) {
+                        [self unitySendMessage:self.objName method:self.validatePhoneCallbackName msgDict:result];
+                    } else if (result[@"result"] && [@"1" isEqual:result[@"result"]]) {
+                        [self unitySendMessage:self.objName method:self.validatePhoneCallbackName msgDict:result];
+                    } else {
+                        [self verifyOnepassFailed];
+                    }
+                } else {
+                    [self verifyOnepassFailed];
+                }
+            } else {
+                [self verifyOnepassFailed];
+            }
+        });
+    }];
+    [task resume];
+}
+
+- (void)verifyOnepassFailed {
+    [self unitySendMessage:self.objName method:self.validatePhoneCallbackName msgDict:@{@"errorMsg" : @"validate phone failed"}];
 }
 
 // MARK: Send Unity3D Message
@@ -961,6 +1064,22 @@ extern "C"{
     
     char* sdkVersion() {
         return strdup([[UnityPlugin sdkVersion] UTF8String]);
+    }
+    
+    void registerOnepassCallback(const char *objName, const char *verifyPhoneCallbackName, const char *validatePhoneCallbackName) {
+        [UnityPlugin registerOnepassCallback:[NSString stringWithUTF8String:objName] verifyPhoneCallbackName:[NSString stringWithUTF8String:verifyPhoneCallbackName] validatePhoneCallbackName:[NSString stringWithUTF8String:validatePhoneCallbackName]];
+    }
+    
+    void initOnePass(const char *customID, double timeout) {
+        [UnityPlugin initWithCustiomId:[NSString stringWithUTF8String:customID] timeout:timeout];
+    }
+    
+    void verifyPhoneNumber(const char *phoneNumber) {
+        [UnityPlugin verifyPhoneNumber:[NSString stringWithUTF8String:phoneNumber]];
+    }
+    
+    void validateOnePassAccessCode(const char *accessCode, const char *customId, const char *processId, const char *phone, const char *operatorType) {
+        [UnityPlugin validateOnePassAccessCode:[NSString stringWithUTF8String:accessCode] customId:[NSString stringWithUTF8String:customId] processId:[NSString stringWithUTF8String:processId] phone:[NSString stringWithUTF8String:phone] operatorType:[NSString stringWithUTF8String:operatorType]];
     }
     
     void validateToken(const char *token, const char *appID, const char *processID, const char *authcode) {

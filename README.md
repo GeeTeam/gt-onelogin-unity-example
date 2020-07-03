@@ -6,7 +6,6 @@
 
 # Android
 
-
 ## 前置条件
 
 - 极验 SDK 支持 Android Studio 2.1.3 及以上版本，Android 5.0及以上版本
@@ -925,3 +924,1034 @@ phone|String| 手机号
 ### 校验手机号
 
 当本机号校验外层 jscode 为200 时，或者返回参数中是否有 accesscode，可以判断 verifyPhoneNumber 接口是否返回成功。返回成功您将获取到返回的参数，请将这些参数传递给后端开发人员，并参考「[服务端](https://docs.geetest.com/onelogin/deploy/server)」文档来实现本机号码认证的
+
+# iOS
+
+## 前置条件
+
+- 极验 SDK 支持 Xcode 11+，iOS 8.0+ 版本
+- 极验 SDK 支持中国移动 4G/3G/2G、联通 4G/3G、电信4G 的取号能力
+- 极验 SDK 支持网络环境为
+
+1. 纯数据网络
+2. 数据网络与 Wifi 网络同时开启
+
+- 对于双卡手机，极验 SDK 取当前流量卡号
+
+## 插件开发
+
+### 创建插件工程
+
+1. 若您已经有 iOS Unity 的 Xcode 工程，请直接在工程中创建插件文件，若您还没有 iOS Unity 的 Xcode 工程，请先创建 Xcode 工程，并新建插件文件，并且将插件的 .m 文件的后缀改为 .mm
+2. 将 `Assets/Plugins/iOS` 目录下 SDK 相关文件 `OneLoginSDK.framework`、`account_login_sdk_noui_core.framework`、`EAccountApiSDK.framework`、`TYRZSDK.framework`、`OneLoginResource.bundle` 拷贝到您的 Xcode 工程，`Other Linker Flags` 添加 `-ObjC` 设置，并添加系统依赖库 `libz.1.2.8.tbd`、`libc++.1.tbd`
+
+### 实现插件功能
+
+首先声明需要在 Unity 中使用的 C 方法： 
+
+```c
+#if defined(__cplusplus)
+extern "C"{
+#endif
+    // 桥接方法，Unity 中调用
+    extern void registerCallback(const char *objName, const char *requestTokenCallbackName, const char *getPhoneCallbackName);
+    extern void registerWihtAppID(const char *appId);
+    extern void enterAuthController(const char *configs, char **widgets);
+    extern void dismissAuthViewController();
+    extern void setLogEnabled(bool enabled);
+    extern void renewPreGetToken();
+    extern bool isPreGetTokenResultValidate();
+    extern void setRequestTimeout(double timeout);
+    extern char* sdkVersion();
+    extern void validateToken(const char *token, const char *appID, const char *processID, const char *authcode);
+    extern void showAlertMessage(const char *message);
+#if defined(__cplusplus)
+}
+#endif
+```
+
+然后实现声明的 C 方法：
+
+```c
+#if defined(__cplusplus)
+extern "C"{
+#endif
+    void registerWihtAppID(const char *appId) {
+        [UnityPlugin registerWihtAppID:[NSString stringWithUTF8String:appId]];
+    }
+    
+    void registerCallback(const char *objName, const char *requestTokenCallbackName, const char *getPhoneCallbackName) {
+        [UnityPlugin registerCallbackWithObjName:[NSString stringWithUTF8String:objName] requestTokenCallbackName:[NSString stringWithUTF8String:requestTokenCallbackName] getPhoneCallbackName:[NSString stringWithUTF8String:getPhoneCallbackName]];
+    }
+    
+    void enterAuthController(const char *configs, char **widgets) {
+        NSMutableArray *tempWidgets = [NSMutableArray new];
+        if (NULL != widgets && NULL != *widgets) {
+            int widgetLen = 0;
+            char *temp = widgets[0];
+            while (temp) {
+                widgetLen++;
+                temp = widgets[widgetLen];
+            }
+            for (int i = 0; i < widgetLen; i++) {
+                [tempWidgets addObject:[NSString stringWithUTF8String:widgets[i]]];
+            }
+        }
+        [UnityPlugin enterAuthViewController:[NSString stringWithUTF8String:configs] widgets:tempWidgets.copy];
+    }
+    
+    void dismissAuthViewController() {
+        [UnityPlugin dismissAuthViewController];
+    }
+    
+    void setLogEnabled(bool enabled) {
+        [UnityPlugin setLogEnabled:enabled];
+    }
+    
+    void renewPreGetToken() {
+        [UnityPlugin renewPreGetToken];
+    }
+    
+    bool isPreGetTokenResultValidate() {
+        return [UnityPlugin isPreGetTokenResultValidate];
+    }
+    
+    void setRequestTimeout(double timeout) {
+        [UnityPlugin setRequestTimeout:timeout];
+    }
+    
+    char* sdkVersion() {
+        return strdup([[UnityPlugin sdkVersion] UTF8String]);
+    }
+    
+    void validateToken(const char *token, const char *appID, const char *processID, const char *authcode) {
+        [UnityPlugin validateToken:[NSString stringWithUTF8String:token] appID:[NSString stringWithUTF8String:appID] processID:[NSString stringWithUTF8String:processID] authcode:[NSString stringWithUTF8String:authcode]];
+    }
+    
+    void showAlertMessage(const char *message) {
+        [UnityPlugin showAlertMessage:[NSString stringWithUTF8String:message]];
+    }
+#if defined(__cplusplus)
+}
+#endif
+```
+
+C 方法中的具体实现，是通过调用 Objective-C 的方法来完成的：
+
+```objc
+// MARK: Init
+
++ (instancetype)sharedInstance {
+    static OneLoginUnityPlugin *up = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        up = [[OneLoginUnityPlugin alloc] init];
+    });
+    return up;
+}
+
+// MARK: OneLogin Methods
+
+- (void)registerCallbackWithObjName:(NSString *)objName requestTokenCallbackName:(NSString *)requestTokenCallbackName getPhoneCallbackName:(NSString *)getPhoneCallbackName {
+    NSLog(@"============ register callback ==============");
+    
+    self.objName = objName;
+    self.requestTokenCallbackName = requestTokenCallbackName;
+    self.getPhoneCallbackName = getPhoneCallbackName;
+}
+
+- (void)registerWihtAppID:(NSString *)appId {
+    // 防抖，防止短时间内多次点击
+    NSTimeInterval currentTimeInterval = [[NSDate date] timeIntervalSince1970];
+    if (currentTimeInterval - self.timeInterval < OLMinTimeInterval) {
+        return;
+    }
+    self.timeInterval = currentTimeInterval;
+    
+    NSLog(@"============ registerWithAppId ==============");
+    [OneLoginPro registerWithAppID:appId];
+}
+
+- (void)enterAuthViewController:(NSString *)configs widgets:(NSArray *)widgets {
+    // 防抖，防止短时间内多次点击
+    NSTimeInterval currentTimeInterval = [[NSDate date] timeIntervalSince1970];
+    if (currentTimeInterval - self.timeInterval < OLMinTimeInterval) {
+        return;
+    }
+    self.timeInterval = currentTimeInterval;
+    
+    NSLog(@"============ enterAuthViewController ==============\r\n");
+    NSLog(@"============\r\n configs: %@ \r\n==============", configs);
+    
+    OLAuthViewModel *viewModel = [[OLAuthViewModel alloc] init];
+    NSError *jsonError = nil;
+    NSDictionary *viewModelDict = [NSJSONSerialization JSONObjectWithData:[configs dataUsingEncoding:NSUTF8StringEncoding] options:(NSJSONReadingOptions)0 error:&jsonError];
+    if (nil == jsonError && [viewModelDict isKindOfClass:[NSDictionary class]] && viewModelDict.count > 0) {
+        // *************** statusBarStyle *************** //
+        if (viewModelDict[@"statusBarStyle"]) {
+            viewModel.statusBarStyle = (UIStatusBarStyle)[viewModelDict[@"statusBarStyle"] integerValue];
+        }
+        
+        // *************** naviTitle *************** //
+        if (viewModelDict[@"naviTitle"]) {
+            NSString *naviTitleString = [NSString stringWithFormat:@"%@", viewModelDict[@"naviTitle"]];
+            NSMutableAttributedString *naviTitle = [[NSMutableAttributedString alloc] initWithString:naviTitleString];
+            if (viewModelDict[@"naviTitleColor"]) {
+                [naviTitle addAttributes:@{NSForegroundColorAttributeName: [self colorFromHexString:viewModelDict[@"naviTitleColor"]] ?: UIColor.blackColor} range:NSMakeRange(0, naviTitleString.length)];
+            }
+            if ([self fontFromString:viewModelDict[@"naviTitleFont"]]) {
+                [naviTitle addAttributes:@{NSFontAttributeName: [self fontFromString:viewModelDict[@"naviTitleFont"]]} range:NSMakeRange(0, naviTitleString.length)];
+            }
+            viewModel.naviTitle = naviTitle.copy;
+        }
+        
+        if ([self colorFromHexString:viewModelDict[@"naviBgColor"]]) {
+            viewModel.naviBgColor = [self colorFromHexString:viewModelDict[@"naviBgColor"]];
+        }
+        
+        UIImage *naviBackImage = [self imageWithName:viewModelDict[@"naviBackImage"]];
+        if (nil != naviBackImage) {
+            viewModel.naviBackImage = naviBackImage;
+        }
+        
+        if (viewModelDict[@"naviHidden"]) {
+            viewModel.naviHidden = [viewModelDict[@"naviHidden"] boolValue];
+        }
+        
+        if (viewModelDict[@"backButtonRect"]) {
+            if (![self isEqualToZeroOLRect:[self rectFromString:viewModelDict[@"backButtonRect"]]]) {
+                viewModel.backButtonRect = [self rectFromString:viewModelDict[@"backButtonRect"]];
+            }
+        }
+        
+        if (viewModelDict[@"backButtonHidden"]) {
+            viewModel.backButtonHidden = [viewModelDict[@"backButtonHidden"] boolValue];
+        }
+        
+        // *************** appLogo *************** //
+        UIImage *appLogo = [self imageWithName:viewModelDict[@"appLogo"]];
+        if (nil != appLogo) {
+            viewModel.appLogo = appLogo;
+        }
+        
+        if (viewModelDict[@"logoRect"]) {
+            if (![self isEqualToZeroOLRect:[self rectFromString:viewModelDict[@"logoRect"]]]) {
+                viewModel.logoRect = [self rectFromString:viewModelDict[@"logoRect"]];
+            }
+        }
+        
+        if (viewModelDict[@"logoHidden"]) {
+            viewModel.logoHidden = [viewModelDict[@"logoHidden"] boolValue];
+        }
+        
+        if (viewModelDict[@"logoCornerRadius"]) {
+            viewModel.logoCornerRadius = [viewModelDict[@"logoCornerRadius"] doubleValue];
+        }
+        
+        // *************** phoneNum *************** //
+        if ([self colorFromHexString:viewModelDict[@"phoneNumColor"]]) {
+            viewModel.phoneNumColor = [self colorFromHexString:viewModelDict[@"phoneNumColor"]];
+        }
+        
+        if ([self fontFromString:viewModelDict[@"phoneNumFont"]]) {
+            viewModel.phoneNumFont = [self fontFromString:viewModelDict[@"phoneNumFont"]];
+        }
+        
+        if (viewModelDict[@"phoneNumRect"]) {
+            if (![self isEqualToZeroOLRect:[self rectFromString:viewModelDict[@"phoneNumRect"]]]) {
+                viewModel.phoneNumRect = [self rectFromString:viewModelDict[@"phoneNumRect"]];
+            }
+        }
+        
+        // *************** Switch Button *************** //
+        if (viewModelDict[@"switchButtonText"]) {
+            NSString *switchButtonText = [NSString stringWithFormat:@"%@", viewModelDict[@"switchButtonText"]];
+            if ([self isValidString:switchButtonText]) {
+                viewModel.switchButtonText = switchButtonText;
+            }
+        }
+        
+        if ([self colorFromHexString:viewModelDict[@"switchButtonColor"]]) {
+            viewModel.switchButtonColor = [self colorFromHexString:viewModelDict[@"switchButtonColor"]];
+        }
+        
+        if ([self colorFromHexString:viewModelDict[@"switchButtonBackgroundColor"]]) {
+            viewModel.switchButtonBackgroundColor = [self colorFromHexString:viewModelDict[@"switchButtonBackgroundColor"]];
+        }
+        
+        if ([self fontFromString:viewModelDict[@"switchButtonFont"]]) {
+            viewModel.switchButtonFont = [self fontFromString:viewModelDict[@"switchButtonFont"]];
+        }
+        
+        if (viewModelDict[@"switchButtonRect"]) {
+            if (![self isEqualToZeroOLRect:[self rectFromString:viewModelDict[@"switchButtonRect"]]]) {
+                viewModel.switchButtonRect = [self rectFromString:viewModelDict[@"switchButtonRect"]];
+            }
+        }
+        
+        if (viewModelDict[@"switchButtonHidden"]) {
+            viewModel.switchButtonHidden = [viewModelDict[@"switchButtonHidden"] boolValue];
+        }
+        
+        // *************** Auth Button *************** //
+        if (viewModelDict[@"authButtonImages"]) {
+            NSArray *imageArray = viewModelDict[@"authButtonImages"];
+            if (imageArray.count >= 3) {
+                UIImage *image0 = [self imageWithName:imageArray[0]];
+                UIImage *image1 = [self imageWithName:imageArray[1]];
+                UIImage *image2 = [self imageWithName:imageArray[2]];
+                if (image0 && image1 && image2) {
+                    viewModel.authButtonImages = @[image0, image1, image2];
+                }
+            }
+        }
+        
+        if (viewModelDict[@"authButtonTitle"]) {
+            NSString *authButtonTitleString = [NSString stringWithFormat:@"%@", viewModelDict[@"authButtonTitle"]];
+            if ([self isValidString:authButtonTitleString]) {
+                NSMutableAttributedString *authButtonTitle = [[NSMutableAttributedString alloc] initWithString:authButtonTitleString];
+                if (viewModelDict[@"authButtonTitleColor"]) {
+                    [authButtonTitle addAttributes:@{NSForegroundColorAttributeName: [self colorFromHexString:viewModelDict[@"authButtonTitleColor"]] ?: UIColor.blackColor} range:NSMakeRange(0, authButtonTitleString.length)];
+                }
+                if ([self fontFromString:viewModelDict[@"authButtonTitleFont"]]) {
+                    [authButtonTitle addAttributes:@{NSFontAttributeName: [self fontFromString:viewModelDict[@"authButtonTitleFont"]]} range:NSMakeRange(0, authButtonTitleString.length)];
+                }
+                viewModel.authButtonTitle = authButtonTitle.copy;
+            }
+        }
+        
+        if (viewModelDict[@"authButtonRect"]) {
+            if (![self isEqualToZeroOLRect:[self rectFromString:viewModelDict[@"authButtonRect"]]]) {
+                viewModel.authButtonRect = [self rectFromString:viewModelDict[@"authButtonRect"]];
+            }
+        }
+        
+        if (viewModelDict[@"authButtonCornerRadius"]) {
+            viewModel.authButtonCornerRadius = [viewModelDict[@"authButtonCornerRadius"] doubleValue];
+        }
+        
+        // *************** slogan *************** //
+        if (viewModelDict[@"sloganRect"]) {
+            if (![self isEqualToZeroOLRect:[self rectFromString:viewModelDict[@"sloganRect"]]]) {
+                viewModel.sloganRect = [self rectFromString:viewModelDict[@"sloganRect"]];
+            }
+        }
+        
+        if ([self colorFromHexString:viewModelDict[@"sloganTextColor"]]) {
+            viewModel.sloganTextColor = [self colorFromHexString:viewModelDict[@"sloganTextColor"]];
+        }
+        
+        if ([self fontFromString:viewModelDict[@"sloganTextFont"]]) {
+            viewModel.sloganTextFont = [self fontFromString:viewModelDict[@"sloganTextFont"]];
+        }
+        
+        // *************** Privacy Terms *************** //
+        if (viewModelDict[@"defaultCheckBoxState"]) {
+            viewModel.defaultCheckBoxState = [viewModelDict[@"defaultCheckBoxState"] boolValue];
+        }
+        
+        if ([self imageWithName:viewModelDict[@"checkedImage"]]) {
+            viewModel.checkedImage = [self imageWithName:viewModelDict[@"checkedImage"]];
+        }
+        
+        if ([self imageWithName:viewModelDict[@"uncheckedImage"]]) {
+            viewModel.uncheckedImage = [self imageWithName:viewModelDict[@"uncheckedImage"]];
+        }
+        
+        if (viewModelDict[@"checkBoxRect"]) {
+            if (![self isEqualToZeroOLRect:[self rectFromString:viewModelDict[@"checkBoxRect"]]]) {
+                viewModel.checkBoxRect = [self rectFromString:viewModelDict[@"checkBoxRect"]];
+            }
+        }
+        
+        NSMutableDictionary *privacyTermsAttributes = [NSMutableDictionary dictionary];
+        if (viewModelDict[@"privacyTermsColor"]) {
+            UIColor *privacyTermsColor = [self colorFromHexString:viewModelDict[@"privacyTermsColor"]];
+            if (privacyTermsColor) {
+                [privacyTermsAttributes setValue:privacyTermsColor forKey:NSForegroundColorAttributeName];
+            }
+        }
+        if ([self fontFromString:viewModelDict[@"privacyTermsFont"]]) {
+            UIFont *privacyTermsFont = [self fontFromString:viewModelDict[@"privacyTermsFont"]];
+            if (privacyTermsFont) {
+                [privacyTermsAttributes setValue:privacyTermsFont forKey:NSFontAttributeName];
+            }
+        }
+        if (privacyTermsAttributes.count > 0) {
+            viewModel.privacyTermsAttributes = privacyTermsAttributes.copy;
+        }
+        
+        if (viewModelDict[@"additionalPrivacyTerms"]) {
+            NSArray *additionalPrivacyTerms = viewModelDict[@"additionalPrivacyTerms"];
+            if (additionalPrivacyTerms.count > 0) {
+                NSMutableArray<OLPrivacyTermItem *> *items = [NSMutableArray arrayWithCapacity:additionalPrivacyTerms.count];
+                for (NSInteger i = 0; i + 2 < additionalPrivacyTerms.count; i += 3) {
+                    OLPrivacyTermItem *item = [[OLPrivacyTermItem alloc] initWithTitle:additionalPrivacyTerms[i]
+                                                                               linkURL:[NSURL URLWithString:additionalPrivacyTerms[i + 1]]
+                                                                                 index:[additionalPrivacyTerms[i + 2] integerValue]];
+                    [items addObject:item];
+                }
+                
+                if (items.count > 0) {
+                    viewModel.additionalPrivacyTerms = items.copy;
+                }
+            }
+        }
+        
+        if ([self colorFromHexString:viewModelDict[@"termTextColor"]]) {
+            viewModel.termTextColor = [self colorFromHexString:viewModelDict[@"termTextColor"]];
+        }
+        
+        if (viewModelDict[@"termsRect"]) {
+            if (![self isEqualToZeroOLRect:[self rectFromString:viewModelDict[@"termsRect"]]]) {
+                viewModel.termsRect = [self rectFromString:viewModelDict[@"termsRect"]];
+            }
+        }
+        
+        if (viewModelDict[@"auxiliaryPrivacyWords"]) {
+            NSArray *auxiliaryPrivacyWords = viewModelDict[@"auxiliaryPrivacyWords"];
+            if (4 == auxiliaryPrivacyWords.count) {
+                viewModel.auxiliaryPrivacyWords = auxiliaryPrivacyWords;
+            }
+        }
+        
+        if (viewModelDict[@"termsAlignment"]) {
+            viewModel.termsAlignment = (NSTextAlignment)[viewModelDict[@"termsAlignment"] integerValue];
+        }
+        
+        // *************** Background *************** //
+        if ([self colorFromHexString:viewModelDict[@"backgroundColor"]]) {
+            viewModel.backgroundColor = [self colorFromHexString:viewModelDict[@"backgroundColor"]];
+        }
+        
+        if (viewModelDict[@"backgroundImage"]) {
+            viewModel.backgroundImage = [self imageWithName:viewModelDict[@"backgroundImage"]];
+        }
+        
+        if (viewModelDict[@"landscapeBackgroundImage"]) {
+            viewModel.landscapeBackgroundImage = [self imageWithName:viewModelDict[@"landscapeBackgroundImage"]];
+        }
+        
+        // *************** Popup *************** //
+        if (viewModelDict[@"isPopup"]) {
+            viewModel.isPopup = [viewModelDict[@"isPopup"] boolValue];
+        }
+        
+        if (viewModelDict[@"popupRect"]) {
+            if (![self isEqualToZeroOLRect:[self rectFromString:viewModelDict[@"popupRect"]]]) {
+                viewModel.popupRect = [self rectFromString:viewModelDict[@"popupRect"]];
+            }
+        }
+        
+        if (viewModelDict[@"popupCornerRadius"]) {
+            viewModel.popupCornerRadius = [viewModelDict[@"popupCornerRadius"] doubleValue];
+        }
+        
+        if (viewModelDict[@"popupRectCorners"]) {
+            NSArray *popupRectCorners = viewModelDict[@"popupRectCorners"];
+            if (popupRectCorners.count > 0) {
+                viewModel.popupRectCorners = popupRectCorners;
+            }
+        }
+        
+        if (viewModelDict[@"popupAnimationStyle"]) {
+            viewModel.popupAnimationStyle = (OLAuthPopupAnimationStyle)[viewModelDict[@"popupAnimationStyle"] integerValue];
+        }
+        
+        if ([self imageWithName:viewModelDict[@"closePopupImage"]]) {
+            viewModel.closePopupImage = [self imageWithName:viewModelDict[@"closePopupImage"]];
+        }
+        
+        if (viewModelDict[@"closePopupTopOffset"]) {
+            viewModel.closePopupTopOffset = [viewModelDict[@"closePopupTopOffset"] isKindOfClass:[NSNumber class]] ? viewModelDict[@"closePopupTopOffset"] : [NSNumber numberWithDouble:[viewModelDict[@"closePopupTopOffset"] doubleValue]];
+        }
+        
+        if (viewModelDict[@"closePopupRightOffset"]) {
+            viewModel.closePopupRightOffset = [viewModelDict[@"closePopupRightOffset"] isKindOfClass:[NSNumber class]] ? viewModelDict[@"closePopupRightOffset"] : [NSNumber numberWithDouble:[viewModelDict[@"closePopupRightOffset"] doubleValue]];
+        }
+        
+        if (viewModelDict[@"canClosePopupFromTapGesture"]) {
+            viewModel.canClosePopupFromTapGesture = [viewModelDict[@"canClosePopupFromTapGesture"] boolValue];
+        }
+        
+        // *************** WebController NavigationBar *************** //
+        if (viewModelDict[@"webNaviTitle"]) {
+            NSString *webNaviTitleString = [NSString stringWithFormat:@"%@", viewModelDict[@"webNaviTitle"]];
+            NSMutableAttributedString *webNaviTitle = [[NSMutableAttributedString alloc] initWithString:webNaviTitleString];
+            if (viewModelDict[@"webNaviTitleColor"]) {
+                [webNaviTitle addAttributes:@{NSForegroundColorAttributeName: [self colorFromHexString:viewModelDict[@"webNaviTitleColor"]] ?: UIColor.blackColor} range:NSMakeRange(0, webNaviTitleString.length)];
+            }
+            if ([self fontFromString:viewModelDict[@"webNaviTitleFont"]]) {
+                [webNaviTitle addAttributes:@{NSFontAttributeName: [self fontFromString:viewModelDict[@"webNaviTitleFont"]]} range:NSMakeRange(0, webNaviTitleString.length)];
+            }
+            viewModel.webNaviTitle = webNaviTitle.copy;
+        }
+        
+        if ([self colorFromHexString:viewModelDict[@"webNaviBgColor"]]) {
+            viewModel.webNaviBgColor = [self colorFromHexString:viewModelDict[@"webNaviBgColor"]];
+        }
+        
+        // *************** Hint *************** //
+        if (viewModelDict[@"notCheckProtocolHint"]) {
+            viewModel.notCheckProtocolHint = viewModelDict[@"notCheckProtocolHint"];
+        }
+        
+        // *************** UIModalPresentationStyle *************** //
+        if (viewModelDict[@"modalPresentationStyle"]) {
+            viewModel.modalPresentationStyle = (UIModalPresentationStyle)[viewModelDict[@"modalPresentationStyle"] integerValue];
+        }
+        
+        // *************** OLPullAuthVCStyle *************** //
+        if (viewModelDict[@"pullAuthVCStyle"]) {
+            viewModel.pullAuthVCStyle = (OLPullAuthVCStyle)[viewModelDict[@"pullAuthVCStyle"] integerValue];
+        }
+        
+        // *************** UIUserInterfaceStyle *************** //
+        if (viewModelDict[@"userInterfaceStyle"]) {
+            viewModel.userInterfaceStyle = [viewModelDict[@"userInterfaceStyle"] isKindOfClass:[NSNumber class]] ? viewModelDict[@"userInterfaceStyle"] : [NSNumber numberWithInteger:[viewModelDict[@"userInterfaceStyle"] integerValue]];
+        }
+        
+        // *************** block *************** //
+        
+        // widgets
+        NSArray *tempWidgets = widgets.copy;
+        if ((nil == tempWidgets || 0 == tempWidgets.count) && viewModelDict[@"widgets"]) {
+            tempWidgets = viewModelDict[@"widgets"];
+        }
+        
+        if ([tempWidgets isKindOfClass:[NSArray class]] && tempWidgets.count > 0) {
+            viewModel.customUIHandler = ^(UIView * _Nonnull customAreaView) {
+                for (NSInteger i = 0; i < tempWidgets.count; i++) {
+                    NSDictionary *widgetDict = nil;
+                    if ([tempWidgets[i] isKindOfClass:[NSDictionary class]]) {
+                        widgetDict = tempWidgets[i];
+                    } else if ([self isValidString:tempWidgets[i]]) {
+                        NSError *jsonError = nil;
+                        widgetDict = [NSJSONSerialization JSONObjectWithData:[tempWidgets[i] dataUsingEncoding:NSUTF8StringEncoding] options:(NSJSONReadingOptions)0 error:&jsonError];
+                    }
+                    UIView *view = [self widgetFromDict:widgetDict];
+                    if (view && !CGRectEqualToRect(CGRectZero, view.frame)) {
+                        [customAreaView addSubview:view];
+                    }
+                }
+            };
+        }
+        
+//        __weak typeof(self) wself = self;
+        if (viewModelDict[@"authVCTransitionBlock"]) {
+            viewModel.authVCTransitionBlock = ^(CGSize size, id<UIViewControllerTransitionCoordinator>  _Nonnull coordinator, UIView * _Nonnull customAreaView) {
+                [self unitySendMessage:self.objName method:viewModelDict[@"authVCTransitionBlock"] msgDict:nil];
+            };
+        }
+        
+        if (viewModelDict[@"tapAuthBackgroundBlock"]) {
+            viewModel.tapAuthBackgroundBlock = ^{
+                [self unitySendMessage:self.objName method:viewModelDict[@"tapAuthBackgroundBlock"] msgDict:nil];
+            };
+        }
+        
+        if (viewModelDict[@"viewLifeCycleBlock"]) {
+            viewModel.viewLifeCycleBlock = ^(NSString * _Nonnull viewLifeCycle, BOOL animated) {
+                [self unitySendMessage:self.objName method:viewModelDict[@"viewLifeCycleBlock"] msgDict:@{@"viewLifeCycle" : viewLifeCycle}];
+            };
+        }
+        
+        if (viewModelDict[@"clickBackButtonBlock"]) {
+            viewModel.clickBackButtonBlock = ^{
+                [self unitySendMessage:self.objName method:viewModelDict[@"clickBackButtonBlock"] msgDict:nil];
+            };
+        }
+        
+        if (viewModelDict[@"clickSwitchButtonBlock"]) {
+            viewModel.clickSwitchButtonBlock = ^{
+                [self unitySendMessage:self.objName method:viewModelDict[@"clickSwitchButtonBlock"] msgDict:nil];
+            };
+        }
+        
+        if (viewModelDict[@"clickCheckboxBlock"]) {
+            viewModel.clickCheckboxBlock = ^(BOOL isChecked) {
+                [self unitySendMessage:self.objName method:viewModelDict[@"clickCheckboxBlock"] msgDict:@{@"isChecked" : (isChecked ? @"true" : @"false")}];
+            };
+        }
+    }
+    
+    [OneLoginPro requestTokenWithViewController:[self findCurrentShowingViewController] viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
+        [self unitySendMessage:self.objName method:self.requestTokenCallbackName msgDict:result];
+    }];
+}
+
+- (void)dismissAuthViewController {
+    // 防抖，防止短时间内多次点击
+    NSTimeInterval currentTimeInterval = [[NSDate date] timeIntervalSince1970];
+    if (currentTimeInterval - self.timeInterval < OLMinTimeInterval) {
+        return;
+    }
+    self.timeInterval = currentTimeInterval;
+    
+    NSLog(@"============ dismissAuthViewController ==============");
+    [OneLoginPro dismissAuthViewController:nil];
+}
+
+- (void)setLogEnabled:(BOOL)enabled {
+    [OneLoginPro setLogEnabled:enabled];
+}
+
+- (void)renewPreGetToken {
+    [OneLoginPro renewPreGetToken];
+}
+
+- (BOOL)isPreGetTokenResultValidate {
+    return [OneLoginPro isPreGetTokenResultValidate];
+}
+
+- (void)setRequestTimeout:(NSTimeInterval)timeout {
+    [OneLoginPro setRequestTimeout:timeout];
+}
+
+- (NSString *)sdkVersion {
+    return [OneLoginPro sdkVersion];
+}
+
+// MARK: Validate Token
+
+- (void)validateToken:(NSString *)token appID:(NSString *)appID processID:(NSString *)processID authcode:(NSString *)authcode {
+    NSString *oneloginResult = @"onelogin/result";
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", @"http://onepass.geetest.com/", oneloginResult]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    request.HTTPMethod = @"POST";
+    NSMutableDictionary *params = @{}.mutableCopy;
+    if (token) {
+        params[@"token"] = token;
+    }
+    if (appID) {
+        params[@"id_2_sign"] = appID;
+    }
+    if (processID) {
+        params[@"process_id"] = processID;
+    }
+    if (authcode) {
+        params[@"authcode"] = authcode;
+    }
+    request.HTTPBody = [NSJSONSerialization dataWithJSONObject:params options:NSJSONWritingPrettyPrinted error:nil];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        id result = nil;
+        if (data && !error) {
+            result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        }
+        [self finishValidatingToken:result error:error];
+        
+        if (![result isKindOfClass:[NSDictionary class]] && nil != data) {
+            NSLog(@"validateToken result: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        }
+    }];
+    [task resume];
+}
+
+- (void)finishValidatingToken:(NSDictionary *)result error:(NSError *)error {
+    NSLog(@"validateToken result: %@, error: %@", result, error);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self unitySendMessage:self.objName method:self.getPhoneCallbackName msgDict:result];
+    });
+}
+```
+
+具体实现，请参考`Assets/Plugins/iOS` 目录下的 `OneLoginUnityPlugin.mm` 文件
+
+### Unity 实现 iOS 的回调
+
+要在 Unity 中实现 iOS 的回调，需要借助 Unity 给 iOS 提供的 `void UnitySendMessage(const char* obj, const char* method, const char* msg);` 方法，Unity 在调用插件提供的方法后，插件将获取到的数据通过 `UnitySendMessage` 方法回传给 Unity：
+
+```objc
+- (void)unitySendMessage:(NSString *)obj method:(NSString *)method msgDict:(NSDictionary *)msgDict {
+    NSString *params = @"";
+    if (nil != msgDict && [msgDict isKindOfClass:[NSDictionary class]] && msgDict.count > 0) {
+        NSError *jsonError = nil;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:msgDict options:(NSJSONWritingOptions)0 error:&jsonError];
+        if (nil == jsonError && [jsonData isKindOfClass:[NSData class]] && jsonData.length > 0) {
+            params = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        }
+    }
+    UnitySendMessage([self isValidString:obj] ? [obj UTF8String] : [@"" UTF8String], [self isValidString:method] ? [method UTF8String] : [@"" UTF8String], [params UTF8String]);
+}
+```
+
+### Unity 调用插件方法
+
+首先注册插件提供的方法：
+
+```c#
+// 注册回调
+[DllImport("__Internal")]
+private static extern void registerCallback(string objName, string requestTokenCallbackName, string getPhoneCallbackName);
+
+// 注册，将 AppID 传给 SDK
+[DllImport("__Internal")]
+private static extern void registerWihtAppID(string appId);
+
+// 进入授权页面
+[DllImport("__Internal")]
+private static extern void enterAuthController(string configs, string[] widgets);
+
+// 关闭授权页面
+[DllImport("__Internal")]
+private static extern void dismissAuthViewController();
+
+// 设置日志开关
+[DllImport("__Internal")]
+private static extern void setLogEnabled(bool enabled);
+
+// 重新预取号
+[DllImport("__Internal")]
+private static extern void renewPreGetToken();
+
+// 判断预取号结果是否有效
+[DllImport("__Internal")]
+private static extern bool isPreGetTokenResultValidate();
+
+// 设置拉起授权页面时的超时时长
+[DllImport("__Internal")]
+private static extern void setRequestTimeout(double timeout);
+
+// 获取 SDK 版本
+[DllImport("__Internal")]
+private static extern string sdkVersion();
+
+// 校验 token 获取手机号，可以直接在 Unity 中实现
+[DllImport("__Internal")]
+private static extern void validateToken(string token, string appID, string processID, string authcode);
+
+// 弹窗提示，可以直接在 Unity 中实现
+[DllImport("__Internal")]
+private static extern void showAlertMessage(string message);
+```
+
+在需要通过插件完成相应功能的地方，调用插件提供的方法：
+
+```c#
+void Start () {
+	print("OneLogin is start!\r\n");
+    string sv = sdkVersion();
+    Console.WriteLine("============ sdk version: {0} ============ ", sv);
+    registerCallback("Main Camera", "requestTokenFinished", "getPhoneFinished");
+}
+
+public void initClicked() {
+    print("Init button is clicked!");
+    setLogEnabled(true);
+	registerWihtAppID("b41a959b5cac4dd1277183e074630945");
+}
+```
+
+具体交互实现，请参考 `Assets/iOS` 目录下的 `OneLoginPluginScript.cs` 文件
+
+## Unity 集成插件
+
+1. 将 `Assets/Plugins/iOS` 目录下 SDK 相关文件 `OneLoginSDK.framework`、`account_login_sdk_noui_core.framework`、`EAccountApiSDK.framework`、`TYRZSDK.framework`、`OneLoginResource.bundle` 拷贝到您的 Unity 工程的 `Assets/Plugins/` 目录下
+2. 将您上面创建的插件功能实现的文件(.h 和 .mm 文件)，拷贝到您的 Unity 工程的 `Assets/Plugins/` 目录下，您也可以直接使用 `Assets/Plugins/iOS` 目录下的 `OneLoginUnityPlugin.h` 和 `OneLoginUnityPlugin.mm` 文件
+3. 创建 `C#` 脚本文件，在文件中根据上文 [Unity 调用插件方法](#Unity 调用插件方法) 章节中的内容实现 Unity 与 iOS 交互的代码，然后将脚本与 Unity 工程进行绑定
+
+## 一键登录具体步骤
+
+**1、初始化**
+
+传入极验 appID，并开始预取号
+
+```c#
+public void initClicked() {
+    print("Init button is clicked!");
+    setLogEnabled(true);
+	registerWihtAppID("b41a959b5cac4dd1277183e074630945");
+}
+```
+
+**2、进入授权页面**
+
+拉起授权页面，用户在授权页面点击一键登录，即可获取 token，拿该 token 即可换取对应的手机号
+
+```c#
+public void enterAuthControllerClicked() {
+	print("Enter auth controller button is clicked!");
+	// 授权页面配置
+	OLAuthViewModel viewModel = new OLAuthViewModel();
+
+	// statusBar
+	viewModel.statusBarStyle = 0;
+
+	// navigation bar
+	viewModel.naviTitle = "一键登录Unity";
+	viewModel.naviTitleColor = "#FF4900";
+	viewModel.naviTitleFont = 17.0;
+    viewModel.naviBgColor = "#00FF00";
+    viewModel.naviBackImage = "close_black";
+    viewModel.naviHidden = false;
+    viewModel.backButtonRect = "10, 0, 20, 0, 0, 0, 20, 20";
+    viewModel.backButtonHidden = false;
+
+    // logo
+    viewModel.appLogo = "logo_icon";
+    viewModel.logoRect = "";
+    viewModel.logoHidden = false;
+    viewModel.logoCornerRadius = 5;
+
+    // phone
+    viewModel.phoneNumColor = "#FF00FF";
+    viewModel.phoneNumFont = 24;
+    viewModel.phoneNumRect = "";
+
+    // switch button
+    viewModel.switchButtonText = "换个方式登录";
+    viewModel.switchButtonColor = "#6500FF";
+    viewModel.switchButtonBackgroundColor = "#FFFFFF";
+    viewModel.switchButtonFont = 15;
+    viewModel.switchButtonRect = "";
+    viewModel.switchButtonHidden = false;
+
+    // auth button
+    // viewModel.authButtonImages = {"button_bg", "button_bg", "button_bg"};
+    viewModel.authButtonImages = new string[3];
+    viewModel.authButtonImages[0] = "authbutton_bg";
+    viewModel.authButtonImages[1] = "authbutton_bg";
+    viewModel.authButtonImages[2] = "authbutton_bg";
+    viewModel.authButtonTitle = "授权登录";
+    viewModel.authButtonTitleColor = "#FFFFFF";
+    viewModel.authButtonTitleFont = 17;
+    viewModel.authButtonRect = "";
+    viewModel.authButtonCornerRadius = 5;
+
+    // slogan
+    viewModel.sloganRect = "";
+    viewModel.sloganTextColor = "#FFFF00";
+    viewModel.sloganTextFont = 13;
+
+    // privacy terms
+    viewModel.defaultCheckBoxState = false;
+    viewModel.checkedImage = "";
+    viewModel.uncheckedImage = "";
+    viewModel.checkBoxRect = "";
+    viewModel.privacyTermsColor = "#00FF00";
+    viewModel.privacyTermsFont = 14;
+    // additionalPrivacyTerms 为自定义的服务条款，每条服务条款对应三个元素：条款名称、条款链接、条款索引，所以 additionalPrivacyTerms 的元素个数 = 服务条款数 * 3
+    viewModel.additionalPrivacyTerms = new string[6];
+    // 服务条款1
+    viewModel.additionalPrivacyTerms[0] = "自定义服务条款1";
+    viewModel.additionalPrivacyTerms[1] = "https://docs.geetest.com/onelogin/deploy/ios";
+    viewModel.additionalPrivacyTerms[2] = "0";
+    // 服务条款2
+    viewModel.additionalPrivacyTerms[3] = "自定义服务条款2";
+    viewModel.additionalPrivacyTerms[4] = "https://docs.geetest.com/onelogin/changelog/ios";
+    viewModel.additionalPrivacyTerms[5] = "1";
+    viewModel.termTextColor = "#0000FF";
+    viewModel.termsRect = "";
+    viewModel.auxiliaryPrivacyWords = new string[4];
+    viewModel.auxiliaryPrivacyWords[0] = "登录表示同意";
+    viewModel.auxiliaryPrivacyWords[1] = "与";
+    viewModel.auxiliaryPrivacyWords[2] = "&";
+    viewModel.auxiliaryPrivacyWords[3] = "并使用本机号码登录";
+    viewModel.termsAlignment = 1;
+
+    // background
+    viewModel.backgroundColor = "#FFFFFF";
+    viewModel.backgroundImage = "background";
+    viewModel.landscapeBackgroundImage = "";
+
+    // 服务条款页面导航栏
+    viewModel.webNaviTitle = "一键登录Unity服务条款";
+    viewModel.webNaviTitleColor = "#1F90FF";
+    viewModel.webNaviTitleFont = 20;
+    viewModel.webNaviBgColor = "#0F0F00";
+
+    // 未勾选服务条款勾选框时，点击授权按钮的提示
+    viewModel.notCheckProtocolHint = "请先阅读服务条款";
+
+    // modal style
+    viewModel.modalPresentationStyle = 0;
+
+    // pull auth viewcontroller style
+    viewModel.pullAuthVCStyle = 0;
+
+    // user interface style
+    viewModel.userInterfaceStyle = 0;
+
+    // authVCTransitionBlock
+    viewModel.authVCTransitionBlock = "authVCTransitionBlock";
+
+    // tapAuthBackgroundBlock
+    viewModel.tapAuthBackgroundBlock = "tapAuthBackground";
+
+    // viewLifeCycleBlock
+    viewModel.viewLifeCycleBlock = "viewLifeCycle";
+
+    // clickBackButtonBlock
+    viewModel.clickBackButtonBlock = "clickBackButton";
+
+    // clickSwitchButtonBlock
+    viewModel.clickSwitchButtonBlock = "clickSwitchButton";
+
+    // clickCheckboxBlock
+    viewModel.clickCheckboxBlock = "clickCheckbox";
+
+    // widgets
+    double screenWidth = UnityEngine.Screen.width/2;
+    double screenHeight = UnityEngine.Screen.height/2;
+    Console.WriteLine("============ screenWidth: {0}, screenHeight: {1} ============", screenWidth, screenHeight);
+
+    // viewModel.widgets = new string[3];
+
+    // string widget0 = "{\"type\":\"UIButton\", \"image\":\"qq_icon\", \"action\":\"qqLoginAction\", \"frame\":\"" + (screenWidth/2 - 45 - 10).ToString() + "," + (screenHeight - 200).ToString() + ",45,45\"}";
+    // Console.WriteLine("============ widget0: {0} ============ ", widget0);
+    // viewModel.widgets[0] = widget0;
+    // string widget1 = "{\"type\":\"UIButton\", \"image\":\"weixin_icon\", \"action\":\"weixinLoginAction\", \"frame\":\"" + (screenWidth/2 + 10).ToString() + "," + (screenHeight - 200).ToString() + ",45,45\"}";
+    // Console.WriteLine("============ widget1: {0} ============ ", widget1);
+    // viewModel.widgets[1] = widget1;
+    // string widget2 = "{\"type\":\"UILabel\", \"textColor\":\"#D98866\", \"font\":15, \"textAlignment\":1, \"text\":\"三方登录\", \"frame\":\"" + ((screenWidth - 120)/2).ToString() + "," + (screenHeight - 250).ToString() + ",120,20\"}";
+    // viewModel.widgets[2] = widget2;
+
+    // 添加自定义控件
+    OLWidget[] widgets = new OLWidget[3];
+
+    // 自定义 UIButton
+    OLWidget widget0 = new OLWidget();
+    widget0.type = "UIButton";
+    widget0.image = "qq_icon";
+    widget0.action = "qqLoginAction";
+    widget0.frame = new double[4];
+    widget0.frame[0] = screenWidth/2 - 45 - 10;
+    widget0.frame[1] = screenHeight - 200;
+    widget0.frame[2] = 45;
+    widget0.frame[3] = 45;
+    widgets[0] = widget0;
+
+    // 自定义 UIButton
+    OLWidget widget1 = new OLWidget();
+    widget1.type = "UIButton";
+    widget1.image = "weixin_icon";
+    widget1.action = "weixinLoginAction";
+    widget1.frame = new double[4];
+    widget1.frame[0] = screenWidth/2 + 10;
+    widget1.frame[1] = screenHeight - 200;
+    widget1.frame[2] = 45;
+    widget1.frame[3] = 45;
+    widgets[1] = widget1;
+
+    // 自定义 UILabel
+    OLWidget widget2 = new OLWidget();
+    widget2.type = "UILabel";
+    widget2.textColor = "#D98866";
+    widget2.text = "三方登录";
+    widget2.font = 15;
+    widget2.textAlignment = 1;
+    widget2.frame = new double[4];
+    widget2.frame[0] = (screenWidth - 120)/2;
+    widget2.frame[1] = screenHeight - 250;
+    widget2.frame[2] = 120;
+    widget2.frame[3] = 20;
+    widgets[2] = widget2;
+
+    int len = widgets.Length;
+    string[] widgetsString = new string[len];
+    for (int i = 0; i < len; i++) {
+        OLWidget widget = widgets[i];
+        string widgetString = JsonUtility.ToJson(widget);
+        Console.WriteLine("============ widgetString: {0} ============", widgetString);
+        if (null != widgetString) {
+            widgetsString[i] = widgetString;
+        }
+    }
+	
+	// 进入授权页面
+	enterAuthController(serializeModelToJsonString(viewModel), widgetsString);
+}
+```
+
+**3、手动关闭授权页面**
+
+当开发者设置点击一键登录或者自定义控件不自动销毁授权页时，将需要自行调用此方法主动销毁授权页，建议在置换手机号成功后销毁，请不要使用其他方式关闭授权页面
+
+```c#
+void requestTokenFinished(string result) {
+    Console.WriteLine("============ reuqest token result: {0} ============ ", result);
+    
+    dismissAuthViewController();
+
+    requestTokenResult = JsonUtility.FromJson<OLRequestTokenResult>(result);
+    if (null != requestTokenResult) {
+        Console.WriteLine("============ appID: {0}, authcode: {1}, processID: {2}, token: {3} ============ ", requestTokenResult.appID, requestTokenResult.authcode, requestTokenResult.processID, requestTokenResult.token);
+    }
+
+    if (200 == requestTokenResult.status) { // 取号成功
+        showAlertMessage("token 获取成功");
+    } else {                                // 取号失败
+        showAlertMessage("token 获取失败");
+    }
+}
+```
+
+## 本机号码认证具体步骤
+
+**1、初始化**
+
+传入极验 appID
+
+```c#
+registerOnepassCallback("Main Camera", "onepassFinished", "validateOnepassFinished");
+
+void onepassInitClicked() {
+    initOnePass(OnePassCustomId, 10);
+}
+```
+
+**2、获取校验是否为本机号码的 accesscode**
+
+获取校验是否为本机号码的 accesscode
+
+```c#
+void getOnepassAccessCodeClicked() {
+    verifyPhoneNumber(OnePassPhone);
+}
+
+void onepassFinished(string result) {
+    Console.WriteLine("============ onepass result: {0} ============ ", result);
+    
+    onepassResult = JsonUtility.FromJson<OLOnePassResult>(result);
+    if (null != onepassResult) {
+        Console.WriteLine("============ process_id: {0}, accesscode: {1}, operatorType: {2}, phone: {3} ============ ", onepassResult.process_id, onepassResult.accesscode, onepassResult.operatorType, onepassResult.phone);
+    }
+
+    if (null == onepassResult.errorMsg) {  // 取 accesscode 成功
+        showAlertMessage("onepass accesscode 获取成功");
+    } else {                                // 取 accesscode 失败
+        showAlertMessage("onepass accesscode 获取失败");
+    }
+}
+```
+
+**3、校验是否为本机号码**
+
+```c#
+void validateOnepassAccessCodeClicked() {
+    if (null != onepassResult.accesscode) {
+        validateOnePassAccessCode(onepassResult.accesscode, OnePassCustomId, onepassResult.process_id, onepassResult.phone, onepassResult.operatorType);
+    } else {
+         showAlertMessage("accesscode 获取失败，请先重新获取 accesscode");
+    }
+}
+
+void validateOnepassFinished(string result) {
+    Console.WriteLine("============ validate onepass result: {0} ============ ", result);
+
+    OLValidateOnePassResult validateResult = JsonUtility.FromJson<OLValidateOnePassResult>(result);
+    if ("200" == validateResult.status) {     
+        if ("0" == validateResult.result) {
+            showAlertMessage("校验成功");
+        } else {
+            showAlertMessage("非本机号码");
+        }
+    } else {                                // 取号失败
+        string message = "校验失败: " + validateResult.error_msg;
+        showAlertMessage(message);
+    }
+}
+```
+
+具体一键登录流程和本机号码认证流程请参考 [极验官方文档](https://docs.geetest.com/onelogin/deploy/ios)
