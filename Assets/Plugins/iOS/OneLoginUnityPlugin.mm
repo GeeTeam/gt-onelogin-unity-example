@@ -15,6 +15,10 @@
 extern "C"{
 #endif
     // 桥接方法，Unity 中调用
+    extern char* getCurrentCarrier();
+    extern void setProtocolCheckState(bool isChecked);
+    extern void deletePreResultCache();
+
     extern void registerCallback(const char *objName, const char *requestTokenCallbackName, const char *getPhoneCallbackName);
     extern void registerWihtAppID(const char *appId);
     extern void enterAuthController(const char *configs, char **widgets);
@@ -76,9 +80,23 @@ extern "C"{
 
 // MARK: OneLogin Methods
 
+- (NSString *) getCurrentCarrier {
+    OLNetworkInfo *networkInfo = [OneLoginPro currentNetworkInfo];
+    return networkInfo.carrierName;
+}
+- (void) setProtocolCheckState:(BOOL)isChecked {
+    [OneLoginPro setProtocolCheckState:isChecked];
+}
+
+- (void) deletePreResultCache {
+    [OneLoginPro deletePreResultCache];
+}
+
 - (void)registerCallbackWithObjName:(NSString *)objName requestTokenCallbackName:(NSString *)requestTokenCallbackName getPhoneCallbackName:(NSString *)getPhoneCallbackName {
     NSLog(@"============ register callback ==============");
-    
+    NSLog(@"============ objName:%@ ==============",objName);
+    NSLog(@"============ requestTokenCallbackName:%@ ==============",requestTokenCallbackName);
+    NSLog(@"============ getPhoneCallbackName:%@ ==============",getPhoneCallbackName);
     self.objName = objName;
     self.requestTokenCallbackName = requestTokenCallbackName;
     self.getPhoneCallbackName = getPhoneCallbackName;
@@ -111,6 +129,11 @@ extern "C"{
     NSError *jsonError = nil;
     NSDictionary *viewModelDict = [NSJSONSerialization JSONObjectWithData:[configs dataUsingEncoding:NSUTF8StringEncoding] options:(NSJSONReadingOptions)0 error:&jsonError];
     if (nil == jsonError && [viewModelDict isKindOfClass:[NSDictionary class]] && viewModelDict.count > 0) {
+        // *************** languageType *************** //
+        if (viewModelDict[@"languageType"]) {
+            viewModel.languageType = (OLLanguageType)[viewModelDict[@"languageType"] integerValue];
+        }
+        
         // *************** statusBarStyle *************** //
         if (viewModelDict[@"statusBarStyle"]) {
             viewModel.statusBarStyle = (UIStatusBarStyle)[viewModelDict[@"statusBarStyle"] integerValue];
@@ -453,7 +476,9 @@ extern "C"{
                         NSError *jsonError = nil;
                         widgetDict = [NSJSONSerialization JSONObjectWithData:[tempWidgets[i] dataUsingEncoding:NSUTF8StringEncoding] options:(NSJSONReadingOptions)0 error:&jsonError];
                     }
+                    NSLog(@"widgetDict:%@",widgetDict);
                     UIView *view = [self widgetFromDict:widgetDict];
+                    NSLog(@"widgetFromDict:%@",view);
                     if (view && !CGRectEqualToRect(CGRectZero, view.frame)) {
                         [customAreaView addSubview:view];
                     }
@@ -688,7 +713,7 @@ extern "C"{
 // MARK: Show Alert
 
 - (void)showAlertMessage:(NSString *)message {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         UIAlertController *controller = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [controller dismissViewControllerAnimated:YES completion:nil];
@@ -1018,6 +1043,18 @@ extern "C"{
 #if defined(__cplusplus)
 extern "C"{
 #endif
+
+    char* getCurrentCarrier() {
+        return strdup([[UnityPlugin getCurrentCarrier] UTF8String]);
+    }
+
+    void setProtocolCheckState(bool isChecked) {
+        [UnityPlugin setProtocolCheckState:isChecked];
+    }
+    void deletePreResultCache() {
+        [UnityPlugin deletePreResultCache];
+    }
+
     void registerWihtAppID(const char *appId) {
         [UnityPlugin registerWihtAppID:[NSString stringWithUTF8String:appId]];
     }

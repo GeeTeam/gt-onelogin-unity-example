@@ -11,6 +11,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSInteger, OLAlgorithmOption) {
+    OLAlgorithmOptionAES2RSA = 0,   // AES+RSA
+    OLAlgorithmOptionSM42SM2 = 1    // SM4+SM2
+};
+
+typedef NS_ENUM(NSInteger, OLLanguageType) {
+    OLLanguageTypeSimplifiedChinese,  // 简体中文
+    OLLanguageTypeTraditionalChinese, // 繁体中文
+    OLLanguageTypeEnglish             // 英文
+};
+
 /**
  * @abstract 授权登录页面自定义视图，customAreaView为授权页面的view，如，可将三方登录添加到授权登录页面
  */
@@ -142,6 +153,11 @@ typedef void(^OLClickSwitchButtonBlock)(void);
 typedef void(^OLClickCheckboxBlock)(BOOL isChecked);
 
 /**
+ * 未勾选授权页面隐私协议前勾选框时，点击授权页面登录按钮时提示 block
+ */
+typedef void(^OLNotCheckProtocolHintBlock)(void);
+
+/**
  * 点击授权页面弹窗背景的回调
  */
 typedef void(^OLTapAuthBackgroundBlock)(void);
@@ -173,6 +189,16 @@ typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
     OLPullAuthVCStylePush
 };
 
+
+/**
+ * @abstract 未勾选授权页隐私协议前的勾选框，点击登录按钮时 协议与隐私框的抖动样式
+ */
+typedef NS_ENUM(NSInteger, OLNotCheckProtocolShakeStyle) {
+    OLNotCheckProtocolShakeStyleNone = 0,
+    OLNotCheckProtocolShakeStyleHorizontal,
+    OLNotCheckProtocolShakeStyleVertical
+};
+
 @interface OLAuthViewModel : NSObject
 
 #pragma mark - Status Bar/状态栏
@@ -184,6 +210,10 @@ typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
 
 #pragma mark - Navigation/导航
 
+/**
+ 导航栏标题距离屏幕左边的间距。默认为36，隐私条款导航栏保持一致。
+ */
+@property (nonatomic, assign) double navTextPadding;
 /**
  授权页导航的标题。默认为空字符串。
  */
@@ -263,6 +293,11 @@ typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
  */
 @property (nonatomic, assign) OLRect phoneNumRect;
 
+/**
+ 号码富文本，默认为空。
+*/
+@property (nullable, nonatomic, copy) NSAttributedString *attrPhone;
+
 #pragma mark - Switch Button/切换按钮
 
 /**
@@ -335,6 +370,11 @@ typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
 #pragma mark - Slogan/口号标语
 
 /**
+ Slogan 文案。
+ */
+@property (nonatomic, copy, nullable) NSString *sloganText;
+
+/**
  Slogan 位置及大小。
  */
 @property (nonatomic, assign) OLRect sloganRect;
@@ -352,7 +392,7 @@ typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
 #pragma mark - CheckBox & Privacy Terms/隐私条款勾选框及隐私条款
 
 /**
- 授权页面上条款勾选框初始状态。默认 YES。
+ 授权页面上条款勾选框初始状态。默认 NO。
  */
 @property (nonatomic, assign) BOOL defaultCheckBoxState;
 
@@ -372,7 +412,7 @@ typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
 @property (nonatomic, assign) CGSize checkBoxSize __attribute__((deprecated("use checkBoxRect instead.")));
 
 /**
- 授权页面上条款勾选框大小及位置。
+ 授权页面上条款勾选框大小及位置，请不要设置勾选框的横向偏移，整体隐私条款的横向偏移，请通过 termsRect 设置
  */
 @property (nonatomic, assign) OLRect checkBoxRect;
 
@@ -397,7 +437,7 @@ typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
 @property (nonatomic, assign) OLRect termsRect;
 
 /**
- 除隐私条款外的其他文案，数组大小必须为4，元素依次为：条款前的文案、条款一和条款二连接符、条款二和条款三连接符，条款后的文案。
+ 除隐私条款外的其他文案，数组大小必须 >= 4，元素依次为：条款前的文案、条款一和条款二连接符、条款二和条款三连接符、条款三和条款四连接符、……，条款后的文案。
  默认为@[@"登录即同意", @"和", @"、", @"并使用本机号码登录"]
  */
 @property (nullable, nonatomic, copy) NSArray<NSString *> *auxiliaryPrivacyWords;
@@ -426,6 +466,27 @@ typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
  * 未勾选勾选框时，是否禁止一键登录按钮的点击
  */
 @property (nonatomic, assign) BOOL disableAuthButtonWhenUnchecked;
+
+/**
+ * 未勾选授权页面隐私协议前勾选框时，点击授权页面登录按钮时提示 block
+ */
+@property (nonatomic, copy) OLNotCheckProtocolHintBlock hintBlock;
+
+/**
+ * 未勾选授权页面隐私协议前勾选框时，点击授权页面登录按钮时勾选框与协议的抖动样式,默认不抖动
+ */
+@property(nonatomic,assign) OLNotCheckProtocolShakeStyle shakeStyle;
+
+/**
+ * 勾选框与服务条款文案之间的间距。默认为 2
+ */
+@property (nonatomic, assign) CGFloat spaceBetweenCheckboxAndTermsText;
+
+#pragma mark - 授权页文案多语言配置
+/**
+ * 多语言配置，支持中文简体，中文繁体，英文
+ */
+@property (nonatomic, assign) OLLanguageType languageType;
 
 #pragma mark - Custom Area/自定义区域
 
@@ -460,6 +521,17 @@ typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
  横屏模式授权页面背景图片
  */
 @property (nullable, nonatomic, strong) UIImage *landscapeBackgroundImage;
+
+#pragma mark - Background Gif/授权页面背景 gif
+/**
+ 授权页面背景Gif路径，与背景图片、视频，三者只有一个有效，视频优先级最高，背景图其次，gif 最后
+ */
+@property (nullable, nonatomic, strong) NSString *backgroundGifPath;
+#pragma mark - Background Video/授权页面背景视频
+/**
+ 授权页面背景视频路径，可支持本地和网络视频，与背景图片、gif，三者只有一个有效，视频优先级最高，背景图其次，gif 最后
+ */
+@property (nullable, nonatomic, strong) NSString *backgroundVideoPath;
 
 #pragma mark - Autolayout
 
@@ -628,9 +700,9 @@ typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
  *
  * @discussion 当需要集成行为验证时，请参考 https://docs.geetest.com/sensebot/deploy/client/ios 先将行为验证 SDK 集成到工程中，然后给 captchaAPI1、captchaAPI2、captchaTimeout 进行赋值，在授权页面点击一键登录时，就会先弹出行为验证页面，验证通过之后才会进行获取 token 的操作
  */
-@property (nonatomic, copy, nullable) NSString *captchaAPI1;
-@property (nonatomic, copy, nullable) NSString *captchaAPI2;
-@property (nonatomic, assign) NSTimeInterval captchaTimeout;
+@property (nonatomic, copy, nullable) NSString *captchaAPI1 API_DEPRECATED("No longer support GT3Captcha", ios(7.0, 8.0));
+@property (nonatomic, copy, nullable) NSString *captchaAPI2 API_DEPRECATED("No longer support GT3Captcha", ios(7.0, 8.0));;
+@property (nonatomic, assign) NSTimeInterval captchaTimeout API_DEPRECATED("No longer support GT3Captcha", ios(7.0, 8.0));;
 
 @end
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,6 +28,7 @@ public class OLWidget {
 
 [Serializable]
 public class OLAuthViewModel {
+    public int languageType;
     public int statusBarStyle;
 
     public string naviTitle;
@@ -158,6 +159,17 @@ public class OLValidateOnePassResult {
 }
 
 public class OneLoginPluginScript : MonoBehaviour {
+    // 获取运营商类型
+    [DllImport("__Internal")]
+    private static extern string getCurrentCarrier();
+
+    // 设置勾选框勾选状态
+    [DllImport("__Internal")]
+    private static extern void setProtocolCheckState(bool isChecked);
+
+    // 删除预取号的缓存
+    [DllImport("__Internal")]
+    private static extern void deletePreResultCache();
 
     // 注册回调
 	[DllImport("__Internal")]
@@ -231,8 +243,10 @@ public class OneLoginPluginScript : MonoBehaviour {
 		print("OneLogin is start!\r\n");
         string sv = sdkVersion();
         Console.WriteLine("============ sdk version: {0} ============ ", sv);
-        registerCallback("Main Camera", "requestTokenFinished", "getPhoneFinished");
-        registerOnepassCallback("Main Camera", "onepassFinished", "validateOnepassFinished");
+        string carrier = getCurrentCarrier();
+        print("current carrier:"+carrier);
+        registerCallback("OneLoginHandler", "requestTokenFinished", "getPhoneFinished");
+        registerOnepassCallback("OneLoginHandler", "onepassFinished", "validateOnepassFinished");
 	}
 	
 	// Update is called once per frame
@@ -300,6 +314,7 @@ public class OneLoginPluginScript : MonoBehaviour {
 
 		// statusBar
 		viewModel.statusBarStyle = 0;
+        viewModel.languageType = 2;
 
 		// navigation bar
 		viewModel.naviTitle = "一键登录Unity";
@@ -415,8 +430,8 @@ public class OneLoginPluginScript : MonoBehaviour {
         viewModel.clickCheckboxBlock = "clickCheckbox";
 
         // widgets
-        double screenWidth = UnityEngine.Screen.width/2;
-        double screenHeight = UnityEngine.Screen.height/2;
+        double screenWidth = UnityEngine.Screen.width/3;
+        double screenHeight = UnityEngine.Screen.height/3;
         Console.WriteLine("============ screenWidth: {0}, screenHeight: {1} ============", screenWidth, screenHeight);
 
         // viewModel.widgets = new string[3];
@@ -519,8 +534,8 @@ public class OneLoginPluginScript : MonoBehaviour {
         viewModel.isPopup = true;
 
         // 设置弹窗的大小位置
-        double screenWidth = UnityEngine.Screen.width/2;
-        double screenHeight = UnityEngine.Screen.height/2;
+        double screenWidth = UnityEngine.Screen.width/3;
+        double screenHeight = UnityEngine.Screen.height/3;
         viewModel.popupRect = (screenHeight - 340).ToString() + ",0,0,0,0,0," + screenWidth.ToString() + ",340";
 
         viewModel.popupCornerRadius = 10;
@@ -545,10 +560,8 @@ public class OneLoginPluginScript : MonoBehaviour {
         }
 	}
 
-    void requestTokenFinished(string result) {
+    public void requestTokenFinished(string result) {
         Console.WriteLine("============ reuqest token result: {0} ============ ", result);
-        
-        dismissAuthViewController();
 
         requestTokenResult = JsonUtility.FromJson<OLRequestTokenResult>(result);
         if (null != requestTokenResult) {
@@ -560,6 +573,8 @@ public class OneLoginPluginScript : MonoBehaviour {
         } else {                                // 取号失败
             showAlertMessage("token 获取失败");
         }
+
+        dismissAuthViewController();
     }
 
     void getPhoneFinished(string result) {
@@ -611,11 +626,11 @@ public class OneLoginPluginScript : MonoBehaviour {
         Console.WriteLine("============ clickCheckbox: {0} ============ ", param);
     }
 
-    void onepassInitClicked() {
+    public void onepassInitClicked() {
         initOnePass(OnePassCustomId, 10);
     }
 
-    void getOnepassAccessCodeClicked() {
+    public void getOnepassAccessCodeClicked() {
         verifyPhoneNumber(OnePassPhone);
     }
 
@@ -634,7 +649,7 @@ public class OneLoginPluginScript : MonoBehaviour {
         }
     }
 
-    void validateOnepassAccessCodeClicked() {
+    public void validateOnepassAccessCodeClicked() {
         if (null != onepassResult.accesscode) {
             validateOnePassAccessCode(onepassResult.accesscode, OnePassCustomId, onepassResult.process_id, onepassResult.phone, onepassResult.operatorType);
         } else {
