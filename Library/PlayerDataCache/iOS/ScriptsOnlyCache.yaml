@@ -47,31 +47,31 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1534}
+      Script: {instanceID: 1538}
     - Class: 114
-      Script: {instanceID: 1772}
+      Script: {instanceID: 1776}
     - Class: 114
-      Script: {instanceID: 2056}
+      Script: {instanceID: 2060}
     - Class: 114
-      Script: {instanceID: 2066}
+      Script: {instanceID: 2070}
     - Class: 114
-      Script: {instanceID: 2368}
+      Script: {instanceID: 2370}
     - Class: 114
-      Script: {instanceID: 2480}
+      Script: {instanceID: 2482}
     - Class: 114
-      Script: {instanceID: 2522}
+      Script: {instanceID: 2524}
     - Class: 114
-      Script: {instanceID: 2650}
+      Script: {instanceID: 2652}
     - Class: 114
-      Script: {instanceID: 2838}
+      Script: {instanceID: 2840}
     - Class: 114
-      Script: {instanceID: 2926}
+      Script: {instanceID: 2928}
     - Class: 114
-      Script: {instanceID: 3134}
+      Script: {instanceID: 3136}
     - Class: 114
-      Script: {instanceID: 3898}
+      Script: {instanceID: 3900}
     - Class: 114
-      Script: {instanceID: 4166}
+      Script: {instanceID: 4168}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -528,4 +528,4 @@ ScriptsOnlyBuild:
   platform: 9
   scenePathNames:
   - Assets/Scenes/iOS/SampleScene.unity
-  playerPath: /Users/noctis/Documents/sunny/code/gt-onelogin-unity-example/build
+  playerPath: /Users/noctis/Desktop/test 11-10/Unity_build

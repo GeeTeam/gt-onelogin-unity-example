@@ -152,6 +152,10 @@ extern "C"{
             viewModel.naviTitle = naviTitle.copy;
         }
         
+        if(viewModelDict[@"navTextMargin"] && [viewModelDict[@"navTextMargin"] doubleValue]) {
+            viewModel.navTextMargin = [viewModelDict[@"navTextMargin"] doubleValue];
+        }
+        
         if ([self colorFromHexString:viewModelDict[@"naviBgColor"]]) {
             viewModel.naviBgColor = [self colorFromHexString:viewModelDict[@"naviBgColor"]];
         }
@@ -284,6 +288,10 @@ extern "C"{
             }
         }
         
+        if (viewModelDict[@"sloganText"]) {
+            viewModel.sloganText = viewModelDict[@"sloganText"];
+        }
+        
         if ([self colorFromHexString:viewModelDict[@"sloganTextColor"]]) {
             viewModel.sloganTextColor = [self colorFromHexString:viewModelDict[@"sloganTextColor"]];
         }
@@ -366,9 +374,17 @@ extern "C"{
             viewModel.termsAlignment = (NSTextAlignment)[viewModelDict[@"termsAlignment"] integerValue];
         }
         
+        if (viewModelDict[@"privacyCheckBoxMarginRight"]) {
+            viewModel.spaceBetweenCheckboxAndTermsText =  [viewModelDict[@"privacyCheckBoxMarginRight"] doubleValue];
+        }
+        
+        if (viewModelDict[@"protocolShakeStyle"]) {
+            viewModel.shakeStyle =  [viewModelDict[@"protocolShakeStyle"] integerValue];
+        }
+        
         // *************** Background *************** //
         if ([self colorFromHexString:viewModelDict[@"backgroundColor"]]) {
-            viewModel.backgroundColor = [self colorFromHexString:viewModelDict[@"backgroundColor"]];
+            viewModel.backgroundColor = (OLNotCheckProtocolShakeStyle)[self colorFromHexString:viewModelDict[@"backgroundColor"]];
         }
         
         if (viewModelDict[@"backgroundImage"]) {
@@ -520,6 +536,12 @@ extern "C"{
         if (viewModelDict[@"clickCheckboxBlock"]) {
             viewModel.clickCheckboxBlock = ^(BOOL isChecked) {
                 [self unitySendMessage:self.objName method:viewModelDict[@"clickCheckboxBlock"] msgDict:@{@"isChecked" : (isChecked ? @"true" : @"false")}];
+            };
+        }
+        
+        if (viewModelDict[@"hintBlock"]) {
+            viewModel.hintBlock = ^{
+                [self unitySendMessage:self.objName method:viewModelDict[@"hintBlock"] msgDict:nil];
             };
         }
     }

@@ -194,19 +194,21 @@ extern void OneLoginPluginScript_clickBackButton_m861B95B77902D77D88D2EAE0C30C52
 extern void OneLoginPluginScript_clickSwitchButton_mF14CF75EF92B38D462D65AE8FE9D56C2B3EDBE55 (void);
 // 0x0000005B System.Void OneLoginPluginScript::clickCheckbox(System.String)
 extern void OneLoginPluginScript_clickCheckbox_m33D47B871AF42D9B394D6AAF04CED26DFEECDC72 (void);
-// 0x0000005C System.Void OneLoginPluginScript::onepassInitClicked()
+// 0x0000005C System.Void OneLoginPluginScript::hintCustom(System.String)
+extern void OneLoginPluginScript_hintCustom_mD068F6FAA304E36949F84B80DC93670A570810F9 (void);
+// 0x0000005D System.Void OneLoginPluginScript::onepassInitClicked()
 extern void OneLoginPluginScript_onepassInitClicked_m8A93DAF8574824938307BC2F2FA5319E68A37679 (void);
-// 0x0000005D System.Void OneLoginPluginScript::getOnepassAccessCodeClicked()
+// 0x0000005E System.Void OneLoginPluginScript::getOnepassAccessCodeClicked()
 extern void OneLoginPluginScript_getOnepassAccessCodeClicked_m53CD723913AAB166DA3F1D2571D133BA64EB5D87 (void);
-// 0x0000005E System.Void OneLoginPluginScript::onepassFinished(System.String)
+// 0x0000005F System.Void OneLoginPluginScript::onepassFinished(System.String)
 extern void OneLoginPluginScript_onepassFinished_m3FCD2D7037202800CE769A22EFACBDB12535D3A0 (void);
-// 0x0000005F System.Void OneLoginPluginScript::validateOnepassAccessCodeClicked()
+// 0x00000060 System.Void OneLoginPluginScript::validateOnepassAccessCodeClicked()
 extern void OneLoginPluginScript_validateOnepassAccessCodeClicked_m780A8A63942342DBAE466FDA407B246FE5B78BE2 (void);
-// 0x00000060 System.Void OneLoginPluginScript::validateOnepassFinished(System.String)
+// 0x00000061 System.Void OneLoginPluginScript::validateOnepassFinished(System.String)
 extern void OneLoginPluginScript_validateOnepassFinished_m040F46EF012545B0374871652DEADB832377887C (void);
-// 0x00000061 System.Void OneLoginPluginScript::.ctor()
+// 0x00000062 System.Void OneLoginPluginScript::.ctor()
 extern void OneLoginPluginScript__ctor_mCBCB6197314845E49E82B32F2C1329CF4CEFA4C2 (void);
-static Il2CppMethodPointer s_methodPointers[97] = 
+static Il2CppMethodPointer s_methodPointers[98] = 
 {
 	Constants__ctor_m0EA1262B0E2FEAFEEA315AD5C2CF86C2B64DF6AF,
 	OLResult_ToString_m59D769A2242C91EC65A01BCAC526B5C4849A516E,
@@ -299,6 +301,7 @@ static Il2CppMethodPointer s_methodPointers[97] =
 	OneLoginPluginScript_clickBackButton_m861B95B77902D77D88D2EAE0C30C52EFBF36C56B,
 	OneLoginPluginScript_clickSwitchButton_mF14CF75EF92B38D462D65AE8FE9D56C2B3EDBE55,
 	OneLoginPluginScript_clickCheckbox_m33D47B871AF42D9B394D6AAF04CED26DFEECDC72,
+	OneLoginPluginScript_hintCustom_mD068F6FAA304E36949F84B80DC93670A570810F9,
 	OneLoginPluginScript_onepassInitClicked_m8A93DAF8574824938307BC2F2FA5319E68A37679,
 	OneLoginPluginScript_getOnepassAccessCodeClicked_m53CD723913AAB166DA3F1D2571D133BA64EB5D87,
 	OneLoginPluginScript_onepassFinished_m3FCD2D7037202800CE769A22EFACBDB12535D3A0,
@@ -306,7 +309,7 @@ static Il2CppMethodPointer s_methodPointers[97] =
 	OneLoginPluginScript_validateOnepassFinished_m040F46EF012545B0374871652DEADB832377887C,
 	OneLoginPluginScript__ctor_mCBCB6197314845E49E82B32F2C1329CF4CEFA4C2,
 };
-static const int32_t s_InvokerIndices[97] = 
+static const int32_t s_InvokerIndices[98] = 
 {
 	1576,
 	1530,
@@ -399,6 +402,7 @@ static const int32_t s_InvokerIndices[97] =
 	1318,
 	1318,
 	1318,
+	1318,
 	1576,
 	1576,
 	1318,
@@ -411,7 +415,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	97,
+	98,
 	s_methodPointers,
 	0,
 	NULL,

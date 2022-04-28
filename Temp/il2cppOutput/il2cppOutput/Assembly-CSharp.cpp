@@ -238,8 +238,10 @@ IL2CPP_EXTERN_C String_t* _stringLiteral34B9E76C56044753DB48CEC81E2BE424C79424FC
 IL2CPP_EXTERN_C String_t* _stringLiteral35DC32558CC96723D3AE1437798C528CF7C37434;
 IL2CPP_EXTERN_C String_t* _stringLiteral3961C4810A0F2312FB803AB71989F8ACCAD9CDBE;
 IL2CPP_EXTERN_C String_t* _stringLiteral398E9DDEBE64E6F89F40A39D086EB21CC2B32AC8;
+IL2CPP_EXTERN_C String_t* _stringLiteral4052538FAD5AB9EC97474B500B70ACDDBF840EA5;
 IL2CPP_EXTERN_C String_t* _stringLiteral411CB518F21C454779824C627D0F4671272BEAE6;
 IL2CPP_EXTERN_C String_t* _stringLiteral42B0DB568B17E2C37C3090BD2A35323B90371AA5;
+IL2CPP_EXTERN_C String_t* _stringLiteral42CE9BD9E361E1066A4CCA26B521AE0DF3A93D56;
 IL2CPP_EXTERN_C String_t* _stringLiteral42F6C55E3EB879F380096E1B501973A9B045FF74;
 IL2CPP_EXTERN_C String_t* _stringLiteral433D8AF098B48C4149EEE3E484DADDFF4CA254F0;
 IL2CPP_EXTERN_C String_t* _stringLiteral4423FFA40C1F5C0EBE338A1EF99085E366C0A136;
@@ -262,6 +264,7 @@ IL2CPP_EXTERN_C String_t* _stringLiteral5D3198AEAFD742D310BAEF26C865717860727E90
 IL2CPP_EXTERN_C String_t* _stringLiteral61DE06B03C12E53EB261CDF69CEDD6C6BC79A739;
 IL2CPP_EXTERN_C String_t* _stringLiteral623FE53DD10DDBE1BD68EFABEE84B4ADFDBB1FF2;
 IL2CPP_EXTERN_C String_t* _stringLiteral638B078847A0F2F69FB46BB7718997FFFFB8E654;
+IL2CPP_EXTERN_C String_t* _stringLiteral63E9CA3F3F35ED7A015C40EF405F80373B70AE4D;
 IL2CPP_EXTERN_C String_t* _stringLiteral64069D046EF8518264E45227CC2422DC6979ACD7;
 IL2CPP_EXTERN_C String_t* _stringLiteral64345BA2CC57FCAAA9957D9256D38DFF981BDC80;
 IL2CPP_EXTERN_C String_t* _stringLiteral658963DA5C2F8BCB798ACAF5C1FB728281A8BE63;
@@ -369,6 +372,7 @@ IL2CPP_EXTERN_C String_t* _stringLiteralE061C2DA51C354EE774BC993235AC38BC941CA0D
 IL2CPP_EXTERN_C String_t* _stringLiteralE1F883AE0DDCAB94FEAABA52EA2185247A9B1C53;
 IL2CPP_EXTERN_C String_t* _stringLiteralE2A0287902B220894B2AE969803990B3D3BD167F;
 IL2CPP_EXTERN_C String_t* _stringLiteralE2F4BB9F7A0B875052FD3122C9F2D0CAD3D52B4C;
+IL2CPP_EXTERN_C String_t* _stringLiteralE3552FF0A321E9B7D396851B7367C2DAD0416777;
 IL2CPP_EXTERN_C String_t* _stringLiteralE5DC0D414CE7DC334D19FC3CA66D8E4D4272B8CD;
 IL2CPP_EXTERN_C String_t* _stringLiteralE66D4159226A44F996E29C14C610A16CF0EDAE45;
 IL2CPP_EXTERN_C String_t* _stringLiteralE6F63A27B50285B9CDA90BF13E8AE9A0FF8FB62B;
@@ -618,142 +622,152 @@ public:
 	int32_t ___languageType_0;
 	// System.Int32 OLAuthViewModel::statusBarStyle
 	int32_t ___statusBarStyle_1;
+	// System.Double OLAuthViewModel::navTextMargin
+	double ___navTextMargin_2;
 	// System.String OLAuthViewModel::naviTitle
-	String_t* ___naviTitle_2;
+	String_t* ___naviTitle_3;
 	// System.String OLAuthViewModel::naviTitleColor
-	String_t* ___naviTitleColor_3;
+	String_t* ___naviTitleColor_4;
 	// System.Double OLAuthViewModel::naviTitleFont
-	double ___naviTitleFont_4;
+	double ___naviTitleFont_5;
 	// System.String OLAuthViewModel::naviBgColor
-	String_t* ___naviBgColor_5;
+	String_t* ___naviBgColor_6;
 	// System.String OLAuthViewModel::naviBackImage
-	String_t* ___naviBackImage_6;
+	String_t* ___naviBackImage_7;
 	// System.Boolean OLAuthViewModel::naviHidden
-	bool ___naviHidden_7;
+	bool ___naviHidden_8;
 	// System.String OLAuthViewModel::backButtonRect
-	String_t* ___backButtonRect_8;
+	String_t* ___backButtonRect_9;
 	// System.Boolean OLAuthViewModel::backButtonHidden
-	bool ___backButtonHidden_9;
+	bool ___backButtonHidden_10;
 	// System.String OLAuthViewModel::appLogo
-	String_t* ___appLogo_10;
+	String_t* ___appLogo_11;
 	// System.String OLAuthViewModel::logoRect
-	String_t* ___logoRect_11;
+	String_t* ___logoRect_12;
 	// System.Boolean OLAuthViewModel::logoHidden
-	bool ___logoHidden_12;
+	bool ___logoHidden_13;
 	// System.Double OLAuthViewModel::logoCornerRadius
-	double ___logoCornerRadius_13;
+	double ___logoCornerRadius_14;
 	// System.String OLAuthViewModel::phoneNumColor
-	String_t* ___phoneNumColor_14;
+	String_t* ___phoneNumColor_15;
 	// System.Double OLAuthViewModel::phoneNumFont
-	double ___phoneNumFont_15;
+	double ___phoneNumFont_16;
 	// System.String OLAuthViewModel::phoneNumRect
-	String_t* ___phoneNumRect_16;
+	String_t* ___phoneNumRect_17;
 	// System.String OLAuthViewModel::switchButtonText
-	String_t* ___switchButtonText_17;
+	String_t* ___switchButtonText_18;
 	// System.String OLAuthViewModel::switchButtonColor
-	String_t* ___switchButtonColor_18;
+	String_t* ___switchButtonColor_19;
 	// System.String OLAuthViewModel::switchButtonBackgroundColor
-	String_t* ___switchButtonBackgroundColor_19;
+	String_t* ___switchButtonBackgroundColor_20;
 	// System.Double OLAuthViewModel::switchButtonFont
-	double ___switchButtonFont_20;
+	double ___switchButtonFont_21;
 	// System.String OLAuthViewModel::switchButtonRect
-	String_t* ___switchButtonRect_21;
+	String_t* ___switchButtonRect_22;
 	// System.Boolean OLAuthViewModel::switchButtonHidden
-	bool ___switchButtonHidden_22;
+	bool ___switchButtonHidden_23;
 	// System.String[] OLAuthViewModel::authButtonImages
-	StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* ___authButtonImages_23;
+	StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* ___authButtonImages_24;
 	// System.String OLAuthViewModel::authButtonTitle
-	String_t* ___authButtonTitle_24;
+	String_t* ___authButtonTitle_25;
 	// System.String OLAuthViewModel::authButtonTitleColor
-	String_t* ___authButtonTitleColor_25;
+	String_t* ___authButtonTitleColor_26;
 	// System.Double OLAuthViewModel::authButtonTitleFont
-	double ___authButtonTitleFont_26;
+	double ___authButtonTitleFont_27;
 	// System.String OLAuthViewModel::authButtonRect
-	String_t* ___authButtonRect_27;
+	String_t* ___authButtonRect_28;
 	// System.Double OLAuthViewModel::authButtonCornerRadius
-	double ___authButtonCornerRadius_28;
+	double ___authButtonCornerRadius_29;
+	// System.String OLAuthViewModel::sloganText
+	String_t* ___sloganText_30;
 	// System.String OLAuthViewModel::sloganRect
-	String_t* ___sloganRect_29;
+	String_t* ___sloganRect_31;
 	// System.String OLAuthViewModel::sloganTextColor
-	String_t* ___sloganTextColor_30;
+	String_t* ___sloganTextColor_32;
 	// System.Double OLAuthViewModel::sloganTextFont
-	double ___sloganTextFont_31;
+	double ___sloganTextFont_33;
 	// System.Boolean OLAuthViewModel::defaultCheckBoxState
-	bool ___defaultCheckBoxState_32;
+	bool ___defaultCheckBoxState_34;
 	// System.String OLAuthViewModel::checkedImage
-	String_t* ___checkedImage_33;
+	String_t* ___checkedImage_35;
 	// System.String OLAuthViewModel::uncheckedImage
-	String_t* ___uncheckedImage_34;
+	String_t* ___uncheckedImage_36;
 	// System.String OLAuthViewModel::checkBoxRect
-	String_t* ___checkBoxRect_35;
+	String_t* ___checkBoxRect_37;
 	// System.String OLAuthViewModel::privacyTermsColor
-	String_t* ___privacyTermsColor_36;
+	String_t* ___privacyTermsColor_38;
 	// System.Double OLAuthViewModel::privacyTermsFont
-	double ___privacyTermsFont_37;
+	double ___privacyTermsFont_39;
 	// System.String[] OLAuthViewModel::additionalPrivacyTerms
-	StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* ___additionalPrivacyTerms_38;
+	StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* ___additionalPrivacyTerms_40;
 	// System.String OLAuthViewModel::termTextColor
-	String_t* ___termTextColor_39;
+	String_t* ___termTextColor_41;
 	// System.String OLAuthViewModel::termsRect
-	String_t* ___termsRect_40;
+	String_t* ___termsRect_42;
 	// System.String[] OLAuthViewModel::auxiliaryPrivacyWords
-	StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* ___auxiliaryPrivacyWords_41;
+	StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* ___auxiliaryPrivacyWords_43;
 	// System.Int32 OLAuthViewModel::termsAlignment
-	int32_t ___termsAlignment_42;
+	int32_t ___termsAlignment_44;
+	// System.Int32 OLAuthViewModel::protocolShakeStyle
+	int32_t ___protocolShakeStyle_45;
+	// System.Double OLAuthViewModel::privacyCheckBoxMarginRight
+	double ___privacyCheckBoxMarginRight_46;
 	// System.String OLAuthViewModel::backgroundColor
-	String_t* ___backgroundColor_43;
+	String_t* ___backgroundColor_47;
 	// System.String OLAuthViewModel::backgroundImage
-	String_t* ___backgroundImage_44;
+	String_t* ___backgroundImage_48;
 	// System.String OLAuthViewModel::landscapeBackgroundImage
-	String_t* ___landscapeBackgroundImage_45;
+	String_t* ___landscapeBackgroundImage_49;
 	// System.Boolean OLAuthViewModel::isPopup
-	bool ___isPopup_46;
+	bool ___isPopup_50;
 	// System.String OLAuthViewModel::popupRect
-	String_t* ___popupRect_47;
+	String_t* ___popupRect_51;
 	// System.Double OLAuthViewModel::popupCornerRadius
-	double ___popupCornerRadius_48;
+	double ___popupCornerRadius_52;
 	// System.Int32[] OLAuthViewModel::popupRectCorners
-	Int32U5BU5D_t70F1BDC14B1786481B176D6139A5E3B87DC54C32* ___popupRectCorners_49;
+	Int32U5BU5D_t70F1BDC14B1786481B176D6139A5E3B87DC54C32* ___popupRectCorners_53;
 	// System.Int32 OLAuthViewModel::popupAnimationStyle
-	int32_t ___popupAnimationStyle_50;
+	int32_t ___popupAnimationStyle_54;
 	// System.String OLAuthViewModel::closePopupImage
-	String_t* ___closePopupImage_51;
+	String_t* ___closePopupImage_55;
 	// System.Double OLAuthViewModel::closePopupTopOffset
-	double ___closePopupTopOffset_52;
+	double ___closePopupTopOffset_56;
 	// System.Double OLAuthViewModel::closePopupRightOffset
-	double ___closePopupRightOffset_53;
+	double ___closePopupRightOffset_57;
 	// System.Boolean OLAuthViewModel::canClosePopupFromTapGesture
-	bool ___canClosePopupFromTapGesture_54;
+	bool ___canClosePopupFromTapGesture_58;
 	// System.String OLAuthViewModel::webNaviTitle
-	String_t* ___webNaviTitle_55;
+	String_t* ___webNaviTitle_59;
 	// System.String OLAuthViewModel::webNaviTitleColor
-	String_t* ___webNaviTitleColor_56;
+	String_t* ___webNaviTitleColor_60;
 	// System.Double OLAuthViewModel::webNaviTitleFont
-	double ___webNaviTitleFont_57;
+	double ___webNaviTitleFont_61;
 	// System.String OLAuthViewModel::webNaviBgColor
-	String_t* ___webNaviBgColor_58;
+	String_t* ___webNaviBgColor_62;
 	// System.String OLAuthViewModel::notCheckProtocolHint
-	String_t* ___notCheckProtocolHint_59;
+	String_t* ___notCheckProtocolHint_63;
 	// System.Int32 OLAuthViewModel::modalPresentationStyle
-	int32_t ___modalPresentationStyle_60;
+	int32_t ___modalPresentationStyle_64;
 	// System.Int32 OLAuthViewModel::pullAuthVCStyle
-	int32_t ___pullAuthVCStyle_61;
+	int32_t ___pullAuthVCStyle_65;
 	// System.Int32 OLAuthViewModel::userInterfaceStyle
-	int32_t ___userInterfaceStyle_62;
+	int32_t ___userInterfaceStyle_66;
 	// System.String OLAuthViewModel::authVCTransitionBlock
-	String_t* ___authVCTransitionBlock_63;
+	String_t* ___authVCTransitionBlock_67;
 	// System.String OLAuthViewModel::tapAuthBackgroundBlock
-	String_t* ___tapAuthBackgroundBlock_64;
+	String_t* ___tapAuthBackgroundBlock_68;
 	// System.String OLAuthViewModel::viewLifeCycleBlock
-	String_t* ___viewLifeCycleBlock_65;
+	String_t* ___viewLifeCycleBlock_69;
 	// System.String OLAuthViewModel::clickBackButtonBlock
-	String_t* ___clickBackButtonBlock_66;
+	String_t* ___clickBackButtonBlock_70;
 	// System.String OLAuthViewModel::clickSwitchButtonBlock
-	String_t* ___clickSwitchButtonBlock_67;
+	String_t* ___clickSwitchButtonBlock_71;
 	// System.String OLAuthViewModel::clickCheckboxBlock
-	String_t* ___clickCheckboxBlock_68;
+	String_t* ___clickCheckboxBlock_72;
 	// System.String[] OLAuthViewModel::widgets
-	StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* ___widgets_69;
+	StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* ___widgets_73;
+	// System.String OLAuthViewModel::hintBlock
+	String_t* ___hintBlock_74;
 
 public:
 	inline static int32_t get_offset_of_languageType_0() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___languageType_0)); }
@@ -772,592 +786,634 @@ public:
 		___statusBarStyle_1 = value;
 	}
 
-	inline static int32_t get_offset_of_naviTitle_2() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___naviTitle_2)); }
-	inline String_t* get_naviTitle_2() const { return ___naviTitle_2; }
-	inline String_t** get_address_of_naviTitle_2() { return &___naviTitle_2; }
-	inline void set_naviTitle_2(String_t* value)
+	inline static int32_t get_offset_of_navTextMargin_2() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___navTextMargin_2)); }
+	inline double get_navTextMargin_2() const { return ___navTextMargin_2; }
+	inline double* get_address_of_navTextMargin_2() { return &___navTextMargin_2; }
+	inline void set_navTextMargin_2(double value)
 	{
-		___naviTitle_2 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___naviTitle_2), (void*)value);
+		___navTextMargin_2 = value;
 	}
 
-	inline static int32_t get_offset_of_naviTitleColor_3() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___naviTitleColor_3)); }
-	inline String_t* get_naviTitleColor_3() const { return ___naviTitleColor_3; }
-	inline String_t** get_address_of_naviTitleColor_3() { return &___naviTitleColor_3; }
-	inline void set_naviTitleColor_3(String_t* value)
+	inline static int32_t get_offset_of_naviTitle_3() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___naviTitle_3)); }
+	inline String_t* get_naviTitle_3() const { return ___naviTitle_3; }
+	inline String_t** get_address_of_naviTitle_3() { return &___naviTitle_3; }
+	inline void set_naviTitle_3(String_t* value)
 	{
-		___naviTitleColor_3 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___naviTitleColor_3), (void*)value);
+		___naviTitle_3 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___naviTitle_3), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_naviTitleFont_4() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___naviTitleFont_4)); }
-	inline double get_naviTitleFont_4() const { return ___naviTitleFont_4; }
-	inline double* get_address_of_naviTitleFont_4() { return &___naviTitleFont_4; }
-	inline void set_naviTitleFont_4(double value)
+	inline static int32_t get_offset_of_naviTitleColor_4() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___naviTitleColor_4)); }
+	inline String_t* get_naviTitleColor_4() const { return ___naviTitleColor_4; }
+	inline String_t** get_address_of_naviTitleColor_4() { return &___naviTitleColor_4; }
+	inline void set_naviTitleColor_4(String_t* value)
 	{
-		___naviTitleFont_4 = value;
+		___naviTitleColor_4 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___naviTitleColor_4), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_naviBgColor_5() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___naviBgColor_5)); }
-	inline String_t* get_naviBgColor_5() const { return ___naviBgColor_5; }
-	inline String_t** get_address_of_naviBgColor_5() { return &___naviBgColor_5; }
-	inline void set_naviBgColor_5(String_t* value)
+	inline static int32_t get_offset_of_naviTitleFont_5() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___naviTitleFont_5)); }
+	inline double get_naviTitleFont_5() const { return ___naviTitleFont_5; }
+	inline double* get_address_of_naviTitleFont_5() { return &___naviTitleFont_5; }
+	inline void set_naviTitleFont_5(double value)
 	{
-		___naviBgColor_5 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___naviBgColor_5), (void*)value);
+		___naviTitleFont_5 = value;
 	}
 
-	inline static int32_t get_offset_of_naviBackImage_6() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___naviBackImage_6)); }
-	inline String_t* get_naviBackImage_6() const { return ___naviBackImage_6; }
-	inline String_t** get_address_of_naviBackImage_6() { return &___naviBackImage_6; }
-	inline void set_naviBackImage_6(String_t* value)
+	inline static int32_t get_offset_of_naviBgColor_6() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___naviBgColor_6)); }
+	inline String_t* get_naviBgColor_6() const { return ___naviBgColor_6; }
+	inline String_t** get_address_of_naviBgColor_6() { return &___naviBgColor_6; }
+	inline void set_naviBgColor_6(String_t* value)
 	{
-		___naviBackImage_6 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___naviBackImage_6), (void*)value);
+		___naviBgColor_6 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___naviBgColor_6), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_naviHidden_7() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___naviHidden_7)); }
-	inline bool get_naviHidden_7() const { return ___naviHidden_7; }
-	inline bool* get_address_of_naviHidden_7() { return &___naviHidden_7; }
-	inline void set_naviHidden_7(bool value)
+	inline static int32_t get_offset_of_naviBackImage_7() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___naviBackImage_7)); }
+	inline String_t* get_naviBackImage_7() const { return ___naviBackImage_7; }
+	inline String_t** get_address_of_naviBackImage_7() { return &___naviBackImage_7; }
+	inline void set_naviBackImage_7(String_t* value)
 	{
-		___naviHidden_7 = value;
+		___naviBackImage_7 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___naviBackImage_7), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_backButtonRect_8() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___backButtonRect_8)); }
-	inline String_t* get_backButtonRect_8() const { return ___backButtonRect_8; }
-	inline String_t** get_address_of_backButtonRect_8() { return &___backButtonRect_8; }
-	inline void set_backButtonRect_8(String_t* value)
+	inline static int32_t get_offset_of_naviHidden_8() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___naviHidden_8)); }
+	inline bool get_naviHidden_8() const { return ___naviHidden_8; }
+	inline bool* get_address_of_naviHidden_8() { return &___naviHidden_8; }
+	inline void set_naviHidden_8(bool value)
 	{
-		___backButtonRect_8 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___backButtonRect_8), (void*)value);
+		___naviHidden_8 = value;
 	}
 
-	inline static int32_t get_offset_of_backButtonHidden_9() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___backButtonHidden_9)); }
-	inline bool get_backButtonHidden_9() const { return ___backButtonHidden_9; }
-	inline bool* get_address_of_backButtonHidden_9() { return &___backButtonHidden_9; }
-	inline void set_backButtonHidden_9(bool value)
+	inline static int32_t get_offset_of_backButtonRect_9() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___backButtonRect_9)); }
+	inline String_t* get_backButtonRect_9() const { return ___backButtonRect_9; }
+	inline String_t** get_address_of_backButtonRect_9() { return &___backButtonRect_9; }
+	inline void set_backButtonRect_9(String_t* value)
 	{
-		___backButtonHidden_9 = value;
+		___backButtonRect_9 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___backButtonRect_9), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_appLogo_10() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___appLogo_10)); }
-	inline String_t* get_appLogo_10() const { return ___appLogo_10; }
-	inline String_t** get_address_of_appLogo_10() { return &___appLogo_10; }
-	inline void set_appLogo_10(String_t* value)
+	inline static int32_t get_offset_of_backButtonHidden_10() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___backButtonHidden_10)); }
+	inline bool get_backButtonHidden_10() const { return ___backButtonHidden_10; }
+	inline bool* get_address_of_backButtonHidden_10() { return &___backButtonHidden_10; }
+	inline void set_backButtonHidden_10(bool value)
 	{
-		___appLogo_10 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___appLogo_10), (void*)value);
+		___backButtonHidden_10 = value;
 	}
 
-	inline static int32_t get_offset_of_logoRect_11() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___logoRect_11)); }
-	inline String_t* get_logoRect_11() const { return ___logoRect_11; }
-	inline String_t** get_address_of_logoRect_11() { return &___logoRect_11; }
-	inline void set_logoRect_11(String_t* value)
+	inline static int32_t get_offset_of_appLogo_11() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___appLogo_11)); }
+	inline String_t* get_appLogo_11() const { return ___appLogo_11; }
+	inline String_t** get_address_of_appLogo_11() { return &___appLogo_11; }
+	inline void set_appLogo_11(String_t* value)
 	{
-		___logoRect_11 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___logoRect_11), (void*)value);
+		___appLogo_11 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___appLogo_11), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_logoHidden_12() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___logoHidden_12)); }
-	inline bool get_logoHidden_12() const { return ___logoHidden_12; }
-	inline bool* get_address_of_logoHidden_12() { return &___logoHidden_12; }
-	inline void set_logoHidden_12(bool value)
+	inline static int32_t get_offset_of_logoRect_12() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___logoRect_12)); }
+	inline String_t* get_logoRect_12() const { return ___logoRect_12; }
+	inline String_t** get_address_of_logoRect_12() { return &___logoRect_12; }
+	inline void set_logoRect_12(String_t* value)
 	{
-		___logoHidden_12 = value;
+		___logoRect_12 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___logoRect_12), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_logoCornerRadius_13() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___logoCornerRadius_13)); }
-	inline double get_logoCornerRadius_13() const { return ___logoCornerRadius_13; }
-	inline double* get_address_of_logoCornerRadius_13() { return &___logoCornerRadius_13; }
-	inline void set_logoCornerRadius_13(double value)
+	inline static int32_t get_offset_of_logoHidden_13() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___logoHidden_13)); }
+	inline bool get_logoHidden_13() const { return ___logoHidden_13; }
+	inline bool* get_address_of_logoHidden_13() { return &___logoHidden_13; }
+	inline void set_logoHidden_13(bool value)
 	{
-		___logoCornerRadius_13 = value;
+		___logoHidden_13 = value;
 	}
 
-	inline static int32_t get_offset_of_phoneNumColor_14() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___phoneNumColor_14)); }
-	inline String_t* get_phoneNumColor_14() const { return ___phoneNumColor_14; }
-	inline String_t** get_address_of_phoneNumColor_14() { return &___phoneNumColor_14; }
-	inline void set_phoneNumColor_14(String_t* value)
+	inline static int32_t get_offset_of_logoCornerRadius_14() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___logoCornerRadius_14)); }
+	inline double get_logoCornerRadius_14() const { return ___logoCornerRadius_14; }
+	inline double* get_address_of_logoCornerRadius_14() { return &___logoCornerRadius_14; }
+	inline void set_logoCornerRadius_14(double value)
 	{
-		___phoneNumColor_14 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___phoneNumColor_14), (void*)value);
+		___logoCornerRadius_14 = value;
 	}
 
-	inline static int32_t get_offset_of_phoneNumFont_15() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___phoneNumFont_15)); }
-	inline double get_phoneNumFont_15() const { return ___phoneNumFont_15; }
-	inline double* get_address_of_phoneNumFont_15() { return &___phoneNumFont_15; }
-	inline void set_phoneNumFont_15(double value)
+	inline static int32_t get_offset_of_phoneNumColor_15() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___phoneNumColor_15)); }
+	inline String_t* get_phoneNumColor_15() const { return ___phoneNumColor_15; }
+	inline String_t** get_address_of_phoneNumColor_15() { return &___phoneNumColor_15; }
+	inline void set_phoneNumColor_15(String_t* value)
 	{
-		___phoneNumFont_15 = value;
+		___phoneNumColor_15 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___phoneNumColor_15), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_phoneNumRect_16() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___phoneNumRect_16)); }
-	inline String_t* get_phoneNumRect_16() const { return ___phoneNumRect_16; }
-	inline String_t** get_address_of_phoneNumRect_16() { return &___phoneNumRect_16; }
-	inline void set_phoneNumRect_16(String_t* value)
+	inline static int32_t get_offset_of_phoneNumFont_16() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___phoneNumFont_16)); }
+	inline double get_phoneNumFont_16() const { return ___phoneNumFont_16; }
+	inline double* get_address_of_phoneNumFont_16() { return &___phoneNumFont_16; }
+	inline void set_phoneNumFont_16(double value)
 	{
-		___phoneNumRect_16 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___phoneNumRect_16), (void*)value);
+		___phoneNumFont_16 = value;
 	}
 
-	inline static int32_t get_offset_of_switchButtonText_17() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___switchButtonText_17)); }
-	inline String_t* get_switchButtonText_17() const { return ___switchButtonText_17; }
-	inline String_t** get_address_of_switchButtonText_17() { return &___switchButtonText_17; }
-	inline void set_switchButtonText_17(String_t* value)
+	inline static int32_t get_offset_of_phoneNumRect_17() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___phoneNumRect_17)); }
+	inline String_t* get_phoneNumRect_17() const { return ___phoneNumRect_17; }
+	inline String_t** get_address_of_phoneNumRect_17() { return &___phoneNumRect_17; }
+	inline void set_phoneNumRect_17(String_t* value)
 	{
-		___switchButtonText_17 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___switchButtonText_17), (void*)value);
+		___phoneNumRect_17 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___phoneNumRect_17), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_switchButtonColor_18() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___switchButtonColor_18)); }
-	inline String_t* get_switchButtonColor_18() const { return ___switchButtonColor_18; }
-	inline String_t** get_address_of_switchButtonColor_18() { return &___switchButtonColor_18; }
-	inline void set_switchButtonColor_18(String_t* value)
+	inline static int32_t get_offset_of_switchButtonText_18() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___switchButtonText_18)); }
+	inline String_t* get_switchButtonText_18() const { return ___switchButtonText_18; }
+	inline String_t** get_address_of_switchButtonText_18() { return &___switchButtonText_18; }
+	inline void set_switchButtonText_18(String_t* value)
 	{
-		___switchButtonColor_18 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___switchButtonColor_18), (void*)value);
+		___switchButtonText_18 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___switchButtonText_18), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_switchButtonBackgroundColor_19() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___switchButtonBackgroundColor_19)); }
-	inline String_t* get_switchButtonBackgroundColor_19() const { return ___switchButtonBackgroundColor_19; }
-	inline String_t** get_address_of_switchButtonBackgroundColor_19() { return &___switchButtonBackgroundColor_19; }
-	inline void set_switchButtonBackgroundColor_19(String_t* value)
+	inline static int32_t get_offset_of_switchButtonColor_19() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___switchButtonColor_19)); }
+	inline String_t* get_switchButtonColor_19() const { return ___switchButtonColor_19; }
+	inline String_t** get_address_of_switchButtonColor_19() { return &___switchButtonColor_19; }
+	inline void set_switchButtonColor_19(String_t* value)
 	{
-		___switchButtonBackgroundColor_19 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___switchButtonBackgroundColor_19), (void*)value);
+		___switchButtonColor_19 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___switchButtonColor_19), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_switchButtonFont_20() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___switchButtonFont_20)); }
-	inline double get_switchButtonFont_20() const { return ___switchButtonFont_20; }
-	inline double* get_address_of_switchButtonFont_20() { return &___switchButtonFont_20; }
-	inline void set_switchButtonFont_20(double value)
+	inline static int32_t get_offset_of_switchButtonBackgroundColor_20() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___switchButtonBackgroundColor_20)); }
+	inline String_t* get_switchButtonBackgroundColor_20() const { return ___switchButtonBackgroundColor_20; }
+	inline String_t** get_address_of_switchButtonBackgroundColor_20() { return &___switchButtonBackgroundColor_20; }
+	inline void set_switchButtonBackgroundColor_20(String_t* value)
 	{
-		___switchButtonFont_20 = value;
+		___switchButtonBackgroundColor_20 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___switchButtonBackgroundColor_20), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_switchButtonRect_21() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___switchButtonRect_21)); }
-	inline String_t* get_switchButtonRect_21() const { return ___switchButtonRect_21; }
-	inline String_t** get_address_of_switchButtonRect_21() { return &___switchButtonRect_21; }
-	inline void set_switchButtonRect_21(String_t* value)
+	inline static int32_t get_offset_of_switchButtonFont_21() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___switchButtonFont_21)); }
+	inline double get_switchButtonFont_21() const { return ___switchButtonFont_21; }
+	inline double* get_address_of_switchButtonFont_21() { return &___switchButtonFont_21; }
+	inline void set_switchButtonFont_21(double value)
 	{
-		___switchButtonRect_21 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___switchButtonRect_21), (void*)value);
+		___switchButtonFont_21 = value;
 	}
 
-	inline static int32_t get_offset_of_switchButtonHidden_22() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___switchButtonHidden_22)); }
-	inline bool get_switchButtonHidden_22() const { return ___switchButtonHidden_22; }
-	inline bool* get_address_of_switchButtonHidden_22() { return &___switchButtonHidden_22; }
-	inline void set_switchButtonHidden_22(bool value)
+	inline static int32_t get_offset_of_switchButtonRect_22() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___switchButtonRect_22)); }
+	inline String_t* get_switchButtonRect_22() const { return ___switchButtonRect_22; }
+	inline String_t** get_address_of_switchButtonRect_22() { return &___switchButtonRect_22; }
+	inline void set_switchButtonRect_22(String_t* value)
 	{
-		___switchButtonHidden_22 = value;
+		___switchButtonRect_22 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___switchButtonRect_22), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_authButtonImages_23() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___authButtonImages_23)); }
-	inline StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* get_authButtonImages_23() const { return ___authButtonImages_23; }
-	inline StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A** get_address_of_authButtonImages_23() { return &___authButtonImages_23; }
-	inline void set_authButtonImages_23(StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* value)
+	inline static int32_t get_offset_of_switchButtonHidden_23() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___switchButtonHidden_23)); }
+	inline bool get_switchButtonHidden_23() const { return ___switchButtonHidden_23; }
+	inline bool* get_address_of_switchButtonHidden_23() { return &___switchButtonHidden_23; }
+	inline void set_switchButtonHidden_23(bool value)
 	{
-		___authButtonImages_23 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___authButtonImages_23), (void*)value);
+		___switchButtonHidden_23 = value;
 	}
 
-	inline static int32_t get_offset_of_authButtonTitle_24() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___authButtonTitle_24)); }
-	inline String_t* get_authButtonTitle_24() const { return ___authButtonTitle_24; }
-	inline String_t** get_address_of_authButtonTitle_24() { return &___authButtonTitle_24; }
-	inline void set_authButtonTitle_24(String_t* value)
+	inline static int32_t get_offset_of_authButtonImages_24() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___authButtonImages_24)); }
+	inline StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* get_authButtonImages_24() const { return ___authButtonImages_24; }
+	inline StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A** get_address_of_authButtonImages_24() { return &___authButtonImages_24; }
+	inline void set_authButtonImages_24(StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* value)
 	{
-		___authButtonTitle_24 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___authButtonTitle_24), (void*)value);
+		___authButtonImages_24 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___authButtonImages_24), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_authButtonTitleColor_25() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___authButtonTitleColor_25)); }
-	inline String_t* get_authButtonTitleColor_25() const { return ___authButtonTitleColor_25; }
-	inline String_t** get_address_of_authButtonTitleColor_25() { return &___authButtonTitleColor_25; }
-	inline void set_authButtonTitleColor_25(String_t* value)
+	inline static int32_t get_offset_of_authButtonTitle_25() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___authButtonTitle_25)); }
+	inline String_t* get_authButtonTitle_25() const { return ___authButtonTitle_25; }
+	inline String_t** get_address_of_authButtonTitle_25() { return &___authButtonTitle_25; }
+	inline void set_authButtonTitle_25(String_t* value)
 	{
-		___authButtonTitleColor_25 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___authButtonTitleColor_25), (void*)value);
+		___authButtonTitle_25 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___authButtonTitle_25), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_authButtonTitleFont_26() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___authButtonTitleFont_26)); }
-	inline double get_authButtonTitleFont_26() const { return ___authButtonTitleFont_26; }
-	inline double* get_address_of_authButtonTitleFont_26() { return &___authButtonTitleFont_26; }
-	inline void set_authButtonTitleFont_26(double value)
+	inline static int32_t get_offset_of_authButtonTitleColor_26() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___authButtonTitleColor_26)); }
+	inline String_t* get_authButtonTitleColor_26() const { return ___authButtonTitleColor_26; }
+	inline String_t** get_address_of_authButtonTitleColor_26() { return &___authButtonTitleColor_26; }
+	inline void set_authButtonTitleColor_26(String_t* value)
 	{
-		___authButtonTitleFont_26 = value;
+		___authButtonTitleColor_26 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___authButtonTitleColor_26), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_authButtonRect_27() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___authButtonRect_27)); }
-	inline String_t* get_authButtonRect_27() const { return ___authButtonRect_27; }
-	inline String_t** get_address_of_authButtonRect_27() { return &___authButtonRect_27; }
-	inline void set_authButtonRect_27(String_t* value)
+	inline static int32_t get_offset_of_authButtonTitleFont_27() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___authButtonTitleFont_27)); }
+	inline double get_authButtonTitleFont_27() const { return ___authButtonTitleFont_27; }
+	inline double* get_address_of_authButtonTitleFont_27() { return &___authButtonTitleFont_27; }
+	inline void set_authButtonTitleFont_27(double value)
 	{
-		___authButtonRect_27 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___authButtonRect_27), (void*)value);
+		___authButtonTitleFont_27 = value;
 	}
 
-	inline static int32_t get_offset_of_authButtonCornerRadius_28() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___authButtonCornerRadius_28)); }
-	inline double get_authButtonCornerRadius_28() const { return ___authButtonCornerRadius_28; }
-	inline double* get_address_of_authButtonCornerRadius_28() { return &___authButtonCornerRadius_28; }
-	inline void set_authButtonCornerRadius_28(double value)
+	inline static int32_t get_offset_of_authButtonRect_28() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___authButtonRect_28)); }
+	inline String_t* get_authButtonRect_28() const { return ___authButtonRect_28; }
+	inline String_t** get_address_of_authButtonRect_28() { return &___authButtonRect_28; }
+	inline void set_authButtonRect_28(String_t* value)
 	{
-		___authButtonCornerRadius_28 = value;
+		___authButtonRect_28 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___authButtonRect_28), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_sloganRect_29() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___sloganRect_29)); }
-	inline String_t* get_sloganRect_29() const { return ___sloganRect_29; }
-	inline String_t** get_address_of_sloganRect_29() { return &___sloganRect_29; }
-	inline void set_sloganRect_29(String_t* value)
+	inline static int32_t get_offset_of_authButtonCornerRadius_29() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___authButtonCornerRadius_29)); }
+	inline double get_authButtonCornerRadius_29() const { return ___authButtonCornerRadius_29; }
+	inline double* get_address_of_authButtonCornerRadius_29() { return &___authButtonCornerRadius_29; }
+	inline void set_authButtonCornerRadius_29(double value)
 	{
-		___sloganRect_29 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___sloganRect_29), (void*)value);
+		___authButtonCornerRadius_29 = value;
 	}
 
-	inline static int32_t get_offset_of_sloganTextColor_30() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___sloganTextColor_30)); }
-	inline String_t* get_sloganTextColor_30() const { return ___sloganTextColor_30; }
-	inline String_t** get_address_of_sloganTextColor_30() { return &___sloganTextColor_30; }
-	inline void set_sloganTextColor_30(String_t* value)
+	inline static int32_t get_offset_of_sloganText_30() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___sloganText_30)); }
+	inline String_t* get_sloganText_30() const { return ___sloganText_30; }
+	inline String_t** get_address_of_sloganText_30() { return &___sloganText_30; }
+	inline void set_sloganText_30(String_t* value)
 	{
-		___sloganTextColor_30 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___sloganTextColor_30), (void*)value);
+		___sloganText_30 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___sloganText_30), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_sloganTextFont_31() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___sloganTextFont_31)); }
-	inline double get_sloganTextFont_31() const { return ___sloganTextFont_31; }
-	inline double* get_address_of_sloganTextFont_31() { return &___sloganTextFont_31; }
-	inline void set_sloganTextFont_31(double value)
+	inline static int32_t get_offset_of_sloganRect_31() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___sloganRect_31)); }
+	inline String_t* get_sloganRect_31() const { return ___sloganRect_31; }
+	inline String_t** get_address_of_sloganRect_31() { return &___sloganRect_31; }
+	inline void set_sloganRect_31(String_t* value)
 	{
-		___sloganTextFont_31 = value;
+		___sloganRect_31 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___sloganRect_31), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_defaultCheckBoxState_32() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___defaultCheckBoxState_32)); }
-	inline bool get_defaultCheckBoxState_32() const { return ___defaultCheckBoxState_32; }
-	inline bool* get_address_of_defaultCheckBoxState_32() { return &___defaultCheckBoxState_32; }
-	inline void set_defaultCheckBoxState_32(bool value)
+	inline static int32_t get_offset_of_sloganTextColor_32() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___sloganTextColor_32)); }
+	inline String_t* get_sloganTextColor_32() const { return ___sloganTextColor_32; }
+	inline String_t** get_address_of_sloganTextColor_32() { return &___sloganTextColor_32; }
+	inline void set_sloganTextColor_32(String_t* value)
 	{
-		___defaultCheckBoxState_32 = value;
+		___sloganTextColor_32 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___sloganTextColor_32), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_checkedImage_33() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___checkedImage_33)); }
-	inline String_t* get_checkedImage_33() const { return ___checkedImage_33; }
-	inline String_t** get_address_of_checkedImage_33() { return &___checkedImage_33; }
-	inline void set_checkedImage_33(String_t* value)
+	inline static int32_t get_offset_of_sloganTextFont_33() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___sloganTextFont_33)); }
+	inline double get_sloganTextFont_33() const { return ___sloganTextFont_33; }
+	inline double* get_address_of_sloganTextFont_33() { return &___sloganTextFont_33; }
+	inline void set_sloganTextFont_33(double value)
 	{
-		___checkedImage_33 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___checkedImage_33), (void*)value);
+		___sloganTextFont_33 = value;
 	}
 
-	inline static int32_t get_offset_of_uncheckedImage_34() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___uncheckedImage_34)); }
-	inline String_t* get_uncheckedImage_34() const { return ___uncheckedImage_34; }
-	inline String_t** get_address_of_uncheckedImage_34() { return &___uncheckedImage_34; }
-	inline void set_uncheckedImage_34(String_t* value)
+	inline static int32_t get_offset_of_defaultCheckBoxState_34() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___defaultCheckBoxState_34)); }
+	inline bool get_defaultCheckBoxState_34() const { return ___defaultCheckBoxState_34; }
+	inline bool* get_address_of_defaultCheckBoxState_34() { return &___defaultCheckBoxState_34; }
+	inline void set_defaultCheckBoxState_34(bool value)
 	{
-		___uncheckedImage_34 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___uncheckedImage_34), (void*)value);
+		___defaultCheckBoxState_34 = value;
 	}
 
-	inline static int32_t get_offset_of_checkBoxRect_35() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___checkBoxRect_35)); }
-	inline String_t* get_checkBoxRect_35() const { return ___checkBoxRect_35; }
-	inline String_t** get_address_of_checkBoxRect_35() { return &___checkBoxRect_35; }
-	inline void set_checkBoxRect_35(String_t* value)
+	inline static int32_t get_offset_of_checkedImage_35() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___checkedImage_35)); }
+	inline String_t* get_checkedImage_35() const { return ___checkedImage_35; }
+	inline String_t** get_address_of_checkedImage_35() { return &___checkedImage_35; }
+	inline void set_checkedImage_35(String_t* value)
 	{
-		___checkBoxRect_35 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___checkBoxRect_35), (void*)value);
+		___checkedImage_35 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___checkedImage_35), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_privacyTermsColor_36() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___privacyTermsColor_36)); }
-	inline String_t* get_privacyTermsColor_36() const { return ___privacyTermsColor_36; }
-	inline String_t** get_address_of_privacyTermsColor_36() { return &___privacyTermsColor_36; }
-	inline void set_privacyTermsColor_36(String_t* value)
+	inline static int32_t get_offset_of_uncheckedImage_36() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___uncheckedImage_36)); }
+	inline String_t* get_uncheckedImage_36() const { return ___uncheckedImage_36; }
+	inline String_t** get_address_of_uncheckedImage_36() { return &___uncheckedImage_36; }
+	inline void set_uncheckedImage_36(String_t* value)
 	{
-		___privacyTermsColor_36 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___privacyTermsColor_36), (void*)value);
+		___uncheckedImage_36 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___uncheckedImage_36), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_privacyTermsFont_37() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___privacyTermsFont_37)); }
-	inline double get_privacyTermsFont_37() const { return ___privacyTermsFont_37; }
-	inline double* get_address_of_privacyTermsFont_37() { return &___privacyTermsFont_37; }
-	inline void set_privacyTermsFont_37(double value)
+	inline static int32_t get_offset_of_checkBoxRect_37() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___checkBoxRect_37)); }
+	inline String_t* get_checkBoxRect_37() const { return ___checkBoxRect_37; }
+	inline String_t** get_address_of_checkBoxRect_37() { return &___checkBoxRect_37; }
+	inline void set_checkBoxRect_37(String_t* value)
 	{
-		___privacyTermsFont_37 = value;
+		___checkBoxRect_37 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___checkBoxRect_37), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_additionalPrivacyTerms_38() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___additionalPrivacyTerms_38)); }
-	inline StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* get_additionalPrivacyTerms_38() const { return ___additionalPrivacyTerms_38; }
-	inline StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A** get_address_of_additionalPrivacyTerms_38() { return &___additionalPrivacyTerms_38; }
-	inline void set_additionalPrivacyTerms_38(StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* value)
+	inline static int32_t get_offset_of_privacyTermsColor_38() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___privacyTermsColor_38)); }
+	inline String_t* get_privacyTermsColor_38() const { return ___privacyTermsColor_38; }
+	inline String_t** get_address_of_privacyTermsColor_38() { return &___privacyTermsColor_38; }
+	inline void set_privacyTermsColor_38(String_t* value)
 	{
-		___additionalPrivacyTerms_38 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___additionalPrivacyTerms_38), (void*)value);
+		___privacyTermsColor_38 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___privacyTermsColor_38), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_termTextColor_39() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___termTextColor_39)); }
-	inline String_t* get_termTextColor_39() const { return ___termTextColor_39; }
-	inline String_t** get_address_of_termTextColor_39() { return &___termTextColor_39; }
-	inline void set_termTextColor_39(String_t* value)
+	inline static int32_t get_offset_of_privacyTermsFont_39() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___privacyTermsFont_39)); }
+	inline double get_privacyTermsFont_39() const { return ___privacyTermsFont_39; }
+	inline double* get_address_of_privacyTermsFont_39() { return &___privacyTermsFont_39; }
+	inline void set_privacyTermsFont_39(double value)
 	{
-		___termTextColor_39 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___termTextColor_39), (void*)value);
+		___privacyTermsFont_39 = value;
 	}
 
-	inline static int32_t get_offset_of_termsRect_40() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___termsRect_40)); }
-	inline String_t* get_termsRect_40() const { return ___termsRect_40; }
-	inline String_t** get_address_of_termsRect_40() { return &___termsRect_40; }
-	inline void set_termsRect_40(String_t* value)
+	inline static int32_t get_offset_of_additionalPrivacyTerms_40() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___additionalPrivacyTerms_40)); }
+	inline StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* get_additionalPrivacyTerms_40() const { return ___additionalPrivacyTerms_40; }
+	inline StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A** get_address_of_additionalPrivacyTerms_40() { return &___additionalPrivacyTerms_40; }
+	inline void set_additionalPrivacyTerms_40(StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* value)
 	{
-		___termsRect_40 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___termsRect_40), (void*)value);
+		___additionalPrivacyTerms_40 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___additionalPrivacyTerms_40), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_auxiliaryPrivacyWords_41() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___auxiliaryPrivacyWords_41)); }
-	inline StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* get_auxiliaryPrivacyWords_41() const { return ___auxiliaryPrivacyWords_41; }
-	inline StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A** get_address_of_auxiliaryPrivacyWords_41() { return &___auxiliaryPrivacyWords_41; }
-	inline void set_auxiliaryPrivacyWords_41(StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* value)
+	inline static int32_t get_offset_of_termTextColor_41() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___termTextColor_41)); }
+	inline String_t* get_termTextColor_41() const { return ___termTextColor_41; }
+	inline String_t** get_address_of_termTextColor_41() { return &___termTextColor_41; }
+	inline void set_termTextColor_41(String_t* value)
 	{
-		___auxiliaryPrivacyWords_41 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___auxiliaryPrivacyWords_41), (void*)value);
+		___termTextColor_41 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___termTextColor_41), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_termsAlignment_42() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___termsAlignment_42)); }
-	inline int32_t get_termsAlignment_42() const { return ___termsAlignment_42; }
-	inline int32_t* get_address_of_termsAlignment_42() { return &___termsAlignment_42; }
-	inline void set_termsAlignment_42(int32_t value)
+	inline static int32_t get_offset_of_termsRect_42() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___termsRect_42)); }
+	inline String_t* get_termsRect_42() const { return ___termsRect_42; }
+	inline String_t** get_address_of_termsRect_42() { return &___termsRect_42; }
+	inline void set_termsRect_42(String_t* value)
 	{
-		___termsAlignment_42 = value;
+		___termsRect_42 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___termsRect_42), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_backgroundColor_43() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___backgroundColor_43)); }
-	inline String_t* get_backgroundColor_43() const { return ___backgroundColor_43; }
-	inline String_t** get_address_of_backgroundColor_43() { return &___backgroundColor_43; }
-	inline void set_backgroundColor_43(String_t* value)
+	inline static int32_t get_offset_of_auxiliaryPrivacyWords_43() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___auxiliaryPrivacyWords_43)); }
+	inline StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* get_auxiliaryPrivacyWords_43() const { return ___auxiliaryPrivacyWords_43; }
+	inline StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A** get_address_of_auxiliaryPrivacyWords_43() { return &___auxiliaryPrivacyWords_43; }
+	inline void set_auxiliaryPrivacyWords_43(StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* value)
 	{
-		___backgroundColor_43 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___backgroundColor_43), (void*)value);
+		___auxiliaryPrivacyWords_43 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___auxiliaryPrivacyWords_43), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_backgroundImage_44() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___backgroundImage_44)); }
-	inline String_t* get_backgroundImage_44() const { return ___backgroundImage_44; }
-	inline String_t** get_address_of_backgroundImage_44() { return &___backgroundImage_44; }
-	inline void set_backgroundImage_44(String_t* value)
+	inline static int32_t get_offset_of_termsAlignment_44() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___termsAlignment_44)); }
+	inline int32_t get_termsAlignment_44() const { return ___termsAlignment_44; }
+	inline int32_t* get_address_of_termsAlignment_44() { return &___termsAlignment_44; }
+	inline void set_termsAlignment_44(int32_t value)
 	{
-		___backgroundImage_44 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___backgroundImage_44), (void*)value);
+		___termsAlignment_44 = value;
 	}
 
-	inline static int32_t get_offset_of_landscapeBackgroundImage_45() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___landscapeBackgroundImage_45)); }
-	inline String_t* get_landscapeBackgroundImage_45() const { return ___landscapeBackgroundImage_45; }
-	inline String_t** get_address_of_landscapeBackgroundImage_45() { return &___landscapeBackgroundImage_45; }
-	inline void set_landscapeBackgroundImage_45(String_t* value)
+	inline static int32_t get_offset_of_protocolShakeStyle_45() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___protocolShakeStyle_45)); }
+	inline int32_t get_protocolShakeStyle_45() const { return ___protocolShakeStyle_45; }
+	inline int32_t* get_address_of_protocolShakeStyle_45() { return &___protocolShakeStyle_45; }
+	inline void set_protocolShakeStyle_45(int32_t value)
 	{
-		___landscapeBackgroundImage_45 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___landscapeBackgroundImage_45), (void*)value);
+		___protocolShakeStyle_45 = value;
 	}
 
-	inline static int32_t get_offset_of_isPopup_46() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___isPopup_46)); }
-	inline bool get_isPopup_46() const { return ___isPopup_46; }
-	inline bool* get_address_of_isPopup_46() { return &___isPopup_46; }
-	inline void set_isPopup_46(bool value)
+	inline static int32_t get_offset_of_privacyCheckBoxMarginRight_46() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___privacyCheckBoxMarginRight_46)); }
+	inline double get_privacyCheckBoxMarginRight_46() const { return ___privacyCheckBoxMarginRight_46; }
+	inline double* get_address_of_privacyCheckBoxMarginRight_46() { return &___privacyCheckBoxMarginRight_46; }
+	inline void set_privacyCheckBoxMarginRight_46(double value)
 	{
-		___isPopup_46 = value;
+		___privacyCheckBoxMarginRight_46 = value;
 	}
 
-	inline static int32_t get_offset_of_popupRect_47() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___popupRect_47)); }
-	inline String_t* get_popupRect_47() const { return ___popupRect_47; }
-	inline String_t** get_address_of_popupRect_47() { return &___popupRect_47; }
-	inline void set_popupRect_47(String_t* value)
+	inline static int32_t get_offset_of_backgroundColor_47() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___backgroundColor_47)); }
+	inline String_t* get_backgroundColor_47() const { return ___backgroundColor_47; }
+	inline String_t** get_address_of_backgroundColor_47() { return &___backgroundColor_47; }
+	inline void set_backgroundColor_47(String_t* value)
 	{
-		___popupRect_47 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___popupRect_47), (void*)value);
+		___backgroundColor_47 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___backgroundColor_47), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_popupCornerRadius_48() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___popupCornerRadius_48)); }
-	inline double get_popupCornerRadius_48() const { return ___popupCornerRadius_48; }
-	inline double* get_address_of_popupCornerRadius_48() { return &___popupCornerRadius_48; }
-	inline void set_popupCornerRadius_48(double value)
+	inline static int32_t get_offset_of_backgroundImage_48() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___backgroundImage_48)); }
+	inline String_t* get_backgroundImage_48() const { return ___backgroundImage_48; }
+	inline String_t** get_address_of_backgroundImage_48() { return &___backgroundImage_48; }
+	inline void set_backgroundImage_48(String_t* value)
 	{
-		___popupCornerRadius_48 = value;
+		___backgroundImage_48 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___backgroundImage_48), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_popupRectCorners_49() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___popupRectCorners_49)); }
-	inline Int32U5BU5D_t70F1BDC14B1786481B176D6139A5E3B87DC54C32* get_popupRectCorners_49() const { return ___popupRectCorners_49; }
-	inline Int32U5BU5D_t70F1BDC14B1786481B176D6139A5E3B87DC54C32** get_address_of_popupRectCorners_49() { return &___popupRectCorners_49; }
-	inline void set_popupRectCorners_49(Int32U5BU5D_t70F1BDC14B1786481B176D6139A5E3B87DC54C32* value)
+	inline static int32_t get_offset_of_landscapeBackgroundImage_49() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___landscapeBackgroundImage_49)); }
+	inline String_t* get_landscapeBackgroundImage_49() const { return ___landscapeBackgroundImage_49; }
+	inline String_t** get_address_of_landscapeBackgroundImage_49() { return &___landscapeBackgroundImage_49; }
+	inline void set_landscapeBackgroundImage_49(String_t* value)
 	{
-		___popupRectCorners_49 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___popupRectCorners_49), (void*)value);
+		___landscapeBackgroundImage_49 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___landscapeBackgroundImage_49), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_popupAnimationStyle_50() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___popupAnimationStyle_50)); }
-	inline int32_t get_popupAnimationStyle_50() const { return ___popupAnimationStyle_50; }
-	inline int32_t* get_address_of_popupAnimationStyle_50() { return &___popupAnimationStyle_50; }
-	inline void set_popupAnimationStyle_50(int32_t value)
+	inline static int32_t get_offset_of_isPopup_50() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___isPopup_50)); }
+	inline bool get_isPopup_50() const { return ___isPopup_50; }
+	inline bool* get_address_of_isPopup_50() { return &___isPopup_50; }
+	inline void set_isPopup_50(bool value)
 	{
-		___popupAnimationStyle_50 = value;
+		___isPopup_50 = value;
 	}
 
-	inline static int32_t get_offset_of_closePopupImage_51() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___closePopupImage_51)); }
-	inline String_t* get_closePopupImage_51() const { return ___closePopupImage_51; }
-	inline String_t** get_address_of_closePopupImage_51() { return &___closePopupImage_51; }
-	inline void set_closePopupImage_51(String_t* value)
+	inline static int32_t get_offset_of_popupRect_51() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___popupRect_51)); }
+	inline String_t* get_popupRect_51() const { return ___popupRect_51; }
+	inline String_t** get_address_of_popupRect_51() { return &___popupRect_51; }
+	inline void set_popupRect_51(String_t* value)
 	{
-		___closePopupImage_51 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___closePopupImage_51), (void*)value);
+		___popupRect_51 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___popupRect_51), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_closePopupTopOffset_52() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___closePopupTopOffset_52)); }
-	inline double get_closePopupTopOffset_52() const { return ___closePopupTopOffset_52; }
-	inline double* get_address_of_closePopupTopOffset_52() { return &___closePopupTopOffset_52; }
-	inline void set_closePopupTopOffset_52(double value)
+	inline static int32_t get_offset_of_popupCornerRadius_52() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___popupCornerRadius_52)); }
+	inline double get_popupCornerRadius_52() const { return ___popupCornerRadius_52; }
+	inline double* get_address_of_popupCornerRadius_52() { return &___popupCornerRadius_52; }
+	inline void set_popupCornerRadius_52(double value)
 	{
-		___closePopupTopOffset_52 = value;
+		___popupCornerRadius_52 = value;
 	}
 
-	inline static int32_t get_offset_of_closePopupRightOffset_53() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___closePopupRightOffset_53)); }
-	inline double get_closePopupRightOffset_53() const { return ___closePopupRightOffset_53; }
-	inline double* get_address_of_closePopupRightOffset_53() { return &___closePopupRightOffset_53; }
-	inline void set_closePopupRightOffset_53(double value)
+	inline static int32_t get_offset_of_popupRectCorners_53() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___popupRectCorners_53)); }
+	inline Int32U5BU5D_t70F1BDC14B1786481B176D6139A5E3B87DC54C32* get_popupRectCorners_53() const { return ___popupRectCorners_53; }
+	inline Int32U5BU5D_t70F1BDC14B1786481B176D6139A5E3B87DC54C32** get_address_of_popupRectCorners_53() { return &___popupRectCorners_53; }
+	inline void set_popupRectCorners_53(Int32U5BU5D_t70F1BDC14B1786481B176D6139A5E3B87DC54C32* value)
 	{
-		___closePopupRightOffset_53 = value;
+		___popupRectCorners_53 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___popupRectCorners_53), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_canClosePopupFromTapGesture_54() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___canClosePopupFromTapGesture_54)); }
-	inline bool get_canClosePopupFromTapGesture_54() const { return ___canClosePopupFromTapGesture_54; }
-	inline bool* get_address_of_canClosePopupFromTapGesture_54() { return &___canClosePopupFromTapGesture_54; }
-	inline void set_canClosePopupFromTapGesture_54(bool value)
+	inline static int32_t get_offset_of_popupAnimationStyle_54() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___popupAnimationStyle_54)); }
+	inline int32_t get_popupAnimationStyle_54() const { return ___popupAnimationStyle_54; }
+	inline int32_t* get_address_of_popupAnimationStyle_54() { return &___popupAnimationStyle_54; }
+	inline void set_popupAnimationStyle_54(int32_t value)
 	{
-		___canClosePopupFromTapGesture_54 = value;
+		___popupAnimationStyle_54 = value;
 	}
 
-	inline static int32_t get_offset_of_webNaviTitle_55() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___webNaviTitle_55)); }
-	inline String_t* get_webNaviTitle_55() const { return ___webNaviTitle_55; }
-	inline String_t** get_address_of_webNaviTitle_55() { return &___webNaviTitle_55; }
-	inline void set_webNaviTitle_55(String_t* value)
+	inline static int32_t get_offset_of_closePopupImage_55() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___closePopupImage_55)); }
+	inline String_t* get_closePopupImage_55() const { return ___closePopupImage_55; }
+	inline String_t** get_address_of_closePopupImage_55() { return &___closePopupImage_55; }
+	inline void set_closePopupImage_55(String_t* value)
 	{
-		___webNaviTitle_55 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___webNaviTitle_55), (void*)value);
+		___closePopupImage_55 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___closePopupImage_55), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_webNaviTitleColor_56() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___webNaviTitleColor_56)); }
-	inline String_t* get_webNaviTitleColor_56() const { return ___webNaviTitleColor_56; }
-	inline String_t** get_address_of_webNaviTitleColor_56() { return &___webNaviTitleColor_56; }
-	inline void set_webNaviTitleColor_56(String_t* value)
+	inline static int32_t get_offset_of_closePopupTopOffset_56() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___closePopupTopOffset_56)); }
+	inline double get_closePopupTopOffset_56() const { return ___closePopupTopOffset_56; }
+	inline double* get_address_of_closePopupTopOffset_56() { return &___closePopupTopOffset_56; }
+	inline void set_closePopupTopOffset_56(double value)
 	{
-		___webNaviTitleColor_56 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___webNaviTitleColor_56), (void*)value);
+		___closePopupTopOffset_56 = value;
 	}
 
-	inline static int32_t get_offset_of_webNaviTitleFont_57() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___webNaviTitleFont_57)); }
-	inline double get_webNaviTitleFont_57() const { return ___webNaviTitleFont_57; }
-	inline double* get_address_of_webNaviTitleFont_57() { return &___webNaviTitleFont_57; }
-	inline void set_webNaviTitleFont_57(double value)
+	inline static int32_t get_offset_of_closePopupRightOffset_57() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___closePopupRightOffset_57)); }
+	inline double get_closePopupRightOffset_57() const { return ___closePopupRightOffset_57; }
+	inline double* get_address_of_closePopupRightOffset_57() { return &___closePopupRightOffset_57; }
+	inline void set_closePopupRightOffset_57(double value)
 	{
-		___webNaviTitleFont_57 = value;
+		___closePopupRightOffset_57 = value;
 	}
 
-	inline static int32_t get_offset_of_webNaviBgColor_58() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___webNaviBgColor_58)); }
-	inline String_t* get_webNaviBgColor_58() const { return ___webNaviBgColor_58; }
-	inline String_t** get_address_of_webNaviBgColor_58() { return &___webNaviBgColor_58; }
-	inline void set_webNaviBgColor_58(String_t* value)
+	inline static int32_t get_offset_of_canClosePopupFromTapGesture_58() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___canClosePopupFromTapGesture_58)); }
+	inline bool get_canClosePopupFromTapGesture_58() const { return ___canClosePopupFromTapGesture_58; }
+	inline bool* get_address_of_canClosePopupFromTapGesture_58() { return &___canClosePopupFromTapGesture_58; }
+	inline void set_canClosePopupFromTapGesture_58(bool value)
 	{
-		___webNaviBgColor_58 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___webNaviBgColor_58), (void*)value);
+		___canClosePopupFromTapGesture_58 = value;
 	}
 
-	inline static int32_t get_offset_of_notCheckProtocolHint_59() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___notCheckProtocolHint_59)); }
-	inline String_t* get_notCheckProtocolHint_59() const { return ___notCheckProtocolHint_59; }
-	inline String_t** get_address_of_notCheckProtocolHint_59() { return &___notCheckProtocolHint_59; }
-	inline void set_notCheckProtocolHint_59(String_t* value)
+	inline static int32_t get_offset_of_webNaviTitle_59() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___webNaviTitle_59)); }
+	inline String_t* get_webNaviTitle_59() const { return ___webNaviTitle_59; }
+	inline String_t** get_address_of_webNaviTitle_59() { return &___webNaviTitle_59; }
+	inline void set_webNaviTitle_59(String_t* value)
 	{
-		___notCheckProtocolHint_59 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___notCheckProtocolHint_59), (void*)value);
+		___webNaviTitle_59 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___webNaviTitle_59), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_modalPresentationStyle_60() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___modalPresentationStyle_60)); }
-	inline int32_t get_modalPresentationStyle_60() const { return ___modalPresentationStyle_60; }
-	inline int32_t* get_address_of_modalPresentationStyle_60() { return &___modalPresentationStyle_60; }
-	inline void set_modalPresentationStyle_60(int32_t value)
+	inline static int32_t get_offset_of_webNaviTitleColor_60() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___webNaviTitleColor_60)); }
+	inline String_t* get_webNaviTitleColor_60() const { return ___webNaviTitleColor_60; }
+	inline String_t** get_address_of_webNaviTitleColor_60() { return &___webNaviTitleColor_60; }
+	inline void set_webNaviTitleColor_60(String_t* value)
 	{
-		___modalPresentationStyle_60 = value;
+		___webNaviTitleColor_60 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___webNaviTitleColor_60), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_pullAuthVCStyle_61() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___pullAuthVCStyle_61)); }
-	inline int32_t get_pullAuthVCStyle_61() const { return ___pullAuthVCStyle_61; }
-	inline int32_t* get_address_of_pullAuthVCStyle_61() { return &___pullAuthVCStyle_61; }
-	inline void set_pullAuthVCStyle_61(int32_t value)
+	inline static int32_t get_offset_of_webNaviTitleFont_61() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___webNaviTitleFont_61)); }
+	inline double get_webNaviTitleFont_61() const { return ___webNaviTitleFont_61; }
+	inline double* get_address_of_webNaviTitleFont_61() { return &___webNaviTitleFont_61; }
+	inline void set_webNaviTitleFont_61(double value)
 	{
-		___pullAuthVCStyle_61 = value;
+		___webNaviTitleFont_61 = value;
 	}
 
-	inline static int32_t get_offset_of_userInterfaceStyle_62() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___userInterfaceStyle_62)); }
-	inline int32_t get_userInterfaceStyle_62() const { return ___userInterfaceStyle_62; }
-	inline int32_t* get_address_of_userInterfaceStyle_62() { return &___userInterfaceStyle_62; }
-	inline void set_userInterfaceStyle_62(int32_t value)
+	inline static int32_t get_offset_of_webNaviBgColor_62() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___webNaviBgColor_62)); }
+	inline String_t* get_webNaviBgColor_62() const { return ___webNaviBgColor_62; }
+	inline String_t** get_address_of_webNaviBgColor_62() { return &___webNaviBgColor_62; }
+	inline void set_webNaviBgColor_62(String_t* value)
 	{
-		___userInterfaceStyle_62 = value;
+		___webNaviBgColor_62 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___webNaviBgColor_62), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_authVCTransitionBlock_63() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___authVCTransitionBlock_63)); }
-	inline String_t* get_authVCTransitionBlock_63() const { return ___authVCTransitionBlock_63; }
-	inline String_t** get_address_of_authVCTransitionBlock_63() { return &___authVCTransitionBlock_63; }
-	inline void set_authVCTransitionBlock_63(String_t* value)
+	inline static int32_t get_offset_of_notCheckProtocolHint_63() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___notCheckProtocolHint_63)); }
+	inline String_t* get_notCheckProtocolHint_63() const { return ___notCheckProtocolHint_63; }
+	inline String_t** get_address_of_notCheckProtocolHint_63() { return &___notCheckProtocolHint_63; }
+	inline void set_notCheckProtocolHint_63(String_t* value)
 	{
-		___authVCTransitionBlock_63 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___authVCTransitionBlock_63), (void*)value);
+		___notCheckProtocolHint_63 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___notCheckProtocolHint_63), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_tapAuthBackgroundBlock_64() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___tapAuthBackgroundBlock_64)); }
-	inline String_t* get_tapAuthBackgroundBlock_64() const { return ___tapAuthBackgroundBlock_64; }
-	inline String_t** get_address_of_tapAuthBackgroundBlock_64() { return &___tapAuthBackgroundBlock_64; }
-	inline void set_tapAuthBackgroundBlock_64(String_t* value)
+	inline static int32_t get_offset_of_modalPresentationStyle_64() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___modalPresentationStyle_64)); }
+	inline int32_t get_modalPresentationStyle_64() const { return ___modalPresentationStyle_64; }
+	inline int32_t* get_address_of_modalPresentationStyle_64() { return &___modalPresentationStyle_64; }
+	inline void set_modalPresentationStyle_64(int32_t value)
 	{
-		___tapAuthBackgroundBlock_64 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___tapAuthBackgroundBlock_64), (void*)value);
+		___modalPresentationStyle_64 = value;
 	}
 
-	inline static int32_t get_offset_of_viewLifeCycleBlock_65() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___viewLifeCycleBlock_65)); }
-	inline String_t* get_viewLifeCycleBlock_65() const { return ___viewLifeCycleBlock_65; }
-	inline String_t** get_address_of_viewLifeCycleBlock_65() { return &___viewLifeCycleBlock_65; }
-	inline void set_viewLifeCycleBlock_65(String_t* value)
+	inline static int32_t get_offset_of_pullAuthVCStyle_65() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___pullAuthVCStyle_65)); }
+	inline int32_t get_pullAuthVCStyle_65() const { return ___pullAuthVCStyle_65; }
+	inline int32_t* get_address_of_pullAuthVCStyle_65() { return &___pullAuthVCStyle_65; }
+	inline void set_pullAuthVCStyle_65(int32_t value)
 	{
-		___viewLifeCycleBlock_65 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___viewLifeCycleBlock_65), (void*)value);
+		___pullAuthVCStyle_65 = value;
 	}
 
-	inline static int32_t get_offset_of_clickBackButtonBlock_66() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___clickBackButtonBlock_66)); }
-	inline String_t* get_clickBackButtonBlock_66() const { return ___clickBackButtonBlock_66; }
-	inline String_t** get_address_of_clickBackButtonBlock_66() { return &___clickBackButtonBlock_66; }
-	inline void set_clickBackButtonBlock_66(String_t* value)
+	inline static int32_t get_offset_of_userInterfaceStyle_66() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___userInterfaceStyle_66)); }
+	inline int32_t get_userInterfaceStyle_66() const { return ___userInterfaceStyle_66; }
+	inline int32_t* get_address_of_userInterfaceStyle_66() { return &___userInterfaceStyle_66; }
+	inline void set_userInterfaceStyle_66(int32_t value)
 	{
-		___clickBackButtonBlock_66 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___clickBackButtonBlock_66), (void*)value);
+		___userInterfaceStyle_66 = value;
 	}
 
-	inline static int32_t get_offset_of_clickSwitchButtonBlock_67() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___clickSwitchButtonBlock_67)); }
-	inline String_t* get_clickSwitchButtonBlock_67() const { return ___clickSwitchButtonBlock_67; }
-	inline String_t** get_address_of_clickSwitchButtonBlock_67() { return &___clickSwitchButtonBlock_67; }
-	inline void set_clickSwitchButtonBlock_67(String_t* value)
+	inline static int32_t get_offset_of_authVCTransitionBlock_67() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___authVCTransitionBlock_67)); }
+	inline String_t* get_authVCTransitionBlock_67() const { return ___authVCTransitionBlock_67; }
+	inline String_t** get_address_of_authVCTransitionBlock_67() { return &___authVCTransitionBlock_67; }
+	inline void set_authVCTransitionBlock_67(String_t* value)
 	{
-		___clickSwitchButtonBlock_67 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___clickSwitchButtonBlock_67), (void*)value);
+		___authVCTransitionBlock_67 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___authVCTransitionBlock_67), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_clickCheckboxBlock_68() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___clickCheckboxBlock_68)); }
-	inline String_t* get_clickCheckboxBlock_68() const { return ___clickCheckboxBlock_68; }
-	inline String_t** get_address_of_clickCheckboxBlock_68() { return &___clickCheckboxBlock_68; }
-	inline void set_clickCheckboxBlock_68(String_t* value)
+	inline static int32_t get_offset_of_tapAuthBackgroundBlock_68() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___tapAuthBackgroundBlock_68)); }
+	inline String_t* get_tapAuthBackgroundBlock_68() const { return ___tapAuthBackgroundBlock_68; }
+	inline String_t** get_address_of_tapAuthBackgroundBlock_68() { return &___tapAuthBackgroundBlock_68; }
+	inline void set_tapAuthBackgroundBlock_68(String_t* value)
 	{
-		___clickCheckboxBlock_68 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___clickCheckboxBlock_68), (void*)value);
+		___tapAuthBackgroundBlock_68 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___tapAuthBackgroundBlock_68), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_widgets_69() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___widgets_69)); }
-	inline StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* get_widgets_69() const { return ___widgets_69; }
-	inline StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A** get_address_of_widgets_69() { return &___widgets_69; }
-	inline void set_widgets_69(StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* value)
+	inline static int32_t get_offset_of_viewLifeCycleBlock_69() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___viewLifeCycleBlock_69)); }
+	inline String_t* get_viewLifeCycleBlock_69() const { return ___viewLifeCycleBlock_69; }
+	inline String_t** get_address_of_viewLifeCycleBlock_69() { return &___viewLifeCycleBlock_69; }
+	inline void set_viewLifeCycleBlock_69(String_t* value)
 	{
-		___widgets_69 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___widgets_69), (void*)value);
+		___viewLifeCycleBlock_69 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___viewLifeCycleBlock_69), (void*)value);
+	}
+
+	inline static int32_t get_offset_of_clickBackButtonBlock_70() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___clickBackButtonBlock_70)); }
+	inline String_t* get_clickBackButtonBlock_70() const { return ___clickBackButtonBlock_70; }
+	inline String_t** get_address_of_clickBackButtonBlock_70() { return &___clickBackButtonBlock_70; }
+	inline void set_clickBackButtonBlock_70(String_t* value)
+	{
+		___clickBackButtonBlock_70 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___clickBackButtonBlock_70), (void*)value);
+	}
+
+	inline static int32_t get_offset_of_clickSwitchButtonBlock_71() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___clickSwitchButtonBlock_71)); }
+	inline String_t* get_clickSwitchButtonBlock_71() const { return ___clickSwitchButtonBlock_71; }
+	inline String_t** get_address_of_clickSwitchButtonBlock_71() { return &___clickSwitchButtonBlock_71; }
+	inline void set_clickSwitchButtonBlock_71(String_t* value)
+	{
+		___clickSwitchButtonBlock_71 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___clickSwitchButtonBlock_71), (void*)value);
+	}
+
+	inline static int32_t get_offset_of_clickCheckboxBlock_72() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___clickCheckboxBlock_72)); }
+	inline String_t* get_clickCheckboxBlock_72() const { return ___clickCheckboxBlock_72; }
+	inline String_t** get_address_of_clickCheckboxBlock_72() { return &___clickCheckboxBlock_72; }
+	inline void set_clickCheckboxBlock_72(String_t* value)
+	{
+		___clickCheckboxBlock_72 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___clickCheckboxBlock_72), (void*)value);
+	}
+
+	inline static int32_t get_offset_of_widgets_73() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___widgets_73)); }
+	inline StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* get_widgets_73() const { return ___widgets_73; }
+	inline StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A** get_address_of_widgets_73() { return &___widgets_73; }
+	inline void set_widgets_73(StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* value)
+	{
+		___widgets_73 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___widgets_73), (void*)value);
+	}
+
+	inline static int32_t get_offset_of_hintBlock_74() { return static_cast<int32_t>(offsetof(OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4, ___hintBlock_74)); }
+	inline String_t* get_hintBlock_74() const { return ___hintBlock_74; }
+	inline String_t** get_address_of_hintBlock_74() { return &___hintBlock_74; }
+	inline void set_hintBlock_74(String_t* value)
+	{
+		___hintBlock_74 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___hintBlock_74), (void*)value);
 	}
 };
 
@@ -8245,11 +8301,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void OneLoginPluginScript_enterAuthController
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral2D42B2C96D9F0BD95F4E03AC63D7CB78E0F910EE);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral32F5734F1A3B24E34FF875CD397C3E073832760E);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral411CB518F21C454779824C627D0F4671272BEAE6);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral42CE9BD9E361E1066A4CCA26B521AE0DF3A93D56);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral42F6C55E3EB879F380096E1B501973A9B045FF74);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral4423FFA40C1F5C0EBE338A1EF99085E366C0A136);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral45B7E05294E4F7CE5423A14A6B3CF4A380B3B3CD);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral4D13A93337A5368F295FBB4AE6302BE1F3AFD7CE);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral5D3198AEAFD742D310BAEF26C865717860727E90);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral63E9CA3F3F35ED7A015C40EF405F80373B70AE4D);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral64345BA2CC57FCAAA9957D9256D38DFF981BDC80);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral658963DA5C2F8BCB798ACAF5C1FB728281A8BE63);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral663488ABE057592166FC68C8A6EF26CBF9C8178E);
@@ -8313,586 +8371,602 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void OneLoginPluginScript_enterAuthController
 		// viewModel.naviTitle = "一键登录Unity";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_3 = V_0;
 		NullCheck(L_3);
-		L_3->set_naviTitle_2(_stringLiteral956989F39728AC917ECC2F67058AFE478F950B15);
+		L_3->set_naviTitle_3(_stringLiteral956989F39728AC917ECC2F67058AFE478F950B15);
 		// viewModel.naviTitleColor = "#FF4900";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_4 = V_0;
 		NullCheck(L_4);
-		L_4->set_naviTitleColor_3(_stringLiteralA6EFED3D19B03D8EA0EF272AA4BC69232609468A);
+		L_4->set_naviTitleColor_4(_stringLiteralA6EFED3D19B03D8EA0EF272AA4BC69232609468A);
 		// viewModel.naviTitleFont = 17.0;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_5 = V_0;
 		NullCheck(L_5);
-		L_5->set_naviTitleFont_4((17.0));
+		L_5->set_naviTitleFont_5((17.0));
 		// viewModel.naviBgColor = "#00FF00";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_6 = V_0;
 		NullCheck(L_6);
-		L_6->set_naviBgColor_5(_stringLiteralDFE88F80D9B20D8864C5FFDCFC611B01D8806540);
+		L_6->set_naviBgColor_6(_stringLiteralDFE88F80D9B20D8864C5FFDCFC611B01D8806540);
 		// viewModel.naviBackImage = "close_black";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_7 = V_0;
 		NullCheck(L_7);
-		L_7->set_naviBackImage_6(_stringLiteral2C0648725671AC8B633DFFF09E33CEC9A7140E77);
+		L_7->set_naviBackImage_7(_stringLiteral2C0648725671AC8B633DFFF09E33CEC9A7140E77);
 		// viewModel.naviHidden = false;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_8 = V_0;
 		NullCheck(L_8);
-		L_8->set_naviHidden_7((bool)0);
+		L_8->set_naviHidden_8((bool)0);
 		// viewModel.backButtonRect = "10, 0, 20, 0, 0, 0, 20, 20";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_9 = V_0;
 		NullCheck(L_9);
-		L_9->set_backButtonRect_8(_stringLiteral64345BA2CC57FCAAA9957D9256D38DFF981BDC80);
+		L_9->set_backButtonRect_9(_stringLiteral64345BA2CC57FCAAA9957D9256D38DFF981BDC80);
 		// viewModel.backButtonHidden = false;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_10 = V_0;
 		NullCheck(L_10);
-		L_10->set_backButtonHidden_9((bool)0);
+		L_10->set_backButtonHidden_10((bool)0);
 		// viewModel.appLogo = "logo_icon";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_11 = V_0;
 		NullCheck(L_11);
-		L_11->set_appLogo_10(_stringLiteralD07B20C18F1680C7956D4A34F0959A251A345B5D);
+		L_11->set_appLogo_11(_stringLiteralD07B20C18F1680C7956D4A34F0959A251A345B5D);
 		// viewModel.logoRect = "";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_12 = V_0;
 		NullCheck(L_12);
-		L_12->set_logoRect_11(_stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709);
+		L_12->set_logoRect_12(_stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709);
 		// viewModel.logoHidden = false;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_13 = V_0;
 		NullCheck(L_13);
-		L_13->set_logoHidden_12((bool)0);
+		L_13->set_logoHidden_13((bool)0);
 		// viewModel.logoCornerRadius = 5;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_14 = V_0;
 		NullCheck(L_14);
-		L_14->set_logoCornerRadius_13((5.0));
+		L_14->set_logoCornerRadius_14((5.0));
 		// viewModel.phoneNumColor = "#FF00FF";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_15 = V_0;
 		NullCheck(L_15);
-		L_15->set_phoneNumColor_14(_stringLiteralC61ED03CF0A9482BAB3E2A9138CFC8437465F1C2);
+		L_15->set_phoneNumColor_15(_stringLiteralC61ED03CF0A9482BAB3E2A9138CFC8437465F1C2);
 		// viewModel.phoneNumFont = 24;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_16 = V_0;
 		NullCheck(L_16);
-		L_16->set_phoneNumFont_15((24.0));
+		L_16->set_phoneNumFont_16((24.0));
 		// viewModel.phoneNumRect = "";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_17 = V_0;
 		NullCheck(L_17);
-		L_17->set_phoneNumRect_16(_stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709);
+		L_17->set_phoneNumRect_17(_stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709);
 		// viewModel.switchButtonText = "换个方式登录";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_18 = V_0;
 		NullCheck(L_18);
-		L_18->set_switchButtonText_17(_stringLiteralD79B72A2DF6A34D923662F1DEBCE9BAD9F9E654C);
+		L_18->set_switchButtonText_18(_stringLiteralD79B72A2DF6A34D923662F1DEBCE9BAD9F9E654C);
 		// viewModel.switchButtonColor = "#6500FF";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_19 = V_0;
 		NullCheck(L_19);
-		L_19->set_switchButtonColor_18(_stringLiteral8D81BB7F42E4D7E695F023F3CD372A6C65B0559D);
+		L_19->set_switchButtonColor_19(_stringLiteral8D81BB7F42E4D7E695F023F3CD372A6C65B0559D);
 		// viewModel.switchButtonBackgroundColor = "#FFFFFF";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_20 = V_0;
 		NullCheck(L_20);
-		L_20->set_switchButtonBackgroundColor_19(_stringLiteral663488ABE057592166FC68C8A6EF26CBF9C8178E);
+		L_20->set_switchButtonBackgroundColor_20(_stringLiteral663488ABE057592166FC68C8A6EF26CBF9C8178E);
 		// viewModel.switchButtonFont = 15;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_21 = V_0;
 		NullCheck(L_21);
-		L_21->set_switchButtonFont_20((15.0));
+		L_21->set_switchButtonFont_21((15.0));
 		// viewModel.switchButtonRect = "";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_22 = V_0;
 		NullCheck(L_22);
-		L_22->set_switchButtonRect_21(_stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709);
+		L_22->set_switchButtonRect_22(_stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709);
 		// viewModel.switchButtonHidden = false;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_23 = V_0;
 		NullCheck(L_23);
-		L_23->set_switchButtonHidden_22((bool)0);
+		L_23->set_switchButtonHidden_23((bool)0);
 		// viewModel.authButtonImages = new string[3];
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_24 = V_0;
 		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_25 = (StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A*)(StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A*)SZArrayNew(StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A_il2cpp_TypeInfo_var, (uint32_t)3);
 		NullCheck(L_24);
-		L_24->set_authButtonImages_23(L_25);
+		L_24->set_authButtonImages_24(L_25);
 		// viewModel.authButtonImages[0] = "authbutton_bg";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_26 = V_0;
 		NullCheck(L_26);
-		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_27 = L_26->get_authButtonImages_23();
+		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_27 = L_26->get_authButtonImages_24();
 		NullCheck(L_27);
 		ArrayElementTypeCheck (L_27, _stringLiteral32F5734F1A3B24E34FF875CD397C3E073832760E);
 		(L_27)->SetAt(static_cast<il2cpp_array_size_t>(0), (String_t*)_stringLiteral32F5734F1A3B24E34FF875CD397C3E073832760E);
 		// viewModel.authButtonImages[1] = "authbutton_bg";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_28 = V_0;
 		NullCheck(L_28);
-		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_29 = L_28->get_authButtonImages_23();
+		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_29 = L_28->get_authButtonImages_24();
 		NullCheck(L_29);
 		ArrayElementTypeCheck (L_29, _stringLiteral32F5734F1A3B24E34FF875CD397C3E073832760E);
 		(L_29)->SetAt(static_cast<il2cpp_array_size_t>(1), (String_t*)_stringLiteral32F5734F1A3B24E34FF875CD397C3E073832760E);
 		// viewModel.authButtonImages[2] = "authbutton_bg";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_30 = V_0;
 		NullCheck(L_30);
-		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_31 = L_30->get_authButtonImages_23();
+		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_31 = L_30->get_authButtonImages_24();
 		NullCheck(L_31);
 		ArrayElementTypeCheck (L_31, _stringLiteral32F5734F1A3B24E34FF875CD397C3E073832760E);
 		(L_31)->SetAt(static_cast<il2cpp_array_size_t>(2), (String_t*)_stringLiteral32F5734F1A3B24E34FF875CD397C3E073832760E);
 		// viewModel.authButtonTitle = "授权登录";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_32 = V_0;
 		NullCheck(L_32);
-		L_32->set_authButtonTitle_24(_stringLiteral8886B3BA6AEEE66183C26D50AF9E0CE73F24086B);
+		L_32->set_authButtonTitle_25(_stringLiteral8886B3BA6AEEE66183C26D50AF9E0CE73F24086B);
 		// viewModel.authButtonTitleColor = "#FFFFFF";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_33 = V_0;
 		NullCheck(L_33);
-		L_33->set_authButtonTitleColor_25(_stringLiteral663488ABE057592166FC68C8A6EF26CBF9C8178E);
+		L_33->set_authButtonTitleColor_26(_stringLiteral663488ABE057592166FC68C8A6EF26CBF9C8178E);
 		// viewModel.authButtonTitleFont = 17;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_34 = V_0;
 		NullCheck(L_34);
-		L_34->set_authButtonTitleFont_26((17.0));
+		L_34->set_authButtonTitleFont_27((17.0));
 		// viewModel.authButtonRect = "";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_35 = V_0;
 		NullCheck(L_35);
-		L_35->set_authButtonRect_27(_stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709);
+		L_35->set_authButtonRect_28(_stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709);
 		// viewModel.authButtonCornerRadius = 5;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_36 = V_0;
 		NullCheck(L_36);
-		L_36->set_authButtonCornerRadius_28((5.0));
+		L_36->set_authButtonCornerRadius_29((5.0));
 		// viewModel.sloganRect = "";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_37 = V_0;
 		NullCheck(L_37);
-		L_37->set_sloganRect_29(_stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709);
+		L_37->set_sloganRect_31(_stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709);
 		// viewModel.sloganTextColor = "#FFFF00";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_38 = V_0;
 		NullCheck(L_38);
-		L_38->set_sloganTextColor_30(_stringLiteral8144C43BB1E726E7217F3BE8382A87F85CA2B058);
+		L_38->set_sloganTextColor_32(_stringLiteral8144C43BB1E726E7217F3BE8382A87F85CA2B058);
 		// viewModel.sloganTextFont = 13;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_39 = V_0;
 		NullCheck(L_39);
-		L_39->set_sloganTextFont_31((13.0));
-		// viewModel.defaultCheckBoxState = false;
+		L_39->set_sloganTextFont_33((13.0));
+		// viewModel.sloganText = "极验提供一键登录服务";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_40 = V_0;
 		NullCheck(L_40);
-		L_40->set_defaultCheckBoxState_32((bool)0);
-		// viewModel.checkedImage = "";
+		L_40->set_sloganText_30(_stringLiteral42CE9BD9E361E1066A4CCA26B521AE0DF3A93D56);
+		// viewModel.defaultCheckBoxState = false;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_41 = V_0;
 		NullCheck(L_41);
-		L_41->set_checkedImage_33(_stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709);
-		// viewModel.uncheckedImage = "";
+		L_41->set_defaultCheckBoxState_34((bool)0);
+		// viewModel.checkedImage = "";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_42 = V_0;
 		NullCheck(L_42);
-		L_42->set_uncheckedImage_34(_stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709);
-		// viewModel.checkBoxRect = "";
+		L_42->set_checkedImage_35(_stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709);
+		// viewModel.uncheckedImage = "";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_43 = V_0;
 		NullCheck(L_43);
-		L_43->set_checkBoxRect_35(_stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709);
-		// viewModel.privacyTermsColor = "#00FF00";
+		L_43->set_uncheckedImage_36(_stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709);
+		// viewModel.checkBoxRect = "";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_44 = V_0;
 		NullCheck(L_44);
-		L_44->set_privacyTermsColor_36(_stringLiteralDFE88F80D9B20D8864C5FFDCFC611B01D8806540);
-		// viewModel.privacyTermsFont = 14;
+		L_44->set_checkBoxRect_37(_stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709);
+		// viewModel.privacyTermsColor = "#00FF00";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_45 = V_0;
 		NullCheck(L_45);
-		L_45->set_privacyTermsFont_37((14.0));
-		// viewModel.additionalPrivacyTerms = new string[6];
+		L_45->set_privacyTermsColor_38(_stringLiteralDFE88F80D9B20D8864C5FFDCFC611B01D8806540);
+		// viewModel.privacyTermsFont = 14;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_46 = V_0;
-		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_47 = (StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A*)(StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A*)SZArrayNew(StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A_il2cpp_TypeInfo_var, (uint32_t)6);
 		NullCheck(L_46);
-		L_46->set_additionalPrivacyTerms_38(L_47);
+		L_46->set_privacyTermsFont_39((14.0));
+		// viewModel.additionalPrivacyTerms = new string[6];
+		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_47 = V_0;
+		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_48 = (StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A*)(StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A*)SZArrayNew(StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A_il2cpp_TypeInfo_var, (uint32_t)6);
+		NullCheck(L_47);
+		L_47->set_additionalPrivacyTerms_40(L_48);
 		// viewModel.additionalPrivacyTerms[0] = "自定义服务条款1";
-		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_48 = V_0;
-		NullCheck(L_48);
-		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_49 = L_48->get_additionalPrivacyTerms_38();
+		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_49 = V_0;
 		NullCheck(L_49);
-		ArrayElementTypeCheck (L_49, _stringLiteral1E811E77B103926E668975CA4DD23FC975C28819);
-		(L_49)->SetAt(static_cast<il2cpp_array_size_t>(0), (String_t*)_stringLiteral1E811E77B103926E668975CA4DD23FC975C28819);
-		// viewModel.additionalPrivacyTerms[1] = "https://docs.geetest.com/onelogin/deploy/ios";
-		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_50 = V_0;
+		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_50 = L_49->get_additionalPrivacyTerms_40();
 		NullCheck(L_50);
-		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_51 = L_50->get_additionalPrivacyTerms_38();
+		ArrayElementTypeCheck (L_50, _stringLiteral1E811E77B103926E668975CA4DD23FC975C28819);
+		(L_50)->SetAt(static_cast<il2cpp_array_size_t>(0), (String_t*)_stringLiteral1E811E77B103926E668975CA4DD23FC975C28819);
+		// viewModel.additionalPrivacyTerms[1] = "https://docs.geetest.com/onelogin/deploy/ios";
+		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_51 = V_0;
 		NullCheck(L_51);
-		ArrayElementTypeCheck (L_51, _stringLiteral7638B7B07AC17B62403DA2BA7668BD3B1C277EFE);
-		(L_51)->SetAt(static_cast<il2cpp_array_size_t>(1), (String_t*)_stringLiteral7638B7B07AC17B62403DA2BA7668BD3B1C277EFE);
-		// viewModel.additionalPrivacyTerms[2] = "0";
-		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_52 = V_0;
+		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_52 = L_51->get_additionalPrivacyTerms_40();
 		NullCheck(L_52);
-		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_53 = L_52->get_additionalPrivacyTerms_38();
+		ArrayElementTypeCheck (L_52, _stringLiteral7638B7B07AC17B62403DA2BA7668BD3B1C277EFE);
+		(L_52)->SetAt(static_cast<il2cpp_array_size_t>(1), (String_t*)_stringLiteral7638B7B07AC17B62403DA2BA7668BD3B1C277EFE);
+		// viewModel.additionalPrivacyTerms[2] = "0";
+		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_53 = V_0;
 		NullCheck(L_53);
-		ArrayElementTypeCheck (L_53, _stringLiteralF944DCD635F9801F7AC90A407FBC479964DEC024);
-		(L_53)->SetAt(static_cast<il2cpp_array_size_t>(2), (String_t*)_stringLiteralF944DCD635F9801F7AC90A407FBC479964DEC024);
-		// viewModel.additionalPrivacyTerms[3] = "自定义服务条款2";
-		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_54 = V_0;
+		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_54 = L_53->get_additionalPrivacyTerms_40();
 		NullCheck(L_54);
-		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_55 = L_54->get_additionalPrivacyTerms_38();
+		ArrayElementTypeCheck (L_54, _stringLiteralF944DCD635F9801F7AC90A407FBC479964DEC024);
+		(L_54)->SetAt(static_cast<il2cpp_array_size_t>(2), (String_t*)_stringLiteralF944DCD635F9801F7AC90A407FBC479964DEC024);
+		// viewModel.additionalPrivacyTerms[3] = "自定义服务条款2";
+		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_55 = V_0;
 		NullCheck(L_55);
-		ArrayElementTypeCheck (L_55, _stringLiteral5D3198AEAFD742D310BAEF26C865717860727E90);
-		(L_55)->SetAt(static_cast<il2cpp_array_size_t>(3), (String_t*)_stringLiteral5D3198AEAFD742D310BAEF26C865717860727E90);
-		// viewModel.additionalPrivacyTerms[4] = "https://docs.geetest.com/onelogin/changelog/ios";
-		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_56 = V_0;
+		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_56 = L_55->get_additionalPrivacyTerms_40();
 		NullCheck(L_56);
-		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_57 = L_56->get_additionalPrivacyTerms_38();
+		ArrayElementTypeCheck (L_56, _stringLiteral5D3198AEAFD742D310BAEF26C865717860727E90);
+		(L_56)->SetAt(static_cast<il2cpp_array_size_t>(3), (String_t*)_stringLiteral5D3198AEAFD742D310BAEF26C865717860727E90);
+		// viewModel.additionalPrivacyTerms[4] = "https://docs.geetest.com/onelogin/changelog/ios";
+		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_57 = V_0;
 		NullCheck(L_57);
-		ArrayElementTypeCheck (L_57, _stringLiteralB335A469F43EEBBFB88373F50D0E0C8A5355CF43);
-		(L_57)->SetAt(static_cast<il2cpp_array_size_t>(4), (String_t*)_stringLiteralB335A469F43EEBBFB88373F50D0E0C8A5355CF43);
-		// viewModel.additionalPrivacyTerms[5] = "1";
-		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_58 = V_0;
+		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_58 = L_57->get_additionalPrivacyTerms_40();
 		NullCheck(L_58);
-		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_59 = L_58->get_additionalPrivacyTerms_38();
+		ArrayElementTypeCheck (L_58, _stringLiteralB335A469F43EEBBFB88373F50D0E0C8A5355CF43);
+		(L_58)->SetAt(static_cast<il2cpp_array_size_t>(4), (String_t*)_stringLiteralB335A469F43EEBBFB88373F50D0E0C8A5355CF43);
+		// viewModel.additionalPrivacyTerms[5] = "1";
+		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_59 = V_0;
 		NullCheck(L_59);
-		ArrayElementTypeCheck (L_59, _stringLiteralE91FE173F59B063D620A934CE1A010F2B114C1F3);
-		(L_59)->SetAt(static_cast<il2cpp_array_size_t>(5), (String_t*)_stringLiteralE91FE173F59B063D620A934CE1A010F2B114C1F3);
-		// viewModel.termTextColor = "#0000FF";
-		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_60 = V_0;
+		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_60 = L_59->get_additionalPrivacyTerms_40();
 		NullCheck(L_60);
-		L_60->set_termTextColor_39(_stringLiteral03E25556F28EDFDFA558FE20BD93FE558076F830);
-		// viewModel.termsRect = "";
+		ArrayElementTypeCheck (L_60, _stringLiteralE91FE173F59B063D620A934CE1A010F2B114C1F3);
+		(L_60)->SetAt(static_cast<il2cpp_array_size_t>(5), (String_t*)_stringLiteralE91FE173F59B063D620A934CE1A010F2B114C1F3);
+		// viewModel.termTextColor = "#0000FF";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_61 = V_0;
 		NullCheck(L_61);
-		L_61->set_termsRect_40(_stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709);
-		// viewModel.auxiliaryPrivacyWords = new string[4];
+		L_61->set_termTextColor_41(_stringLiteral03E25556F28EDFDFA558FE20BD93FE558076F830);
+		// viewModel.termsRect = "";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_62 = V_0;
-		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_63 = (StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A*)(StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A*)SZArrayNew(StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A_il2cpp_TypeInfo_var, (uint32_t)4);
 		NullCheck(L_62);
-		L_62->set_auxiliaryPrivacyWords_41(L_63);
+		L_62->set_termsRect_42(_stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709);
+		// viewModel.auxiliaryPrivacyWords = new string[4];
+		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_63 = V_0;
+		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_64 = (StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A*)(StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A*)SZArrayNew(StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A_il2cpp_TypeInfo_var, (uint32_t)4);
+		NullCheck(L_63);
+		L_63->set_auxiliaryPrivacyWords_43(L_64);
 		// viewModel.auxiliaryPrivacyWords[0] = "登录表示同意";
-		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_64 = V_0;
-		NullCheck(L_64);
-		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_65 = L_64->get_auxiliaryPrivacyWords_41();
+		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_65 = V_0;
 		NullCheck(L_65);
-		ArrayElementTypeCheck (L_65, _stringLiteral658963DA5C2F8BCB798ACAF5C1FB728281A8BE63);
-		(L_65)->SetAt(static_cast<il2cpp_array_size_t>(0), (String_t*)_stringLiteral658963DA5C2F8BCB798ACAF5C1FB728281A8BE63);
-		// viewModel.auxiliaryPrivacyWords[1] = "与";
-		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_66 = V_0;
+		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_66 = L_65->get_auxiliaryPrivacyWords_43();
 		NullCheck(L_66);
-		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_67 = L_66->get_auxiliaryPrivacyWords_41();
+		ArrayElementTypeCheck (L_66, _stringLiteral658963DA5C2F8BCB798ACAF5C1FB728281A8BE63);
+		(L_66)->SetAt(static_cast<il2cpp_array_size_t>(0), (String_t*)_stringLiteral658963DA5C2F8BCB798ACAF5C1FB728281A8BE63);
+		// viewModel.auxiliaryPrivacyWords[1] = "与";
+		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_67 = V_0;
 		NullCheck(L_67);
-		ArrayElementTypeCheck (L_67, _stringLiteralF1BBF0F0FFF4CDD3044F91CBBA0B9A9E7AFCC4DF);
-		(L_67)->SetAt(static_cast<il2cpp_array_size_t>(1), (String_t*)_stringLiteralF1BBF0F0FFF4CDD3044F91CBBA0B9A9E7AFCC4DF);
-		// viewModel.auxiliaryPrivacyWords[2] = "&";
-		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_68 = V_0;
+		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_68 = L_67->get_auxiliaryPrivacyWords_43();
 		NullCheck(L_68);
-		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_69 = L_68->get_auxiliaryPrivacyWords_41();
+		ArrayElementTypeCheck (L_68, _stringLiteralF1BBF0F0FFF4CDD3044F91CBBA0B9A9E7AFCC4DF);
+		(L_68)->SetAt(static_cast<il2cpp_array_size_t>(1), (String_t*)_stringLiteralF1BBF0F0FFF4CDD3044F91CBBA0B9A9E7AFCC4DF);
+		// viewModel.auxiliaryPrivacyWords[2] = "&";
+		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_69 = V_0;
 		NullCheck(L_69);
-		ArrayElementTypeCheck (L_69, _stringLiteral8D004CCFB2C7F7062B882865483FF7F4DC36E04E);
-		(L_69)->SetAt(static_cast<il2cpp_array_size_t>(2), (String_t*)_stringLiteral8D004CCFB2C7F7062B882865483FF7F4DC36E04E);
-		// viewModel.auxiliaryPrivacyWords[3] = "并使用本机号码登录";
-		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_70 = V_0;
+		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_70 = L_69->get_auxiliaryPrivacyWords_43();
 		NullCheck(L_70);
-		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_71 = L_70->get_auxiliaryPrivacyWords_41();
+		ArrayElementTypeCheck (L_70, _stringLiteral8D004CCFB2C7F7062B882865483FF7F4DC36E04E);
+		(L_70)->SetAt(static_cast<il2cpp_array_size_t>(2), (String_t*)_stringLiteral8D004CCFB2C7F7062B882865483FF7F4DC36E04E);
+		// viewModel.auxiliaryPrivacyWords[3] = "并使用本机号码登录";
+		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_71 = V_0;
 		NullCheck(L_71);
-		ArrayElementTypeCheck (L_71, _stringLiteral411CB518F21C454779824C627D0F4671272BEAE6);
-		(L_71)->SetAt(static_cast<il2cpp_array_size_t>(3), (String_t*)_stringLiteral411CB518F21C454779824C627D0F4671272BEAE6);
-		// viewModel.termsAlignment = 1;
-		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_72 = V_0;
+		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_72 = L_71->get_auxiliaryPrivacyWords_43();
 		NullCheck(L_72);
-		L_72->set_termsAlignment_42(1);
-		// viewModel.backgroundColor = "#FFFFFF";
+		ArrayElementTypeCheck (L_72, _stringLiteral411CB518F21C454779824C627D0F4671272BEAE6);
+		(L_72)->SetAt(static_cast<il2cpp_array_size_t>(3), (String_t*)_stringLiteral411CB518F21C454779824C627D0F4671272BEAE6);
+		// viewModel.termsAlignment = 1;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_73 = V_0;
 		NullCheck(L_73);
-		L_73->set_backgroundColor_43(_stringLiteral663488ABE057592166FC68C8A6EF26CBF9C8178E);
-		// viewModel.backgroundImage = "background";
+		L_73->set_termsAlignment_44(1);
+		// viewModel.protocolShakeStyle = 1;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_74 = V_0;
 		NullCheck(L_74);
-		L_74->set_backgroundImage_44(_stringLiteralF086AF11277C2521781BD5A24277BDC3BAEF68D1);
-		// viewModel.landscapeBackgroundImage = "";
+		L_74->set_protocolShakeStyle_45(1);
+		// viewModel.privacyCheckBoxMarginRight = 10;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_75 = V_0;
 		NullCheck(L_75);
-		L_75->set_landscapeBackgroundImage_45(_stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709);
-		// viewModel.webNaviTitle = "一键登录Unity服务条款";
+		L_75->set_privacyCheckBoxMarginRight_46((10.0));
+		// viewModel.backgroundColor = "#FFFFFF";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_76 = V_0;
 		NullCheck(L_76);
-		L_76->set_webNaviTitle_55(_stringLiteral98D88F827A5B1CEDFBF4AEC9C25E2B64B0C210D4);
-		// viewModel.webNaviTitleColor = "#1F90FF";
+		L_76->set_backgroundColor_47(_stringLiteral663488ABE057592166FC68C8A6EF26CBF9C8178E);
+		// viewModel.backgroundImage = "background";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_77 = V_0;
 		NullCheck(L_77);
-		L_77->set_webNaviTitleColor_56(_stringLiteral4423FFA40C1F5C0EBE338A1EF99085E366C0A136);
-		// viewModel.webNaviTitleFont = 20;
+		L_77->set_backgroundImage_48(_stringLiteralF086AF11277C2521781BD5A24277BDC3BAEF68D1);
+		// viewModel.landscapeBackgroundImage = "";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_78 = V_0;
 		NullCheck(L_78);
-		L_78->set_webNaviTitleFont_57((20.0));
-		// viewModel.webNaviBgColor = "#0F0F00";
+		L_78->set_landscapeBackgroundImage_49(_stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709);
+		// viewModel.webNaviTitle = "一键登录Unity服务条款";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_79 = V_0;
 		NullCheck(L_79);
-		L_79->set_webNaviBgColor_58(_stringLiteral2D42B2C96D9F0BD95F4E03AC63D7CB78E0F910EE);
-		// viewModel.notCheckProtocolHint = "请先阅读服务条款";
+		L_79->set_webNaviTitle_59(_stringLiteral98D88F827A5B1CEDFBF4AEC9C25E2B64B0C210D4);
+		// viewModel.webNaviTitleColor = "#1F90FF";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_80 = V_0;
 		NullCheck(L_80);
-		L_80->set_notCheckProtocolHint_59(_stringLiteral9E56B01B3B51F9A5BC0CDEABCA56F412B08F8379);
-		// viewModel.modalPresentationStyle = 0;
+		L_80->set_webNaviTitleColor_60(_stringLiteral4423FFA40C1F5C0EBE338A1EF99085E366C0A136);
+		// viewModel.webNaviTitleFont = 20;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_81 = V_0;
 		NullCheck(L_81);
-		L_81->set_modalPresentationStyle_60(0);
-		// viewModel.pullAuthVCStyle = 0;
+		L_81->set_webNaviTitleFont_61((20.0));
+		// viewModel.webNaviBgColor = "#0F0F00";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_82 = V_0;
 		NullCheck(L_82);
-		L_82->set_pullAuthVCStyle_61(0);
-		// viewModel.userInterfaceStyle = 0;
+		L_82->set_webNaviBgColor_62(_stringLiteral2D42B2C96D9F0BD95F4E03AC63D7CB78E0F910EE);
+		// viewModel.notCheckProtocolHint = "请先阅读服务条款";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_83 = V_0;
 		NullCheck(L_83);
-		L_83->set_userInterfaceStyle_62(0);
-		// viewModel.authVCTransitionBlock = "authVCTransitionBlock";
+		L_83->set_notCheckProtocolHint_63(_stringLiteral9E56B01B3B51F9A5BC0CDEABCA56F412B08F8379);
+		// viewModel.modalPresentationStyle = 0;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_84 = V_0;
 		NullCheck(L_84);
-		L_84->set_authVCTransitionBlock_63(_stringLiteral6D3B757CA120C7DF41EA198BAB9A04A267A62B34);
-		// viewModel.tapAuthBackgroundBlock = "tapAuthBackground";
+		L_84->set_modalPresentationStyle_64(0);
+		// viewModel.pullAuthVCStyle = 0;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_85 = V_0;
 		NullCheck(L_85);
-		L_85->set_tapAuthBackgroundBlock_64(_stringLiteralACBE94B24BD91E81CBEB0415F69D845E488C993A);
-		// viewModel.viewLifeCycleBlock = "viewLifeCycle";
+		L_85->set_pullAuthVCStyle_65(0);
+		// viewModel.userInterfaceStyle = 0;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_86 = V_0;
 		NullCheck(L_86);
-		L_86->set_viewLifeCycleBlock_65(_stringLiteral9C998F6B6B5E75D91AE37879C30053A3E613A2E4);
-		// viewModel.clickBackButtonBlock = "clickBackButton";
+		L_86->set_userInterfaceStyle_66(0);
+		// viewModel.authVCTransitionBlock = "authVCTransitionBlock";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_87 = V_0;
 		NullCheck(L_87);
-		L_87->set_clickBackButtonBlock_66(_stringLiteral42F6C55E3EB879F380096E1B501973A9B045FF74);
-		// viewModel.clickSwitchButtonBlock = "clickSwitchButton";
+		L_87->set_authVCTransitionBlock_67(_stringLiteral6D3B757CA120C7DF41EA198BAB9A04A267A62B34);
+		// viewModel.tapAuthBackgroundBlock = "tapAuthBackground";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_88 = V_0;
 		NullCheck(L_88);
-		L_88->set_clickSwitchButtonBlock_67(_stringLiteralD28AD4B35266F943E6BCF329F3A50AC218ADD2A1);
-		// viewModel.clickCheckboxBlock = "clickCheckbox";
+		L_88->set_tapAuthBackgroundBlock_68(_stringLiteralACBE94B24BD91E81CBEB0415F69D845E488C993A);
+		// viewModel.viewLifeCycleBlock = "viewLifeCycle";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_89 = V_0;
 		NullCheck(L_89);
-		L_89->set_clickCheckboxBlock_68(_stringLiteral4D13A93337A5368F295FBB4AE6302BE1F3AFD7CE);
+		L_89->set_viewLifeCycleBlock_69(_stringLiteral9C998F6B6B5E75D91AE37879C30053A3E613A2E4);
+		// viewModel.clickBackButtonBlock = "clickBackButton";
+		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_90 = V_0;
+		NullCheck(L_90);
+		L_90->set_clickBackButtonBlock_70(_stringLiteral42F6C55E3EB879F380096E1B501973A9B045FF74);
+		// viewModel.clickSwitchButtonBlock = "clickSwitchButton";
+		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_91 = V_0;
+		NullCheck(L_91);
+		L_91->set_clickSwitchButtonBlock_71(_stringLiteralD28AD4B35266F943E6BCF329F3A50AC218ADD2A1);
+		// viewModel.clickCheckboxBlock = "clickCheckbox";
+		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_92 = V_0;
+		NullCheck(L_92);
+		L_92->set_clickCheckboxBlock_72(_stringLiteral4D13A93337A5368F295FBB4AE6302BE1F3AFD7CE);
+		// viewModel.hintBlock = "hintCustom";
+		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_93 = V_0;
+		NullCheck(L_93);
+		L_93->set_hintBlock_74(_stringLiteral63E9CA3F3F35ED7A015C40EF405F80373B70AE4D);
 		// double screenWidth = UnityEngine.Screen.width/3;
-		int32_t L_90;
-		L_90 = Screen_get_width_m52188F76E8AAF57BE373018CB14083BB74C43C1C(/*hidden argument*/NULL);
-		V_1 = ((double)((double)((int32_t)((int32_t)L_90/(int32_t)3))));
+		int32_t L_94;
+		L_94 = Screen_get_width_m52188F76E8AAF57BE373018CB14083BB74C43C1C(/*hidden argument*/NULL);
+		V_1 = ((double)((double)((int32_t)((int32_t)L_94/(int32_t)3))));
 		// double screenHeight = UnityEngine.Screen.height/3;
-		int32_t L_91;
-		L_91 = Screen_get_height_m110C90A573EE67895DC4F59E9165235EA22039EE(/*hidden argument*/NULL);
-		V_2 = ((double)((double)((int32_t)((int32_t)L_91/(int32_t)3))));
+		int32_t L_95;
+		L_95 = Screen_get_height_m110C90A573EE67895DC4F59E9165235EA22039EE(/*hidden argument*/NULL);
+		V_2 = ((double)((double)((int32_t)((int32_t)L_95/(int32_t)3))));
 		// Console.WriteLine("============ screenWidth: {0}, screenHeight: {1} ============", screenWidth, screenHeight);
-		double L_92 = V_1;
-		double L_93 = L_92;
-		RuntimeObject * L_94 = Box(Double_t42821932CB52DE2057E685D0E1AF3DE5033D2181_il2cpp_TypeInfo_var, &L_93);
-		double L_95 = V_2;
-		double L_96 = L_95;
-		RuntimeObject * L_97 = Box(Double_t42821932CB52DE2057E685D0E1AF3DE5033D2181_il2cpp_TypeInfo_var, &L_96);
+		double L_96 = V_1;
+		double L_97 = L_96;
+		RuntimeObject * L_98 = Box(Double_t42821932CB52DE2057E685D0E1AF3DE5033D2181_il2cpp_TypeInfo_var, &L_97);
+		double L_99 = V_2;
+		double L_100 = L_99;
+		RuntimeObject * L_101 = Box(Double_t42821932CB52DE2057E685D0E1AF3DE5033D2181_il2cpp_TypeInfo_var, &L_100);
 		IL2CPP_RUNTIME_CLASS_INIT(Console_t79987B1B5914E76054A8CBE506B9E11936A8BC07_il2cpp_TypeInfo_var);
-		Console_WriteLine_mD8A2F4D79A15DF60BF8A1D897665786627FDA53E(_stringLiteral45B7E05294E4F7CE5423A14A6B3CF4A380B3B3CD, L_94, L_97, /*hidden argument*/NULL);
+		Console_WriteLine_mD8A2F4D79A15DF60BF8A1D897665786627FDA53E(_stringLiteral45B7E05294E4F7CE5423A14A6B3CF4A380B3B3CD, L_98, L_101, /*hidden argument*/NULL);
 		// OLWidget[] widgets = new OLWidget[3];
-		OLWidgetU5BU5D_t0AC17DD6FA3834DFD449BA64A133E7E3FF208EF4* L_98 = (OLWidgetU5BU5D_t0AC17DD6FA3834DFD449BA64A133E7E3FF208EF4*)(OLWidgetU5BU5D_t0AC17DD6FA3834DFD449BA64A133E7E3FF208EF4*)SZArrayNew(OLWidgetU5BU5D_t0AC17DD6FA3834DFD449BA64A133E7E3FF208EF4_il2cpp_TypeInfo_var, (uint32_t)3);
-		V_3 = L_98;
+		OLWidgetU5BU5D_t0AC17DD6FA3834DFD449BA64A133E7E3FF208EF4* L_102 = (OLWidgetU5BU5D_t0AC17DD6FA3834DFD449BA64A133E7E3FF208EF4*)(OLWidgetU5BU5D_t0AC17DD6FA3834DFD449BA64A133E7E3FF208EF4*)SZArrayNew(OLWidgetU5BU5D_t0AC17DD6FA3834DFD449BA64A133E7E3FF208EF4_il2cpp_TypeInfo_var, (uint32_t)3);
+		V_3 = L_102;
 		// OLWidget widget0 = new OLWidget();
-		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_99 = (OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 *)il2cpp_codegen_object_new(OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218_il2cpp_TypeInfo_var);
-		OLWidget__ctor_m21D274D0455B61CAB5891246AE41811FD2982F6B(L_99, /*hidden argument*/NULL);
-		V_4 = L_99;
+		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_103 = (OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 *)il2cpp_codegen_object_new(OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218_il2cpp_TypeInfo_var);
+		OLWidget__ctor_m21D274D0455B61CAB5891246AE41811FD2982F6B(L_103, /*hidden argument*/NULL);
+		V_4 = L_103;
 		// widget0.type = "UIButton";
-		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_100 = V_4;
-		NullCheck(L_100);
-		L_100->set_type_0(_stringLiteralE732DBD56C457B074ADA29F4131BA941696A9781);
+		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_104 = V_4;
+		NullCheck(L_104);
+		L_104->set_type_0(_stringLiteralE732DBD56C457B074ADA29F4131BA941696A9781);
 		// widget0.image = "qq_icon";
-		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_101 = V_4;
-		NullCheck(L_101);
-		L_101->set_image_1(_stringLiteral04EF07363F48785F19DED55C669D25F23D1063CD);
-		// widget0.action = "qqLoginAction";
-		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_102 = V_4;
-		NullCheck(L_102);
-		L_102->set_action_7(_stringLiteralE7DE362872E4FF43274C83D7060E97E751583134);
-		// widget0.frame = new double[4];
-		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_103 = V_4;
-		DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB* L_104 = (DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB*)(DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB*)SZArrayNew(DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB_il2cpp_TypeInfo_var, (uint32_t)4);
-		NullCheck(L_103);
-		L_103->set_frame_8(L_104);
-		// widget0.frame[0] = screenWidth/2 - 45 - 10;
 		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_105 = V_4;
 		NullCheck(L_105);
-		DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB* L_106 = L_105->get_frame_8();
-		double L_107 = V_1;
+		L_105->set_image_1(_stringLiteral04EF07363F48785F19DED55C669D25F23D1063CD);
+		// widget0.action = "qqLoginAction";
+		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_106 = V_4;
 		NullCheck(L_106);
-		(L_106)->SetAt(static_cast<il2cpp_array_size_t>(0), (double)((double)il2cpp_codegen_subtract((double)((double)il2cpp_codegen_subtract((double)((double)((double)L_107/(double)(2.0))), (double)(45.0))), (double)(10.0))));
-		// widget0.frame[1] = screenHeight - 200;
-		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_108 = V_4;
-		NullCheck(L_108);
-		DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB* L_109 = L_108->get_frame_8();
-		double L_110 = V_2;
+		L_106->set_action_7(_stringLiteralE7DE362872E4FF43274C83D7060E97E751583134);
+		// widget0.frame = new double[4];
+		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_107 = V_4;
+		DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB* L_108 = (DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB*)(DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB*)SZArrayNew(DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB_il2cpp_TypeInfo_var, (uint32_t)4);
+		NullCheck(L_107);
+		L_107->set_frame_8(L_108);
+		// widget0.frame[0] = screenWidth/2 - 45 - 10;
+		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_109 = V_4;
 		NullCheck(L_109);
-		(L_109)->SetAt(static_cast<il2cpp_array_size_t>(1), (double)((double)il2cpp_codegen_subtract((double)L_110, (double)(200.0))));
-		// widget0.frame[2] = 45;
-		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_111 = V_4;
-		NullCheck(L_111);
-		DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB* L_112 = L_111->get_frame_8();
+		DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB* L_110 = L_109->get_frame_8();
+		double L_111 = V_1;
+		NullCheck(L_110);
+		(L_110)->SetAt(static_cast<il2cpp_array_size_t>(0), (double)((double)il2cpp_codegen_subtract((double)((double)il2cpp_codegen_subtract((double)((double)((double)L_111/(double)(2.0))), (double)(45.0))), (double)(10.0))));
+		// widget0.frame[1] = screenHeight - 200;
+		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_112 = V_4;
 		NullCheck(L_112);
-		(L_112)->SetAt(static_cast<il2cpp_array_size_t>(2), (double)(45.0));
-		// widget0.frame[3] = 45;
-		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_113 = V_4;
+		DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB* L_113 = L_112->get_frame_8();
+		double L_114 = V_2;
 		NullCheck(L_113);
-		DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB* L_114 = L_113->get_frame_8();
-		NullCheck(L_114);
-		(L_114)->SetAt(static_cast<il2cpp_array_size_t>(3), (double)(45.0));
-		// widgets[0] = widget0;
-		OLWidgetU5BU5D_t0AC17DD6FA3834DFD449BA64A133E7E3FF208EF4* L_115 = V_3;
-		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_116 = V_4;
+		(L_113)->SetAt(static_cast<il2cpp_array_size_t>(1), (double)((double)il2cpp_codegen_subtract((double)L_114, (double)(200.0))));
+		// widget0.frame[2] = 45;
+		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_115 = V_4;
 		NullCheck(L_115);
-		ArrayElementTypeCheck (L_115, L_116);
-		(L_115)->SetAt(static_cast<il2cpp_array_size_t>(0), (OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 *)L_116);
-		// OLWidget widget1 = new OLWidget();
-		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_117 = (OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 *)il2cpp_codegen_object_new(OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218_il2cpp_TypeInfo_var);
-		OLWidget__ctor_m21D274D0455B61CAB5891246AE41811FD2982F6B(L_117, /*hidden argument*/NULL);
-		V_5 = L_117;
-		// widget1.type = "UIButton";
-		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_118 = V_5;
+		DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB* L_116 = L_115->get_frame_8();
+		NullCheck(L_116);
+		(L_116)->SetAt(static_cast<il2cpp_array_size_t>(2), (double)(45.0));
+		// widget0.frame[3] = 45;
+		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_117 = V_4;
+		NullCheck(L_117);
+		DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB* L_118 = L_117->get_frame_8();
 		NullCheck(L_118);
-		L_118->set_type_0(_stringLiteralE732DBD56C457B074ADA29F4131BA941696A9781);
-		// widget1.image = "weixin_icon";
-		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_119 = V_5;
+		(L_118)->SetAt(static_cast<il2cpp_array_size_t>(3), (double)(45.0));
+		// widgets[0] = widget0;
+		OLWidgetU5BU5D_t0AC17DD6FA3834DFD449BA64A133E7E3FF208EF4* L_119 = V_3;
+		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_120 = V_4;
 		NullCheck(L_119);
-		L_119->set_image_1(_stringLiteral734FC559C42977348561090938E7CC16E7C05F63);
-		// widget1.action = "weixinLoginAction";
-		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_120 = V_5;
-		NullCheck(L_120);
-		L_120->set_action_7(_stringLiteral136711044F047C507FA442EF3FDDB4466BEF0097);
-		// widget1.frame = new double[4];
-		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_121 = V_5;
-		DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB* L_122 = (DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB*)(DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB*)SZArrayNew(DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB_il2cpp_TypeInfo_var, (uint32_t)4);
-		NullCheck(L_121);
-		L_121->set_frame_8(L_122);
-		// widget1.frame[0] = screenWidth/2 + 10;
+		ArrayElementTypeCheck (L_119, L_120);
+		(L_119)->SetAt(static_cast<il2cpp_array_size_t>(0), (OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 *)L_120);
+		// OLWidget widget1 = new OLWidget();
+		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_121 = (OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 *)il2cpp_codegen_object_new(OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218_il2cpp_TypeInfo_var);
+		OLWidget__ctor_m21D274D0455B61CAB5891246AE41811FD2982F6B(L_121, /*hidden argument*/NULL);
+		V_5 = L_121;
+		// widget1.type = "UIButton";
+		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_122 = V_5;
+		NullCheck(L_122);
+		L_122->set_type_0(_stringLiteralE732DBD56C457B074ADA29F4131BA941696A9781);
+		// widget1.image = "weixin_icon";
 		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_123 = V_5;
 		NullCheck(L_123);
-		DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB* L_124 = L_123->get_frame_8();
-		double L_125 = V_1;
+		L_123->set_image_1(_stringLiteral734FC559C42977348561090938E7CC16E7C05F63);
+		// widget1.action = "weixinLoginAction";
+		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_124 = V_5;
 		NullCheck(L_124);
-		(L_124)->SetAt(static_cast<il2cpp_array_size_t>(0), (double)((double)il2cpp_codegen_add((double)((double)((double)L_125/(double)(2.0))), (double)(10.0))));
-		// widget1.frame[1] = screenHeight - 200;
-		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_126 = V_5;
-		NullCheck(L_126);
-		DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB* L_127 = L_126->get_frame_8();
-		double L_128 = V_2;
+		L_124->set_action_7(_stringLiteral136711044F047C507FA442EF3FDDB4466BEF0097);
+		// widget1.frame = new double[4];
+		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_125 = V_5;
+		DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB* L_126 = (DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB*)(DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB*)SZArrayNew(DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB_il2cpp_TypeInfo_var, (uint32_t)4);
+		NullCheck(L_125);
+		L_125->set_frame_8(L_126);
+		// widget1.frame[0] = screenWidth/2 + 10;
+		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_127 = V_5;
 		NullCheck(L_127);
-		(L_127)->SetAt(static_cast<il2cpp_array_size_t>(1), (double)((double)il2cpp_codegen_subtract((double)L_128, (double)(200.0))));
-		// widget1.frame[2] = 45;
-		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_129 = V_5;
-		NullCheck(L_129);
-		DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB* L_130 = L_129->get_frame_8();
+		DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB* L_128 = L_127->get_frame_8();
+		double L_129 = V_1;
+		NullCheck(L_128);
+		(L_128)->SetAt(static_cast<il2cpp_array_size_t>(0), (double)((double)il2cpp_codegen_add((double)((double)((double)L_129/(double)(2.0))), (double)(10.0))));
+		// widget1.frame[1] = screenHeight - 200;
+		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_130 = V_5;
 		NullCheck(L_130);
-		(L_130)->SetAt(static_cast<il2cpp_array_size_t>(2), (double)(45.0));
-		// widget1.frame[3] = 45;
-		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_131 = V_5;
+		DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB* L_131 = L_130->get_frame_8();
+		double L_132 = V_2;
 		NullCheck(L_131);
-		DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB* L_132 = L_131->get_frame_8();
-		NullCheck(L_132);
-		(L_132)->SetAt(static_cast<il2cpp_array_size_t>(3), (double)(45.0));
-		// widgets[1] = widget1;
-		OLWidgetU5BU5D_t0AC17DD6FA3834DFD449BA64A133E7E3FF208EF4* L_133 = V_3;
-		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_134 = V_5;
+		(L_131)->SetAt(static_cast<il2cpp_array_size_t>(1), (double)((double)il2cpp_codegen_subtract((double)L_132, (double)(200.0))));
+		// widget1.frame[2] = 45;
+		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_133 = V_5;
 		NullCheck(L_133);
-		ArrayElementTypeCheck (L_133, L_134);
-		(L_133)->SetAt(static_cast<il2cpp_array_size_t>(1), (OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 *)L_134);
-		// OLWidget widget2 = new OLWidget();
-		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_135 = (OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 *)il2cpp_codegen_object_new(OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218_il2cpp_TypeInfo_var);
-		OLWidget__ctor_m21D274D0455B61CAB5891246AE41811FD2982F6B(L_135, /*hidden argument*/NULL);
-		V_6 = L_135;
-		// widget2.type = "UILabel";
-		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_136 = V_6;
+		DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB* L_134 = L_133->get_frame_8();
+		NullCheck(L_134);
+		(L_134)->SetAt(static_cast<il2cpp_array_size_t>(2), (double)(45.0));
+		// widget1.frame[3] = 45;
+		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_135 = V_5;
+		NullCheck(L_135);
+		DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB* L_136 = L_135->get_frame_8();
 		NullCheck(L_136);
-		L_136->set_type_0(_stringLiteral01268EC57C4F2C932414D642529A06FB78023CC8);
-		// widget2.textColor = "#D98866";
-		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_137 = V_6;
+		(L_136)->SetAt(static_cast<il2cpp_array_size_t>(3), (double)(45.0));
+		// widgets[1] = widget1;
+		OLWidgetU5BU5D_t0AC17DD6FA3834DFD449BA64A133E7E3FF208EF4* L_137 = V_3;
+		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_138 = V_5;
 		NullCheck(L_137);
-		L_137->set_textColor_10(_stringLiteralF80C45373529CAD6EAC57EFF9309FF9DFBA08459);
-		// widget2.text = "三方登录";
-		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_138 = V_6;
-		NullCheck(L_138);
-		L_138->set_text_12(_stringLiteralFDC64140ABB25D128576C68254E87193AAE4AEF9);
-		// widget2.font = 15;
-		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_139 = V_6;
-		NullCheck(L_139);
-		L_139->set_font_9((15.0));
-		// widget2.textAlignment = 1;
+		ArrayElementTypeCheck (L_137, L_138);
+		(L_137)->SetAt(static_cast<il2cpp_array_size_t>(1), (OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 *)L_138);
+		// OLWidget widget2 = new OLWidget();
+		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_139 = (OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 *)il2cpp_codegen_object_new(OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218_il2cpp_TypeInfo_var);
+		OLWidget__ctor_m21D274D0455B61CAB5891246AE41811FD2982F6B(L_139, /*hidden argument*/NULL);
+		V_6 = L_139;
+		// widget2.type = "UILabel";
 		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_140 = V_6;
 		NullCheck(L_140);
-		L_140->set_textAlignment_11(1);
-		// widget2.frame = new double[4];
+		L_140->set_type_0(_stringLiteral01268EC57C4F2C932414D642529A06FB78023CC8);
+		// widget2.textColor = "#D98866";
 		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_141 = V_6;
-		DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB* L_142 = (DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB*)(DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB*)SZArrayNew(DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB_il2cpp_TypeInfo_var, (uint32_t)4);
 		NullCheck(L_141);
-		L_141->set_frame_8(L_142);
-		// widget2.frame[0] = (screenWidth - 120)/2;
+		L_141->set_textColor_10(_stringLiteralF80C45373529CAD6EAC57EFF9309FF9DFBA08459);
+		// widget2.text = "三方登录";
+		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_142 = V_6;
+		NullCheck(L_142);
+		L_142->set_text_12(_stringLiteralFDC64140ABB25D128576C68254E87193AAE4AEF9);
+		// widget2.font = 15;
 		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_143 = V_6;
 		NullCheck(L_143);
-		DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB* L_144 = L_143->get_frame_8();
-		double L_145 = V_1;
+		L_143->set_font_9((15.0));
+		// widget2.textAlignment = 1;
+		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_144 = V_6;
 		NullCheck(L_144);
-		(L_144)->SetAt(static_cast<il2cpp_array_size_t>(0), (double)((double)((double)((double)il2cpp_codegen_subtract((double)L_145, (double)(120.0)))/(double)(2.0))));
-		// widget2.frame[1] = screenHeight - 250;
-		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_146 = V_6;
-		NullCheck(L_146);
-		DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB* L_147 = L_146->get_frame_8();
-		double L_148 = V_2;
+		L_144->set_textAlignment_11(1);
+		// widget2.frame = new double[4];
+		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_145 = V_6;
+		DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB* L_146 = (DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB*)(DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB*)SZArrayNew(DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB_il2cpp_TypeInfo_var, (uint32_t)4);
+		NullCheck(L_145);
+		L_145->set_frame_8(L_146);
+		// widget2.frame[0] = (screenWidth - 120)/2;
+		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_147 = V_6;
 		NullCheck(L_147);
-		(L_147)->SetAt(static_cast<il2cpp_array_size_t>(1), (double)((double)il2cpp_codegen_subtract((double)L_148, (double)(250.0))));
-		// widget2.frame[2] = 120;
-		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_149 = V_6;
-		NullCheck(L_149);
-		DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB* L_150 = L_149->get_frame_8();
+		DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB* L_148 = L_147->get_frame_8();
+		double L_149 = V_1;
+		NullCheck(L_148);
+		(L_148)->SetAt(static_cast<il2cpp_array_size_t>(0), (double)((double)((double)((double)il2cpp_codegen_subtract((double)L_149, (double)(120.0)))/(double)(2.0))));
+		// widget2.frame[1] = screenHeight - 250;
+		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_150 = V_6;
 		NullCheck(L_150);
-		(L_150)->SetAt(static_cast<il2cpp_array_size_t>(2), (double)(120.0));
-		// widget2.frame[3] = 20;
-		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_151 = V_6;
+		DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB* L_151 = L_150->get_frame_8();
+		double L_152 = V_2;
 		NullCheck(L_151);
-		DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB* L_152 = L_151->get_frame_8();
-		NullCheck(L_152);
-		(L_152)->SetAt(static_cast<il2cpp_array_size_t>(3), (double)(20.0));
-		// widgets[2] = widget2;
-		OLWidgetU5BU5D_t0AC17DD6FA3834DFD449BA64A133E7E3FF208EF4* L_153 = V_3;
-		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_154 = V_6;
+		(L_151)->SetAt(static_cast<il2cpp_array_size_t>(1), (double)((double)il2cpp_codegen_subtract((double)L_152, (double)(250.0))));
+		// widget2.frame[2] = 120;
+		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_153 = V_6;
 		NullCheck(L_153);
-		ArrayElementTypeCheck (L_153, L_154);
-		(L_153)->SetAt(static_cast<il2cpp_array_size_t>(2), (OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 *)L_154);
-		// int len = widgets.Length;
-		OLWidgetU5BU5D_t0AC17DD6FA3834DFD449BA64A133E7E3FF208EF4* L_155 = V_3;
+		DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB* L_154 = L_153->get_frame_8();
+		NullCheck(L_154);
+		(L_154)->SetAt(static_cast<il2cpp_array_size_t>(2), (double)(120.0));
+		// widget2.frame[3] = 20;
+		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_155 = V_6;
 		NullCheck(L_155);
-		V_7 = ((int32_t)((int32_t)(((RuntimeArray*)L_155)->max_length)));
+		DoubleU5BU5D_t8E1B42EB2ABB79FBD193A6B8C8D97A7CDE44A4FB* L_156 = L_155->get_frame_8();
+		NullCheck(L_156);
+		(L_156)->SetAt(static_cast<il2cpp_array_size_t>(3), (double)(20.0));
+		// widgets[2] = widget2;
+		OLWidgetU5BU5D_t0AC17DD6FA3834DFD449BA64A133E7E3FF208EF4* L_157 = V_3;
+		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_158 = V_6;
+		NullCheck(L_157);
+		ArrayElementTypeCheck (L_157, L_158);
+		(L_157)->SetAt(static_cast<il2cpp_array_size_t>(2), (OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 *)L_158);
+		// int len = widgets.Length;
+		OLWidgetU5BU5D_t0AC17DD6FA3834DFD449BA64A133E7E3FF208EF4* L_159 = V_3;
+		NullCheck(L_159);
+		V_7 = ((int32_t)((int32_t)(((RuntimeArray*)L_159)->max_length)));
 		// string[] widgetsString = new string[len];
-		int32_t L_156 = V_7;
-		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_157 = (StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A*)(StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A*)SZArrayNew(StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A_il2cpp_TypeInfo_var, (uint32_t)L_156);
-		V_8 = L_157;
+		int32_t L_160 = V_7;
+		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_161 = (StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A*)(StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A*)SZArrayNew(StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A_il2cpp_TypeInfo_var, (uint32_t)L_160);
+		V_8 = L_161;
 		// for (int i = 0; i < len; i++) {
 		V_9 = 0;
-		goto IL_058d;
+		goto IL_05b9;
 	}
 
-IL_0565:
+IL_0591:
 	{
 		// OLWidget widget = widgets[i];
-		OLWidgetU5BU5D_t0AC17DD6FA3834DFD449BA64A133E7E3FF208EF4* L_158 = V_3;
-		int32_t L_159 = V_9;
-		NullCheck(L_158);
-		int32_t L_160 = L_159;
-		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_161 = (L_158)->GetAt(static_cast<il2cpp_array_size_t>(L_160));
+		OLWidgetU5BU5D_t0AC17DD6FA3834DFD449BA64A133E7E3FF208EF4* L_162 = V_3;
+		int32_t L_163 = V_9;
+		NullCheck(L_162);
+		int32_t L_164 = L_163;
+		OLWidget_t09403C6CC882A7EE7E8F90796AE011116FE5C218 * L_165 = (L_162)->GetAt(static_cast<il2cpp_array_size_t>(L_164));
 		// string widgetString = JsonUtility.ToJson(widget);
-		String_t* L_162;
-		L_162 = JsonUtility_ToJson_mF4F097C9AEC7699970E3E7E99EF8FF2F44DA1B5C(L_161, /*hidden argument*/NULL);
-		V_10 = L_162;
+		String_t* L_166;
+		L_166 = JsonUtility_ToJson_mF4F097C9AEC7699970E3E7E99EF8FF2F44DA1B5C(L_165, /*hidden argument*/NULL);
+		V_10 = L_166;
 		// Console.WriteLine("============ widgetString: {0} ============", widgetString);
-		String_t* L_163 = V_10;
+		String_t* L_167 = V_10;
 		IL2CPP_RUNTIME_CLASS_INIT(Console_t79987B1B5914E76054A8CBE506B9E11936A8BC07_il2cpp_TypeInfo_var);
-		Console_WriteLine_m4B2F36DB25614A4C2E237548DB2B56B277C530CD(_stringLiteral1D5BC5F386EC25F584B69B07EA8AC7997A05BC32, L_163, /*hidden argument*/NULL);
+		Console_WriteLine_m4B2F36DB25614A4C2E237548DB2B56B277C530CD(_stringLiteral1D5BC5F386EC25F584B69B07EA8AC7997A05BC32, L_167, /*hidden argument*/NULL);
 		// if (null != widgetString) {
-		String_t* L_164 = V_10;
-		if (!L_164)
+		String_t* L_168 = V_10;
+		if (!L_168)
 		{
-			goto IL_0587;
+			goto IL_05b3;
 		}
 	}
 	{
 		// widgetsString[i] = widgetString;
-		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_165 = V_8;
-		int32_t L_166 = V_9;
-		String_t* L_167 = V_10;
-		NullCheck(L_165);
-		ArrayElementTypeCheck (L_165, L_167);
-		(L_165)->SetAt(static_cast<il2cpp_array_size_t>(L_166), (String_t*)L_167);
+		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_169 = V_8;
+		int32_t L_170 = V_9;
+		String_t* L_171 = V_10;
+		NullCheck(L_169);
+		ArrayElementTypeCheck (L_169, L_171);
+		(L_169)->SetAt(static_cast<il2cpp_array_size_t>(L_170), (String_t*)L_171);
 	}
 
-IL_0587:
+IL_05b3:
 	{
 		// for (int i = 0; i < len; i++) {
-		int32_t L_168 = V_9;
-		V_9 = ((int32_t)il2cpp_codegen_add((int32_t)L_168, (int32_t)1));
+		int32_t L_172 = V_9;
+		V_9 = ((int32_t)il2cpp_codegen_add((int32_t)L_172, (int32_t)1));
 	}
 
-IL_058d:
+IL_05b9:
 	{
 		// for (int i = 0; i < len; i++) {
-		int32_t L_169 = V_9;
-		int32_t L_170 = V_7;
-		if ((((int32_t)L_169) < ((int32_t)L_170)))
+		int32_t L_173 = V_9;
+		int32_t L_174 = V_7;
+		if ((((int32_t)L_173) < ((int32_t)L_174)))
 		{
-			goto IL_0565;
+			goto IL_0591;
 		}
 	}
 	{
 		// enterAuthController(serializeModelToJsonString(viewModel), widgetsString);
-		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_171 = V_0;
-		String_t* L_172;
-		L_172 = OneLoginPluginScript_serializeModelToJsonString_mFBF727EBE82095661EB5E5DF1C90679501621F56(__this, L_171, /*hidden argument*/NULL);
-		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_173 = V_8;
-		OneLoginPluginScript_enterAuthController_m09189195F61E229353836D072C02A477CCAFFB72(L_172, L_173, /*hidden argument*/NULL);
+		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_175 = V_0;
+		String_t* L_176;
+		L_176 = OneLoginPluginScript_serializeModelToJsonString_mFBF727EBE82095661EB5E5DF1C90679501621F56(__this, L_175, /*hidden argument*/NULL);
+		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_177 = V_8;
+		OneLoginPluginScript_enterAuthController_m09189195F61E229353836D072C02A477CCAFFB72(L_176, L_177, /*hidden argument*/NULL);
 		// }
 		return;
 	}
@@ -8917,43 +8991,43 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void OneLoginPluginScript_popupButtonClicked_
 		// viewModel.backgroundColor = "#FFFFFF";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_1 = V_0;
 		NullCheck(L_1);
-		L_1->set_backgroundColor_43(_stringLiteral663488ABE057592166FC68C8A6EF26CBF9C8178E);
+		L_1->set_backgroundColor_47(_stringLiteral663488ABE057592166FC68C8A6EF26CBF9C8178E);
 		// viewModel.defaultCheckBoxState = true;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_2 = V_0;
 		NullCheck(L_2);
-		L_2->set_defaultCheckBoxState_32((bool)1);
+		L_2->set_defaultCheckBoxState_34((bool)1);
 		// viewModel.switchButtonHidden = true;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_3 = V_0;
 		NullCheck(L_3);
-		L_3->set_switchButtonHidden_22((bool)1);
+		L_3->set_switchButtonHidden_23((bool)1);
 		// viewModel.isPopup = true;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_4 = V_0;
 		NullCheck(L_4);
-		L_4->set_isPopup_46((bool)1);
+		L_4->set_isPopup_50((bool)1);
 		// viewModel.popupRect = "";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_5 = V_0;
 		NullCheck(L_5);
-		L_5->set_popupRect_47(_stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709);
+		L_5->set_popupRect_51(_stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709);
 		// viewModel.popupCornerRadius = 5;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_6 = V_0;
 		NullCheck(L_6);
-		L_6->set_popupCornerRadius_48((5.0));
+		L_6->set_popupCornerRadius_52((5.0));
 		// viewModel.popupAnimationStyle = 0;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_7 = V_0;
 		NullCheck(L_7);
-		L_7->set_popupAnimationStyle_50(0);
+		L_7->set_popupAnimationStyle_54(0);
 		// viewModel.closePopupTopOffset = 5;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_8 = V_0;
 		NullCheck(L_8);
-		L_8->set_closePopupTopOffset_52((5.0));
+		L_8->set_closePopupTopOffset_56((5.0));
 		// viewModel.closePopupRightOffset = -10;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_9 = V_0;
 		NullCheck(L_9);
-		L_9->set_closePopupRightOffset_53((-10.0));
+		L_9->set_closePopupRightOffset_57((-10.0));
 		// viewModel.canClosePopupFromTapGesture = true;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_10 = V_0;
 		NullCheck(L_10);
-		L_10->set_canClosePopupFromTapGesture_54((bool)1);
+		L_10->set_canClosePopupFromTapGesture_58((bool)1);
 		// enterAuthController(serializeModelToJsonString(viewModel), null);
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_11 = V_0;
 		String_t* L_12;
@@ -8988,19 +9062,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void OneLoginPluginScript_floatWindowButtonCl
 		// viewModel.backgroundColor = "#FFFFFF";
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_1 = V_0;
 		NullCheck(L_1);
-		L_1->set_backgroundColor_43(_stringLiteral663488ABE057592166FC68C8A6EF26CBF9C8178E);
+		L_1->set_backgroundColor_47(_stringLiteral663488ABE057592166FC68C8A6EF26CBF9C8178E);
 		// viewModel.defaultCheckBoxState = true;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_2 = V_0;
 		NullCheck(L_2);
-		L_2->set_defaultCheckBoxState_32((bool)1);
+		L_2->set_defaultCheckBoxState_34((bool)1);
 		// viewModel.switchButtonHidden = true;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_3 = V_0;
 		NullCheck(L_3);
-		L_3->set_switchButtonHidden_22((bool)1);
+		L_3->set_switchButtonHidden_23((bool)1);
 		// viewModel.isPopup = true;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_4 = V_0;
 		NullCheck(L_4);
-		L_4->set_isPopup_46((bool)1);
+		L_4->set_isPopup_50((bool)1);
 		// double screenWidth = UnityEngine.Screen.width/3;
 		int32_t L_5;
 		L_5 = Screen_get_width_m52188F76E8AAF57BE373018CB14083BB74C43C1C(/*hidden argument*/NULL);
@@ -9020,44 +9094,44 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void OneLoginPluginScript_floatWindowButtonCl
 		String_t* L_11;
 		L_11 = String_Concat_m37A5BF26F8F8F1892D60D727303B23FB604FEE78(L_9, _stringLiteralFF3F90CFFFA04ACE6E85769F8ED7222D44A7E548, L_10, _stringLiteralE2A0287902B220894B2AE969803990B3D3BD167F, /*hidden argument*/NULL);
 		NullCheck(L_7);
-		L_7->set_popupRect_47(L_11);
+		L_7->set_popupRect_51(L_11);
 		// viewModel.popupCornerRadius = 10;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_12 = V_0;
 		NullCheck(L_12);
-		L_12->set_popupCornerRadius_48((10.0));
+		L_12->set_popupCornerRadius_52((10.0));
 		// viewModel.popupRectCorners = new int[2];
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_13 = V_0;
 		Int32U5BU5D_t70F1BDC14B1786481B176D6139A5E3B87DC54C32* L_14 = (Int32U5BU5D_t70F1BDC14B1786481B176D6139A5E3B87DC54C32*)(Int32U5BU5D_t70F1BDC14B1786481B176D6139A5E3B87DC54C32*)SZArrayNew(Int32U5BU5D_t70F1BDC14B1786481B176D6139A5E3B87DC54C32_il2cpp_TypeInfo_var, (uint32_t)2);
 		NullCheck(L_13);
-		L_13->set_popupRectCorners_49(L_14);
+		L_13->set_popupRectCorners_53(L_14);
 		// viewModel.popupRectCorners[0] = 1;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_15 = V_0;
 		NullCheck(L_15);
-		Int32U5BU5D_t70F1BDC14B1786481B176D6139A5E3B87DC54C32* L_16 = L_15->get_popupRectCorners_49();
+		Int32U5BU5D_t70F1BDC14B1786481B176D6139A5E3B87DC54C32* L_16 = L_15->get_popupRectCorners_53();
 		NullCheck(L_16);
 		(L_16)->SetAt(static_cast<il2cpp_array_size_t>(0), (int32_t)1);
 		// viewModel.popupRectCorners[1] = 2;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_17 = V_0;
 		NullCheck(L_17);
-		Int32U5BU5D_t70F1BDC14B1786481B176D6139A5E3B87DC54C32* L_18 = L_17->get_popupRectCorners_49();
+		Int32U5BU5D_t70F1BDC14B1786481B176D6139A5E3B87DC54C32* L_18 = L_17->get_popupRectCorners_53();
 		NullCheck(L_18);
 		(L_18)->SetAt(static_cast<il2cpp_array_size_t>(1), (int32_t)2);
 		// viewModel.popupAnimationStyle = 0;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_19 = V_0;
 		NullCheck(L_19);
-		L_19->set_popupAnimationStyle_50(0);
+		L_19->set_popupAnimationStyle_54(0);
 		// viewModel.closePopupTopOffset = 8;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_20 = V_0;
 		NullCheck(L_20);
-		L_20->set_closePopupTopOffset_52((8.0));
+		L_20->set_closePopupTopOffset_56((8.0));
 		// viewModel.closePopupRightOffset = -10;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_21 = V_0;
 		NullCheck(L_21);
-		L_21->set_closePopupRightOffset_53((-10.0));
+		L_21->set_closePopupRightOffset_57((-10.0));
 		// viewModel.canClosePopupFromTapGesture = true;
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_22 = V_0;
 		NullCheck(L_22);
-		L_22->set_canClosePopupFromTapGesture_54((bool)1);
+		L_22->set_canClosePopupFromTapGesture_58((bool)1);
 		// enterAuthController(serializeModelToJsonString(viewModel), null);
 		OLAuthViewModel_t9B6A95C8EEC7247958084D7B1851EC1F6510BCA4 * L_23 = V_0;
 		String_t* L_24;
@@ -9411,6 +9485,28 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void OneLoginPluginScript_clickCheckbox_m33D4
 		String_t* L_0 = ___param0;
 		IL2CPP_RUNTIME_CLASS_INIT(Console_t79987B1B5914E76054A8CBE506B9E11936A8BC07_il2cpp_TypeInfo_var);
 		Console_WriteLine_m4B2F36DB25614A4C2E237548DB2B56B277C530CD(_stringLiteral69DAD162A50D00AFBC044A4F0E87C6FB0D5BD10D, L_0, /*hidden argument*/NULL);
+		// }
+		return;
+	}
+}
+// System.Void OneLoginPluginScript::hintCustom(System.String)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void OneLoginPluginScript_hintCustom_mD068F6FAA304E36949F84B80DC93670A570810F9 (OneLoginPluginScript_tBD7845CB7DB0C7BEC6D70F4BD1A172F5E004332B * __this, String_t* ___param0, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Console_t79987B1B5914E76054A8CBE506B9E11936A8BC07_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral4052538FAD5AB9EC97474B500B70ACDDBF840EA5);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralE3552FF0A321E9B7D396851B7367C2DAD0416777);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		// Console.WriteLine("============ hintCustom: {0} ============ ", param);
+		String_t* L_0 = ___param0;
+		IL2CPP_RUNTIME_CLASS_INIT(Console_t79987B1B5914E76054A8CBE506B9E11936A8BC07_il2cpp_TypeInfo_var);
+		Console_WriteLine_m4B2F36DB25614A4C2E237548DB2B56B277C530CD(_stringLiteralE3552FF0A321E9B7D396851B7367C2DAD0416777, L_0, /*hidden argument*/NULL);
+		// showAlertMessage("未勾选授权页面隐私协议前勾选框时，点击授权页面登录按钮时提示 block");
+		OneLoginPluginScript_showAlertMessage_m17F538E1A1B682312FEFB65876682903FB57CACC(_stringLiteral4052538FAD5AB9EC97474B500B70ACDDBF840EA5, /*hidden argument*/NULL);
 		// }
 		return;
 	}

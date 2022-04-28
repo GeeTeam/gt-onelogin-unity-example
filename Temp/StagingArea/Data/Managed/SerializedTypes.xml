@@ -1,20 +1,20 @@
 <linker>
 	<assembly fullname="UnityEngine.TextCoreModule">
 		<type fullname="UnityEngine.TextCore.FaceInfo" preserve="nothing" serialized="true"/>
+		<type fullname="UnityEngine.TextCore.GlyphRect" preserve="nothing" serialized="true"/>
 		<type fullname="UnityEngine.TextCore.Glyph" preserve="nothing" serialized="true"/>
 		<type fullname="UnityEngine.TextCore.GlyphMetrics" preserve="nothing" serialized="true"/>
-		<type fullname="UnityEngine.TextCore.GlyphRect" preserve="nothing" serialized="true"/>
 	</assembly>
 	<assembly fullname="Unity.TextMeshPro">
-		<type fullname="TMPro.TMP_Character" preserve="nothing" serialized="true"/>
 		<type fullname="TMPro.FaceInfo_Legacy" preserve="nothing" serialized="true"/>
 		<type fullname="TMPro.KerningTable" preserve="nothing" serialized="true"/>
 		<type fullname="TMPro.TMP_FontFeatureTable" preserve="nothing" serialized="true"/>
+		<type fullname="TMPro.FontAssetCreationSettings" preserve="nothing" serialized="true"/>
+		<type fullname="TMPro.TMP_FontWeightPair" preserve="nothing" serialized="true"/>
+		<type fullname="TMPro.TMP_Character" preserve="nothing" serialized="true"/>
 		<type fullname="TMPro.TMP_GlyphPairAdjustmentRecord" preserve="nothing" serialized="true"/>
 		<type fullname="TMPro.TMP_GlyphAdjustmentRecord" preserve="nothing" serialized="true"/>
 		<type fullname="TMPro.TMP_GlyphValueRecord" preserve="nothing" serialized="true"/>
-		<type fullname="TMPro.FontAssetCreationSettings" preserve="nothing" serialized="true"/>
-		<type fullname="TMPro.TMP_FontWeightPair" preserve="nothing" serialized="true"/>
 		<type fullname="TMPro.VertexGradient" preserve="nothing" serialized="true"/>
 		<type fullname="TMPro.TMP_SpriteCharacter" preserve="nothing" serialized="true"/>
 		<type fullname="TMPro.TMP_SpriteGlyph" preserve="nothing" serialized="true"/>

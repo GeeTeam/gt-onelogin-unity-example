@@ -31,6 +31,7 @@ public class OLAuthViewModel {
     public int languageType;
     public int statusBarStyle;
 
+    public double navTextMargin;
     public string naviTitle;
     public string naviTitleColor;
     public double naviTitleFont;
@@ -63,6 +64,7 @@ public class OLAuthViewModel {
     public string authButtonRect;
     public double authButtonCornerRadius;
 
+    public string sloganText;
     public string sloganRect;
     public string sloganTextColor;
     public double sloganTextFont;
@@ -78,6 +80,8 @@ public class OLAuthViewModel {
     public string termsRect;
     public string[] auxiliaryPrivacyWords;
     public int termsAlignment;
+    public int protocolShakeStyle;
+    public double privacyCheckBoxMarginRight;
 
     public string backgroundColor;
     public string backgroundImage;
@@ -119,6 +123,8 @@ public class OLAuthViewModel {
     public string clickCheckboxBlock;
 
     public string[] widgets;
+    
+    public string hintBlock;
 }
 
 [Serializable]
@@ -361,6 +367,7 @@ public class OneLoginPluginScript : MonoBehaviour {
         viewModel.sloganRect = "";
         viewModel.sloganTextColor = "#FFFF00";
         viewModel.sloganTextFont = 13;
+        viewModel.sloganText = "极验提供一键登录服务";
 
         // privacy terms
         viewModel.defaultCheckBoxState = false;
@@ -387,6 +394,8 @@ public class OneLoginPluginScript : MonoBehaviour {
         viewModel.auxiliaryPrivacyWords[2] = "&";
         viewModel.auxiliaryPrivacyWords[3] = "并使用本机号码登录";
         viewModel.termsAlignment = 1;
+        viewModel.protocolShakeStyle = 1;
+        viewModel.privacyCheckBoxMarginRight = 10;
 
         // background
         viewModel.backgroundColor = "#FFFFFF";
@@ -428,6 +437,9 @@ public class OneLoginPluginScript : MonoBehaviour {
 
         // clickCheckboxBlock
         viewModel.clickCheckboxBlock = "clickCheckbox";
+        
+        // hintBlock
+        viewModel.hintBlock = "hintCustom";
 
         // widgets
         double screenWidth = UnityEngine.Screen.width/3;
@@ -624,6 +636,11 @@ public class OneLoginPluginScript : MonoBehaviour {
 
     void clickCheckbox(string param) {
         Console.WriteLine("============ clickCheckbox: {0} ============ ", param);
+    }
+    
+    void hintCustom(string param) {
+        Console.WriteLine("============ hintCustom: {0} ============ ", param);
+        showAlertMessage("未勾选授权页面隐私协议前勾选框时，点击授权页面登录按钮时提示 block");
     }
 
     public void onepassInitClicked() {
