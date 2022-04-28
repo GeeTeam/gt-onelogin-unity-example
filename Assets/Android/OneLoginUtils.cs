@@ -97,7 +97,7 @@ public class OneLoginUtils : MonoBehaviour {
 
     // 一键登录拉起弹框形式授权页
     public void popupOneLogin() {
-        OneLoginBean oneLoginBean = getThemeConfig(1);
+        OneLoginBean oneLoginBean = getThemeConfig(0);
         string configStr = JsonUtility.ToJson(oneLoginBean, true);
         // 自定义控件参数可选配
         olManager.Call("requestToken", configStr, new OneLoginPluginCallback(this));
@@ -125,19 +125,21 @@ public class OneLoginUtils : MonoBehaviour {
                 olb.authBGImgPath = "gt_one_login_bg";
                 olb.statusBarColor = 0; olb.navigationBarColor = 0; olb.isLightColor = false;
                 olb.navColor = 0xFF3973FF; olb.authNavHeight = 49; olb.authNavTransparent = true; olb.authNavGone = false;
-                olb.navText = "一键登录"; olb.navTextColor = 0xFFFFFFFF; olb.navTextSize = 17; olb.navWebTextNormal = false; olb.navWebText = "服务条款"; olb.navWebTextColor = 0xFF000000; olb.navWebTextSize = 17;
+                olb.navText = "一键登录"; olb.navTextColor = 0xFFFFFFFF; olb.navTextSize = 17; olb.navWebTextNormal = true; olb.navWebText = "自定义服务条款标题"; olb.navWebTextColor = 0xFF000000; olb.navWebTextSize = 17;
                 olb.returnImgPath = "gt_one_login_ic_chevron_left_black"; olb.returnImgWidth = 40; olb.returnImgHeight = 40; olb.returnImgHidden = false; olb.returnImgOffsetX = 8;
                 olb.logoImgPath = "gt_one_login_logo"; olb.logoWidth = 71; olb.logoHeight = 71; olb.logoHidden = false; olb.logoOffsetY = 100; olb.logoOffsetY_B = 0; olb.logoOffsetX = 0;
                 olb.sloganColor = 0xFFA8A8A8; olb.sloganSize = 10; olb.sloganOffsetY = 330; olb.sloganOffsetY_B = 0; olb.sloganOffsetX = 0;
                 olb.numberColor = 0xFF3D424C; olb.numberSize = 24; olb.numberOffsetY = 160; olb.numberOffsetY_B = 0; olb.numberOffsetX = 0;
                 olb.switchText = "切换账号"; olb.switchColor = 0xFF3973FF; olb.switchSize = 14; olb.switchHidden = false; olb.switchOffsetY = 230; olb.switchOffsetY_B = 0; olb.switchOffsetX = 0;
-                olb.logBtnImgPath = "gt_one_login_btn_normal"; olb.logBtnWidth = 290; olb.logBtnHeight = 45; olb.logBtnOffsetY = 270; olb.logBtnOffsetY_B = 0; olb.logBtnOffsetX = 0;
+                olb.logBtnImgPath = "gt_one_login_btn"; olb.logBtnWidth = 290; olb.logBtnHeight = 45; olb.logBtnOffsetY = 270; olb.logBtnOffsetY_B = 0; olb.logBtnOffsetX = 0;
                 olb.logBtnText = "一键登录"; olb.logBtnColor = 0xFFFFFFFF; olb.logBtnTextSize = 18;
                 olb.loadingView = "umcsdk_load_dot_white"; olb.loadingViewWidth = 20; olb.loadingViewHeight = 20; olb.loadingViewOffsetRight = 12;
-                olb.unCheckedImgPath = "gt_one_login_unchecked"; olb.checkedImgPath = "gt_one_login_checked"; olb.privacyState = true; olb.privacyCheckBoxWidth = 12; olb.privacyCheckBoxHeight = 12;
+                olb.unCheckedImgPath = "gt_one_login_unchecked"; olb.checkedImgPath = "gt_one_login_checked"; olb.privacyState = false; olb.privacyCheckBoxWidth = 12; olb.privacyCheckBoxHeight = 12;
                 olb.privacyLayoutWidth = 256; olb.privacyOffsetY = 0; olb.privacyOffsetY_B = 18; olb.privacyOffsetX = 0; olb.isUseNormalWebActivity = true;
                 olb.baseClauseColor = 0xFFA8A8A8; olb.clauseColor = 0xFF3973FF; olb.privacyClauseTextSize = 10;
                 olb.privacyTextViewTv1 = "登录即同意"; olb.privacyTextViewTv2 = "和"; olb.privacyTextViewTv3 = "、"; olb.privacyTextViewTv4 = "并使用本机号码登录";
+                olb.clauseNameOne = "自定义服务条款1"; olb.clauseUrlOne = "https://docs.geetest.com/onelogin/deploy/android";
+                olb.clauseNameTwo = "自定义服务条款2"; olb.clauseUrlTwo = "https://docs.geetest.com/onelogin/changelog/android";
                 break;
             case 1://弹窗式
                 olb.isDialogTheme = true; olb.dialogWidth = popWidth; olb.dialogHeight = popHeight; olb.dialogX = 0; olb.dialogY = 0; olb.isDialogBottom = false; olb.isWebViewDialogTheme = true;
@@ -146,24 +148,26 @@ public class OneLoginUtils : MonoBehaviour {
                 olb.sloganColor = 0xFFA8A8A8; olb.sloganSize = 10; olb.sloganOffsetY = 270; olb.sloganOffsetY_B = 0; olb.sloganOffsetX = 0;
                 olb.numberColor = 0xFF3D424C; olb.numberSize = 24; olb.numberOffsetY = 125; olb.numberOffsetY_B = 0; olb.numberOffsetX = 0;
                 olb.switchText = "切换账号"; olb.switchColor = 0xFF3973FF; olb.switchSize = 14; olb.switchHidden = false; olb.switchOffsetY = 165; olb.switchOffsetY_B = 0; olb.switchOffsetX = 0;
-                olb.logBtnImgPath = "gt_one_login_btn_normal"; olb.logBtnWidth = 268; olb.logBtnHeight = 45; olb.logBtnOffsetY = 220; olb.logBtnOffsetY_B = 0; olb.logBtnOffsetX = 0;
+                olb.logBtnImgPath = "gt_one_login_btn"; olb.logBtnWidth = 268; olb.logBtnHeight = 45; olb.logBtnOffsetY = 220; olb.logBtnOffsetY_B = 0; olb.logBtnOffsetX = 0;
                 olb.logBtnText = "一键登录"; olb.logBtnColor = 0xFFFFFFFF; olb.logBtnTextSize = 18;
                 olb.loadingView = "umcsdk_load_dot_white"; olb.loadingViewWidth = 20; olb.loadingViewHeight = 20; olb.loadingViewOffsetRight = 12;
-                olb.unCheckedImgPath = "gt_one_login_unchecked"; olb.checkedImgPath = "gt_one_login_checked"; olb.privacyState = true; olb.privacyCheckBoxWidth = 12; olb.privacyCheckBoxHeight = 12;
-                olb.privacyLayoutWidth = 256; olb.privacyOffsetY = 0; olb.privacyOffsetY_B = 1; olb.privacyOffsetX = 0; olb.isUseNormalWebActivity = true;
+                olb.unCheckedImgPath = "gt_one_login_unchecked"; olb.checkedImgPath = "gt_one_login_checked"; olb.privacyState = false; olb.privacyCheckBoxWidth = 12; olb.privacyCheckBoxHeight = 12;
+                olb.privacyLayoutWidth = -2; olb.privacyOffsetY = 0; olb.privacyOffsetY_B = 5; olb.privacyOffsetX = 0; olb.isUseNormalWebActivity = true; olb.privacyLayoutGravity = 16;
                 break;
             case 2://沉浸式
                 olb.statusBarColor = 0xFFFFFFFF; olb.navigationBarColor = 0xFFFFFFFF; olb.isLightColor = true;
                 olb.returnImgPath = "gt_one_login_ic_chevron_left_black"; olb.returnImgWidth = 40; olb.returnImgHeight = 40; olb.returnImgHidden = false; olb.returnImgOffsetX = 0;
-                olb.logBtnImgPath = "gt_one_login_btn_normal"; olb.logBtnWidth = 290; olb.logBtnHeight = 45; olb.logBtnOffsetY = 310; olb.logBtnOffsetY_B = 0; olb.logBtnOffsetX = 0;
+                olb.logBtnImgPath = "gt_one_login_btn"; olb.logBtnWidth = 290; olb.logBtnHeight = 45; olb.logBtnOffsetY = 310; olb.logBtnOffsetY_B = 0; olb.logBtnOffsetX = 0;
                 olb.logBtnText = "一键登录"; olb.logBtnColor = 0xFFFFFFFF; olb.logBtnTextSize = 18;
                 olb.loadingView = "umcsdk_load_dot_white"; olb.loadingViewWidth = 20; olb.loadingViewHeight = 20; olb.loadingViewOffsetRight = 12;
-                olb.clauseNameOne = "自定义服务条款1"; olb.clauseUrlOne = "https=//docs.geetest.com/onelogin/deploy/android"; olb.clauseNameTwo = "自定义服务条款2"; olb.clauseUrlTwo = "https=//docs.geetest.com/onelogin/changelog/android"; olb.clauseNameThree = ""; olb.clauseUrlThree = "";
                 olb.privacyClauseTextStrings = new string[]{
-                    "登录即同意", "应用自定义服务条款一", "https=//docs.geetest.com/onelogin/deploy/android", "",
-                    "和", "应用自定义服务条款二", "https=//docs.geetest.com/onelogin/changelog/android", "",
-                    "和", "应用自定义服务条款三", "https=//docs.geetest.com/onelogin/help/tech", "",
+                    "登录即同意", "应用自定义服务条款一", "https://docs.geetest.com/onelogin/deploy/android", "",
+                    "和", "应用自定义服务条款二", "https://docs.geetest.com/onelogin/changelog/android", "",
+                    "和", "应用自定义服务条款三", "https://docs.geetest.com/onelogin/help/tech", "",
                     "", "", "", ""};
+                olb.protocolShakeStyle = 1;
+                olb.privacyUnCheckedToastText = "亲，还没有同意服务条款哦";
+                olb.privacyAddFrenchQuotes = true;
                 break;
             case 3://横屏
                 olb.authBGImgPath = "gt_one_login_bg";
@@ -176,13 +180,13 @@ public class OneLoginUtils : MonoBehaviour {
                 olb.sloganColor = 0xFFA8A8A8; olb.sloganSize = 10; olb.sloganOffsetY = 226; olb.sloganOffsetY_B = 0; olb.sloganOffsetX = 0;
                 olb.numberColor = 0xFF3D424C; olb.numberSize = 24; olb.numberOffsetY = 84; olb.numberOffsetY_B = 0; olb.numberOffsetX = 0;
                 olb.switchText = "切换账号"; olb.switchColor = 0xFF3973FF; olb.switchSize = 14; olb.switchHidden = false; olb.switchOffsetY = 128; olb.switchOffsetY_B = 0; olb.switchOffsetX = 0;
-                olb.logBtnImgPath = "gt_one_login_btn_normal"; olb.logBtnWidth = 268; olb.logBtnHeight = 36; olb.logBtnOffsetY = 169; olb.logBtnOffsetY_B = 0; olb.logBtnOffsetX = 0;
+                olb.logBtnImgPath = "gt_one_login_btn"; olb.logBtnWidth = 268; olb.logBtnHeight = 36; olb.logBtnOffsetY = 169; olb.logBtnOffsetY_B = 0; olb.logBtnOffsetX = 0;
                 olb.logBtnText = "一键登录"; olb.logBtnColor = 0xFFFFFFFF; olb.logBtnTextSize = 15;
                 olb.loadingView = "umcsdk_load_dot_white"; olb.loadingViewWidth = 20; olb.loadingViewHeight = 20; olb.loadingViewOffsetRight = 12;
-                olb.unCheckedImgPath = "gt_one_login_unchecked"; olb.checkedImgPath = "gt_one_login_checked"; olb.privacyState = true; olb.privacyCheckBoxWidth = 9; olb.privacyCheckBoxHeight = 9;
-                olb.privacyLayoutWidth = 512; olb.privacyOffsetY = 0; olb.privacyOffsetY_B = 1; olb.privacyOffsetX = 0; olb.isUseNormalWebActivity = true;
+                olb.unCheckedImgPath = "gt_one_login_unchecked"; olb.checkedImgPath = "gt_one_login_checked"; olb.privacyState = false; olb.privacyCheckBoxWidth = 9; olb.privacyCheckBoxHeight = 9;
+                olb.privacyLayoutWidth = 512; olb.privacyOffsetY = 0; olb.privacyOffsetY_B = 5; olb.privacyOffsetX = 0; olb.isUseNormalWebActivity = true;
                 olb.baseClauseColor = 0xFFA8A8A8; olb.clauseColor = 0xFF3973FF; olb.privacyClauseTextSize = 10;
-                olb.privacyTextViewTv1 = "登录即同意"; olb.privacyTextViewTv2 = "和"; olb.privacyTextViewTv3 = "、"; olb.privacyTextViewTv4 = "并使用本机号码登录";
+                olb.privacyTextViewTv1 = "登录即同意"; olb.privacyLayoutWidth = -2; olb.privacyLayoutGravity = 16;
                 break;
         }
         return olb;
@@ -255,6 +259,12 @@ public class OneLoginUtils : MonoBehaviour {
         widgets[4] = w4;
         widgets[5] = w5;
         return widgets;
+    }
+
+    public void getCurrentCarrier() {
+        string carrier = olManager.Call<string>("getCurrentCarrier");
+        log("current carrier is " + carrier);
+        olManager.Call("toast", carrier, true);
     }
 
     // 一键登录取号成功后通过服务端 check_phone 接口置换手机号
@@ -409,15 +419,6 @@ public class OneLoginUtils : MonoBehaviour {
         /// <param name="phone">脱敏手机号</param>
         public void onRequestTokenSecurityPhone(string phone) {
             owner.log("OneLoginPluginCallback onRequestTokenSecurityPhone, phone=" + phone);
-        }
-
-        /// <summary>
-        /// 点一键登录之前用户可增加一些其他额外的校验功能，防止被异常攻击
-        /// </summary>
-        /// <returns>true 接入其他验证, 验证成功结束后调用 requestTokenDelay 启动正常取号, false 默认验证</returns>
-        public bool onRequestOtherVerify() {
-            owner.log("OneLoginPluginCallback onRequestOtherVerify");
-            return false;
         }
 
         /// <summary>

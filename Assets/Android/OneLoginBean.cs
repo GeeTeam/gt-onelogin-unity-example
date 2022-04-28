@@ -65,13 +65,13 @@ public class OneLoginBean  {
      */
     public bool isUseNormalWebActivity = true;
     /**
-     * 隐私条款页是否使用默认标题
+     * 隐私条款页是否使用自定义标题 true:使用navWebText赋值的文本 false:使用开发者自定义服务条款的名称
      */
     public bool navWebTextNormal = false;
     /**
-     * 隐私条款页默认标题
+     * 隐私条款页自定义标题
      */
-    public string navWebText = "服务条款";
+    public string navWebText = "";
     /**
      * 隐私条款页标题栏文字颜色
      */
@@ -92,6 +92,11 @@ public class OneLoginBean  {
      * 隐私条款页标题栏文字字体是否倾斜
      */
     public bool navWebTextTypefaceItalic = false;
+
+    /**
+     * 标题栏标题文本的左右边距，默认不碰到返回按钮
+     */
+    public int navTextMargin = 36;
 
     /**
      * 标题栏返回图标
@@ -124,6 +129,15 @@ public class OneLoginBean  {
      * 设置返回图片是否隐藏
      */
     public bool returnImgHidden = false;
+
+    /**
+     * 设置是否屏蔽物理返回键
+     */
+    public bool blockReturnKey = false;
+    /**
+     * 设置是否屏蔽标题栏返回按钮
+     */
+    public bool blockReturnBtn = false;
 
     /**
      * 授权页背景
@@ -234,6 +248,10 @@ public class OneLoginBean  {
     public int numberOffsetY_B = 0;
 
     /**
+     * slogan 是否显示
+     */
+    public bool sloganVisible = true;
+    /**
      * slogan文字颜色
      */
     public uint sloganColor = 0xFFA8A8A8;
@@ -267,6 +285,10 @@ public class OneLoginBean  {
      * slogan相对于底部y偏移
      */
     public int sloganOffsetY_B = 0;
+    /**
+     * 运营商品牌文案 空值不生效
+     */
+    public string sloganText = "";
 
     /**
      * 登录按钮文字
@@ -305,7 +327,11 @@ public class OneLoginBean  {
     /**
      * 登录按钮背景图片
      */
-    public string logBtnImgPath = "gt_one_login_btn_normal";
+    public string logBtnImgPath = "gt_one_login_btn";
+    /**
+     * 隐私条款未勾选同意时登录按钮的背景图片
+     */
+    public string logBtnUncheckedImgPath = "gt_one_login_btn_unchecked";
     /**
      * 登录按钮X轴偏移
      */
@@ -402,12 +428,12 @@ public class OneLoginBean  {
     /**
      * 切换帐号背景宽
      */
-    public int switchWidth = 80;
+    public int switchWidth = -2; // ViewGroup.LayoutParams.WRAP_CONTENT
 
     /**
      * 切换帐号背景高
      */
-    public int switchHeight = 25;
+    public int switchHeight = -2; // ViewGroup.LayoutParams.WRAP_CONTENT
 
     /**
      * 隐私协议X轴
@@ -424,25 +450,31 @@ public class OneLoginBean  {
     public int privacyOffsetY_B = 18;
     /**
      * 隐私协议宽度
+     * 还可设置 ViewGroup.LayoutParams.MATCH_PARENT -1 填充满父布局
+     * 或者 ViewGroup.LayoutParams.WRAP_CONTENT -2 按照内容自适应
      */
     public int privacyLayoutWidth = 256;
+    /**
+     * 隐私协议整体布局子视图的对齐方式，默认顶部对齐，参考 android:gravity="center_horizontal" 属性
+     */
+    public int privacyLayoutGravity = 1; // Gravity.CENTER_HORIZONTAL
 
     /**
-     * 隐私条款连接字符1
+     * 隐私条款连接字符1 配置空值会生效，不配置则使用默认值
      */
-    public string privacyTextViewTv1 = "登录即同意";
+    public string privacyTextViewTv1 = "";
     /**
-     * 隐私条款连接字符2
+     * 隐私条款连接字符2 配置空值会生效，不配置则使用默认值
      */
-    public string privacyTextViewTv2 = "和";
+    public string privacyTextViewTv2 = "";
     /**
-     * 隐私条款连接字符3
+     * 隐私条款连接字符3 配置空值会生效，不配置则使用默认值
      */
-    public string privacyTextViewTv3 = "、";
+    public string privacyTextViewTv3 = "";
     /**
-     * 隐私条款连接字符4
+     * 隐私条款连接字符4 配置空值会生效，不配置则使用默认值
      */
-    public string privacyTextViewTv4 = "并使用本机号码登录";
+    public string privacyTextViewTv4 = "";
 
     /**
      * 多个开发者隐私条款
@@ -522,11 +554,15 @@ public class OneLoginBean  {
     /**
      * 隐私条款check框默认状态
      */
-    public bool privacyState = true;
+    public bool privacyState = false;
     /**
-     * 隐私条款check框未选择时点击一键登录按钮提示文字
+     * 隐私条款check框未选择时是否显示提示文字
      */
-    public string privacyUnCheckedToastText = "请同意服务条款";
+    public bool enableToast = true;
+    /**
+     * 隐私条款check框未选择时点击一键登录按钮提示文字 空值不生效 默认为“请同意服务条款”
+     */
+    public string privacyUnCheckedToastText = "";
     /**
      * 复选框宽度
      */
@@ -538,7 +574,12 @@ public class OneLoginBean  {
     /**
      * 复选框Y轴偏移
      */
-    public int privacyCheckBoxOffsetY = 2;
+    public int privacyCheckBoxOffsetY = 0;
+
+    /**
+     * 复选框与隐私文本之间的间距
+     */
+    public int privacyCheckBoxMarginRight = 5;
 
     /**
      * 隐私条款是否增加书名号显示
@@ -548,4 +589,15 @@ public class OneLoginBean  {
      * 隐私协议文字对齐方式
      */
     public int privacyTextGravity = 48 | 8388611;// Gravity.TOP | Gravity.START;
+    /**
+     * 服务条款未勾选时点击一键登录服务条款执行的动画样式，默认无动画
+     * 值代表枚举对应的值 0-不抖动 1-水平抖动 2-竖直抖动
+     */
+    public int protocolShakeStyle = 0;
+    /**
+     * 语言设置，默认中文简体
+     * 值代表枚举对应的值 0-中文简体 1-中文繁体 2-英文
+     * 部分可配置的文本配置后以配置的文本为准
+     */
+    public int languageType = 0;
 }

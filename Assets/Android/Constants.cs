@@ -19,13 +19,13 @@ public class Constants {
      * 当前APP_ID仅供演示Demo使用，如果修改了应用包名或者签名信息，请使用申请的APP_ID
      * 谨记：APP_ID需绑定相关的包名和包签名(提供这两项信息从后台申请APP_ID)
      */
-    public const string APP_ID_OL = "e4fcb3086ca25bbe2da08a09d75c70e8";
+    public const string APP_ID_OL = "b41a959b5cac4dd1277183e074630945";
     /**
      * 后台申请的 OnePass APP_ID
      * 当前APP_ID仅供演示Demo使用，如果修改了应用包名或者签名信息，请使用申请的APP_ID
      * 谨记：APP_ID需绑定相关的包名和包签名(提供这两项信息从后台申请APP_ID)
      */
-    public const string APP_ID_OP = "e18f5f45da5614928f4af0410e886e0a";
+    public const string APP_ID_OP = "3996159873d7ccc36f25803b88dda97a";
     /**
      * 后台配置的服务校验接口，该地址仅限Demo使用，如果修改了Demo包名与APP_ID，请勿使用该地址
      */
