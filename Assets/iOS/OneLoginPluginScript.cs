@@ -165,6 +165,10 @@ public class OLValidateOnePassResult {
 }
 
 public class OneLoginPluginScript : MonoBehaviour {
+    // 获取勾选框状态
+    [DllImport("__Internal")]
+    private static extern bool isProtocolCheckboxChecked();
+    
     // 获取运营商类型
     [DllImport("__Internal")]
     private static extern string getCurrentCarrier();
@@ -639,6 +643,8 @@ public class OneLoginPluginScript : MonoBehaviour {
     }
     
     void hintCustom(string param) {
+        bool isChecked = isProtocolCheckboxChecked();
+        Console.WriteLine("============ isProtocolCheckboxChecked: {0} ============ ", isChecked);
         Console.WriteLine("============ hintCustom: {0} ============ ", param);
         showAlertMessage("未勾选授权页面隐私协议前勾选框时，点击授权页面登录按钮时提示 block");
     }

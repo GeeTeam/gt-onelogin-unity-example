@@ -15,6 +15,7 @@
 extern "C"{
 #endif
     // 桥接方法，Unity 中调用
+    extern bool isProtocolCheckboxChecked();
     extern char* getCurrentCarrier();
     extern void setProtocolCheckState(bool isChecked);
     extern void deletePreResultCache();
@@ -79,6 +80,10 @@ extern "C"{
 }
 
 // MARK: OneLogin Methods
+
+- (BOOL) isProtocolCheckboxChecked {
+    return [OneLoginPro isProtocolCheckboxChecked];
+}
 
 - (NSString *) getCurrentCarrier {
     OLNetworkInfo *networkInfo = [OneLoginPro currentNetworkInfo];
@@ -1065,6 +1070,10 @@ extern "C"{
 #if defined(__cplusplus)
 extern "C"{
 #endif
+    
+    bool isProtocolCheckboxChecked() {
+        return [UnityPlugin isProtocolCheckboxChecked];
+    }
 
     char* getCurrentCarrier() {
         return strdup([[UnityPlugin getCurrentCarrier] UTF8String]);
