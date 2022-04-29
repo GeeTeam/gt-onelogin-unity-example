@@ -930,7 +930,7 @@ phone|String| 手机号
 ## 前置条件
 
 - 极验 SDK 支持 Xcode 11+，iOS 8.0+ 版本
-- 极验 SDK 支持中国移动 4G/3G/2G、联通 4G/3G、电信4G 的取号能力
+- 极验 SDK 支持中国移动 2G/3G/4G/5G，联通 3G/4G/5G，电信 4G/5G 的取号能力
 - 极验 SDK 支持网络环境为
 
 1. 纯数据网络
@@ -954,6 +954,10 @@ phone|String| 手机号
 extern "C"{
 #endif
     // 桥接方法，Unity 中调用
+    extern bool isProtocolCheckboxChecked();
+    extern char* getCurrentCarrier();
+    extern void setProtocolCheckState(bool isChecked);
+    extern void deletePreResultCache();
     extern void registerCallback(const char *objName, const char *requestTokenCallbackName, const char *getPhoneCallbackName);
     extern void registerWihtAppID(const char *appId);
     extern void enterAuthController(const char *configs, char **widgets);
@@ -976,6 +980,22 @@ extern "C"{
 #if defined(__cplusplus)
 extern "C"{
 #endif
+    bool isProtocolCheckboxChecked() {
+        return [UnityPlugin isProtocolCheckboxChecked];
+    }
+
+    char* getCurrentCarrier() {
+        return strdup([[UnityPlugin getCurrentCarrier] UTF8String]);
+    }
+
+    void setProtocolCheckState(bool isChecked) {
+        [UnityPlugin setProtocolCheckState:isChecked];
+    }
+    
+    void deletePreResultCache() {
+        [UnityPlugin deletePreResultCache];
+    }
+    
     void registerWihtAppID(const char *appId) {
         [UnityPlugin registerWihtAppID:[NSString stringWithUTF8String:appId]];
     }
@@ -1052,9 +1072,27 @@ C 方法中的具体实现，是通过调用 Objective-C 的方法来完成的�
 
 // MARK: OneLogin Methods
 
+- (BOOL) isProtocolCheckboxChecked {
+    return [OneLoginPro isProtocolCheckboxChecked];
+}
+
+- (NSString *) getCurrentCarrier {
+    OLNetworkInfo *networkInfo = [OneLoginPro currentNetworkInfo];
+    return networkInfo.carrierName;
+}
+- (void) setProtocolCheckState:(BOOL)isChecked {
+    [OneLoginPro setProtocolCheckState:isChecked];
+}
+
+- (void) deletePreResultCache {
+    [OneLoginPro deletePreResultCache];
+}
+
 - (void)registerCallbackWithObjName:(NSString *)objName requestTokenCallbackName:(NSString *)requestTokenCallbackName getPhoneCallbackName:(NSString *)getPhoneCallbackName {
     NSLog(@"============ register callback ==============");
-    
+    NSLog(@"============ objName:%@ ==============",objName);
+    NSLog(@"============ requestTokenCallbackName:%@ ==============",requestTokenCallbackName);
+    NSLog(@"============ getPhoneCallbackName:%@ ==============",getPhoneCallbackName);
     self.objName = objName;
     self.requestTokenCallbackName = requestTokenCallbackName;
     self.getPhoneCallbackName = getPhoneCallbackName;
@@ -1087,6 +1125,11 @@ C 方法中的具体实现，是通过调用 Objective-C 的方法来完成的�
     NSError *jsonError = nil;
     NSDictionary *viewModelDict = [NSJSONSerialization JSONObjectWithData:[configs dataUsingEncoding:NSUTF8StringEncoding] options:(NSJSONReadingOptions)0 error:&jsonError];
     if (nil == jsonError && [viewModelDict isKindOfClass:[NSDictionary class]] && viewModelDict.count > 0) {
+        // *************** languageType *************** //
+        if (viewModelDict[@"languageType"]) {
+            viewModel.languageType = (OLLanguageType)[viewModelDict[@"languageType"] integerValue];
+        }
+        
         // *************** statusBarStyle *************** //
         if (viewModelDict[@"statusBarStyle"]) {
             viewModel.statusBarStyle = (UIStatusBarStyle)[viewModelDict[@"statusBarStyle"] integerValue];
@@ -1103,6 +1146,10 @@ C 方法中的具体实现，是通过调用 Objective-C 的方法来完成的�
                 [naviTitle addAttributes:@{NSFontAttributeName: [self fontFromString:viewModelDict[@"naviTitleFont"]]} range:NSMakeRange(0, naviTitleString.length)];
             }
             viewModel.naviTitle = naviTitle.copy;
+        }
+        
+        if(viewModelDict[@"navTextMargin"] && [viewModelDict[@"navTextMargin"] doubleValue]) {
+            viewModel.navTextMargin = [viewModelDict[@"navTextMargin"] doubleValue];
         }
         
         if ([self colorFromHexString:viewModelDict[@"naviBgColor"]]) {
@@ -1237,6 +1284,10 @@ C 方法中的具体实现，是通过调用 Objective-C 的方法来完成的�
             }
         }
         
+        if (viewModelDict[@"sloganText"]) {
+            viewModel.sloganText = viewModelDict[@"sloganText"];
+        }
+        
         if ([self colorFromHexString:viewModelDict[@"sloganTextColor"]]) {
             viewModel.sloganTextColor = [self colorFromHexString:viewModelDict[@"sloganTextColor"]];
         }
@@ -1319,9 +1370,17 @@ C 方法中的具体实现，是通过调用 Objective-C 的方法来完成的�
             viewModel.termsAlignment = (NSTextAlignment)[viewModelDict[@"termsAlignment"] integerValue];
         }
         
+        if (viewModelDict[@"privacyCheckBoxMarginRight"]) {
+            viewModel.spaceBetweenCheckboxAndTermsText =  [viewModelDict[@"privacyCheckBoxMarginRight"] doubleValue];
+        }
+        
+        if (viewModelDict[@"protocolShakeStyle"]) {
+            viewModel.shakeStyle =  [viewModelDict[@"protocolShakeStyle"] integerValue];
+        }
+        
         // *************** Background *************** //
         if ([self colorFromHexString:viewModelDict[@"backgroundColor"]]) {
-            viewModel.backgroundColor = [self colorFromHexString:viewModelDict[@"backgroundColor"]];
+            viewModel.backgroundColor = (OLNotCheckProtocolShakeStyle)[self colorFromHexString:viewModelDict[@"backgroundColor"]];
         }
         
         if (viewModelDict[@"backgroundImage"]) {
@@ -1429,7 +1488,9 @@ C 方法中的具体实现，是通过调用 Objective-C 的方法来完成的�
                         NSError *jsonError = nil;
                         widgetDict = [NSJSONSerialization JSONObjectWithData:[tempWidgets[i] dataUsingEncoding:NSUTF8StringEncoding] options:(NSJSONReadingOptions)0 error:&jsonError];
                     }
+                    NSLog(@"widgetDict:%@",widgetDict);
                     UIView *view = [self widgetFromDict:widgetDict];
+                    NSLog(@"widgetFromDict:%@",view);
                     if (view && !CGRectEqualToRect(CGRectZero, view.frame)) {
                         [customAreaView addSubview:view];
                     }
@@ -1473,6 +1534,12 @@ C 方法中的具体实现，是通过调用 Objective-C 的方法来完成的�
                 [self unitySendMessage:self.objName method:viewModelDict[@"clickCheckboxBlock"] msgDict:@{@"isChecked" : (isChecked ? @"true" : @"false")}];
             };
         }
+        
+        if (viewModelDict[@"hintBlock"]) {
+            viewModel.hintBlock = ^{
+                [self unitySendMessage:self.objName method:viewModelDict[@"hintBlock"] msgDict:nil];
+            };
+        }
     }
     
     [OneLoginPro requestTokenWithViewController:[self findCurrentShowingViewController] viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
@@ -1510,6 +1577,47 @@ C 方法中的具体实现，是通过调用 Objective-C 的方法来完成的�
 
 - (NSString *)sdkVersion {
     return [OneLoginPro sdkVersion];
+}
+
+- (void)registerOnepassCallback:(NSString *)objName verifyPhoneCallbackName:(NSString *)verifyPhoneCallbackName validatePhoneCallbackName:(NSString *)validatePhoneCallbackName {
+    NSLog(@"============ register onepass callback ==============");
+    
+    self.objName = objName;
+    self.verifyPhoneCallbackName = verifyPhoneCallbackName;
+    self.validatePhoneCallbackName = validatePhoneCallbackName;
+}
+
+- (void)initWithCustiomId:(NSString * _Nonnull)customID timeout:(NSTimeInterval)timeout {
+    // 防抖，防止短时间内多次点击
+    NSTimeInterval currentTimeInterval = [[NSDate date] timeIntervalSince1970];
+    if (currentTimeInterval - self.timeInterval < OLMinTimeInterval) {
+        return;
+    }
+    self.timeInterval = currentTimeInterval;
+    
+    self.gopManager = [[GOPManager alloc] initWithCustomID:customID timeout:timeout];
+    self.gopManager.delegate = self;
+}
+
+- (void)verifyPhoneNumber:(NSString *)phoneNumber {
+    // 防抖，防止短时间内多次点击
+    NSTimeInterval currentTimeInterval = [[NSDate date] timeIntervalSince1970];
+    if (currentTimeInterval - self.timeInterval < OLMinTimeInterval) {
+        return;
+    }
+    self.timeInterval = currentTimeInterval;
+    
+    [self.gopManager verifyPhoneNumber:phoneNumber];
+}
+
+// MARK: GOPManagerDelegate
+
+- (void)gtOnePass:(GOPManager *)manager didReceiveDataToVerify:(NSDictionary *)data {
+    [self unitySendMessage:self.objName method:self.verifyPhoneCallbackName msgDict:data];
+}
+
+- (void)gtOnePass:(GOPManager *)manager errorHandler:(GOPError *)error {
+    [self unitySendMessage:self.objName method:self.verifyPhoneCallbackName msgDict:@{@"errorMsg":error.description ?: @"onepass failed"}];
 }
 
 // MARK: Validate Token
@@ -1554,6 +1662,57 @@ C 方法中的具体实现，是通过调用 Objective-C 的方法来完成的�
         [self unitySendMessage:self.objName method:self.getPhoneCallbackName msgDict:result];
     });
 }
+
+// MARK: Validate Onepass Token
+
+- (void)validateOnePassAccessCode:(NSString *)accessCode customId:(NSString *)customId processId:(NSString *)processId phone:(NSString *)phone operatorType:(NSString *)operatorType {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if ([self isValidString:accessCode]) {
+        params[@"accesscode"] = accessCode;
+    }
+    if ([self isValidString:customId]) {
+        params[@"id_2_sign"] = customId;
+    }
+    if ([self isValidString:processId]) {
+        params[@"process_id"] = processId;
+    }
+    if ([self isValidString:operatorType]) {
+        params[@"operatorType"] = operatorType;
+    }
+    if ([self isValidString:phone]) {
+        params[@"phone"] = phone;
+    }
+    NSURL *url = [NSURL URLWithString:@"http://onepass.geetest.com/v2.0/result"];
+    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
+    req.HTTPMethod = @"POST";
+    req.HTTPBody = [NSJSONSerialization dataWithJSONObject:params options:0 error:nil];
+    NSURLSessionDataTask *task = [NSURLSession.sharedSession dataTaskWithRequest:req completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSLog(@"verify onepass result: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (nil != data) {
+                NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:(NSJSONReadingOptions)0 error:nil];
+                if (result[@"status"] && [@(200) isEqual:result[@"status"]]) {
+                    if (result[@"result"] && [@"0" isEqual:result[@"result"]]) {
+                        [self unitySendMessage:self.objName method:self.validatePhoneCallbackName msgDict:result];
+                    } else if (result[@"result"] && [@"1" isEqual:result[@"result"]]) {
+                        [self unitySendMessage:self.objName method:self.validatePhoneCallbackName msgDict:result];
+                    } else {
+                        [self verifyOnepassFailed];
+                    }
+                } else {
+                    [self verifyOnepassFailed];
+                }
+            } else {
+                [self verifyOnepassFailed];
+            }
+        });
+    }];
+    [task resume];
+}
+
+- (void)verifyOnepassFailed {
+    [self unitySendMessage:self.objName method:self.validatePhoneCallbackName msgDict:@{@"errorMsg" : @"validate phone failed"}];
+}
 ```
 
 具体实现，请参考`Assets/Plugins/iOS` 目录下的 `OneLoginUnityPlugin.mm` 文件
@@ -1581,6 +1740,22 @@ C 方法中的具体实现，是通过调用 Objective-C 的方法来完成的�
 首先注册插件提供的方法：
 
 ```c#
+// 获取勾选框状态
+[DllImport("__Internal")]
+private static extern bool isProtocolCheckboxChecked();
+
+// 获取运营商类型
+[DllImport("__Internal")]
+private static extern string getCurrentCarrier();
+
+// 设置勾选框勾选状态
+[DllImport("__Internal")]
+private static extern void setProtocolCheckState(boolisChecked);
+
+// 删除预取号的缓存
+[DllImport("__Internal")]
+private static extern void deletePreResultCache();
+
 // 注册回调
 [DllImport("__Internal")]
 private static extern void registerCallback(string objName, string requestTokenCallbackName, string getPhoneCallbackName);
@@ -1672,195 +1847,202 @@ public void initClicked() {
 ```c#
 public void enterAuthControllerClicked() {
 	print("Enter auth controller button is clicked!");
-	// 授权页面配置
-	OLAuthViewModel viewModel = new OLAuthViewModel();
+		// 授权页面配置
+		OLAuthViewModel viewModel = new OLAuthViewModel();
 
-	// statusBar
-	viewModel.statusBarStyle = 0;
+		// statusBar
+		viewModel.statusBarStyle = 0;
+        viewModel.languageType = 2;
 
-	// navigation bar
-	viewModel.naviTitle = "一键登录Unity";
-	viewModel.naviTitleColor = "#FF4900";
-	viewModel.naviTitleFont = 17.0;
-    viewModel.naviBgColor = "#00FF00";
-    viewModel.naviBackImage = "close_black";
-    viewModel.naviHidden = false;
-    viewModel.backButtonRect = "10, 0, 20, 0, 0, 0, 20, 20";
-    viewModel.backButtonHidden = false;
+		// navigation bar
+		viewModel.naviTitle = "一键登录Unity";
+		viewModel.naviTitleColor = "#FF4900";
+		viewModel.naviTitleFont = 17.0;
+        viewModel.naviBgColor = "#00FF00";
+        viewModel.naviBackImage = "close_black";
+        viewModel.naviHidden = false;
+        viewModel.backButtonRect = "10, 0, 20, 0, 0, 0, 20, 20";
+        viewModel.backButtonHidden = false;
 
-    // logo
-    viewModel.appLogo = "logo_icon";
-    viewModel.logoRect = "";
-    viewModel.logoHidden = false;
-    viewModel.logoCornerRadius = 5;
+        // logo
+        viewModel.appLogo = "logo_icon";
+        viewModel.logoRect = "";
+        viewModel.logoHidden = false;
+        viewModel.logoCornerRadius = 5;
 
-    // phone
-    viewModel.phoneNumColor = "#FF00FF";
-    viewModel.phoneNumFont = 24;
-    viewModel.phoneNumRect = "";
+        // phone
+        viewModel.phoneNumColor = "#FF00FF";
+        viewModel.phoneNumFont = 24;
+        viewModel.phoneNumRect = "";
 
-    // switch button
-    viewModel.switchButtonText = "换个方式登录";
-    viewModel.switchButtonColor = "#6500FF";
-    viewModel.switchButtonBackgroundColor = "#FFFFFF";
-    viewModel.switchButtonFont = 15;
-    viewModel.switchButtonRect = "";
-    viewModel.switchButtonHidden = false;
+        // switch button
+        viewModel.switchButtonText = "换个方式登录";
+        viewModel.switchButtonColor = "#6500FF";
+        viewModel.switchButtonBackgroundColor = "#FFFFFF";
+        viewModel.switchButtonFont = 15;
+        viewModel.switchButtonRect = "";
+        viewModel.switchButtonHidden = false;
 
-    // auth button
-    // viewModel.authButtonImages = {"button_bg", "button_bg", "button_bg"};
-    viewModel.authButtonImages = new string[3];
-    viewModel.authButtonImages[0] = "authbutton_bg";
-    viewModel.authButtonImages[1] = "authbutton_bg";
-    viewModel.authButtonImages[2] = "authbutton_bg";
-    viewModel.authButtonTitle = "授权登录";
-    viewModel.authButtonTitleColor = "#FFFFFF";
-    viewModel.authButtonTitleFont = 17;
-    viewModel.authButtonRect = "";
-    viewModel.authButtonCornerRadius = 5;
+        // auth button
+        // viewModel.authButtonImages = {"button_bg", "button_bg", "button_bg"};
+        viewModel.authButtonImages = new string[3];
+        viewModel.authButtonImages[0] = "authbutton_bg";
+        viewModel.authButtonImages[1] = "authbutton_bg";
+        viewModel.authButtonImages[2] = "authbutton_bg";
+        viewModel.authButtonTitle = "授权登录";
+        viewModel.authButtonTitleColor = "#FFFFFF";
+        viewModel.authButtonTitleFont = 17;
+        viewModel.authButtonRect = "";
+        viewModel.authButtonCornerRadius = 5;
 
-    // slogan
-    viewModel.sloganRect = "";
-    viewModel.sloganTextColor = "#FFFF00";
-    viewModel.sloganTextFont = 13;
+        // slogan
+        viewModel.sloganRect = "";
+        viewModel.sloganTextColor = "#FFFF00";
+        viewModel.sloganTextFont = 13;
+        viewModel.sloganText = "极验提供一键登录服务";
 
-    // privacy terms
-    viewModel.defaultCheckBoxState = false;
-    viewModel.checkedImage = "";
-    viewModel.uncheckedImage = "";
-    viewModel.checkBoxRect = "";
-    viewModel.privacyTermsColor = "#00FF00";
-    viewModel.privacyTermsFont = 14;
-    // additionalPrivacyTerms 为自定义的服务条款，每条服务条款对应三个元素：条款名称、条款链接、条款索引，所以 additionalPrivacyTerms 的元素个数 = 服务条款数 * 3
-    viewModel.additionalPrivacyTerms = new string[6];
-    // 服务条款1
-    viewModel.additionalPrivacyTerms[0] = "自定义服务条款1";
-    viewModel.additionalPrivacyTerms[1] = "https://docs.geetest.com/onelogin/deploy/ios";
-    viewModel.additionalPrivacyTerms[2] = "0";
-    // 服务条款2
-    viewModel.additionalPrivacyTerms[3] = "自定义服务条款2";
-    viewModel.additionalPrivacyTerms[4] = "https://docs.geetest.com/onelogin/changelog/ios";
-    viewModel.additionalPrivacyTerms[5] = "1";
-    viewModel.termTextColor = "#0000FF";
-    viewModel.termsRect = "";
-    viewModel.auxiliaryPrivacyWords = new string[4];
-    viewModel.auxiliaryPrivacyWords[0] = "登录表示同意";
-    viewModel.auxiliaryPrivacyWords[1] = "与";
-    viewModel.auxiliaryPrivacyWords[2] = "&";
-    viewModel.auxiliaryPrivacyWords[3] = "并使用本机号码登录";
-    viewModel.termsAlignment = 1;
+        // privacy terms
+        viewModel.defaultCheckBoxState = false;
+        viewModel.checkedImage = "";
+        viewModel.uncheckedImage = "";
+        viewModel.checkBoxRect = "";
+        viewModel.privacyTermsColor = "#00FF00";
+        viewModel.privacyTermsFont = 14;
+        // additionalPrivacyTerms 为自定义的服务条款，每条服务条款对应三个元素：条款名称、条款链接、条款索引，所以 additionalPrivacyTerms 的元素个数 = 服务条款数 * 3
+        viewModel.additionalPrivacyTerms = new string[6];
+        // 服务条款1
+        viewModel.additionalPrivacyTerms[0] = "自定义服务条款1";
+        viewModel.additionalPrivacyTerms[1] = "https://docs.geetest.com/onelogin/deploy/ios";
+        viewModel.additionalPrivacyTerms[2] = "0";
+        // 服务条款2
+        viewModel.additionalPrivacyTerms[3] = "自定义服务条款2";
+        viewModel.additionalPrivacyTerms[4] = "https://docs.geetest.com/onelogin/changelog/ios";
+        viewModel.additionalPrivacyTerms[5] = "1";
+        viewModel.termTextColor = "#0000FF";
+        viewModel.termsRect = "";
+        viewModel.auxiliaryPrivacyWords = new string[4];
+        viewModel.auxiliaryPrivacyWords[0] = "登录表示同意";
+        viewModel.auxiliaryPrivacyWords[1] = "与";
+        viewModel.auxiliaryPrivacyWords[2] = "&";
+        viewModel.auxiliaryPrivacyWords[3] = "并使用本机号码登录";
+        viewModel.termsAlignment = 1;
+        viewModel.protocolShakeStyle = 1;
+        viewModel.privacyCheckBoxMarginRight = 10;
 
-    // background
-    viewModel.backgroundColor = "#FFFFFF";
-    viewModel.backgroundImage = "background";
-    viewModel.landscapeBackgroundImage = "";
+        // background
+        viewModel.backgroundColor = "#FFFFFF";
+        viewModel.backgroundImage = "background";
+        viewModel.landscapeBackgroundImage = "";
 
-    // 服务条款页面导航栏
-    viewModel.webNaviTitle = "一键登录Unity服务条款";
-    viewModel.webNaviTitleColor = "#1F90FF";
-    viewModel.webNaviTitleFont = 20;
-    viewModel.webNaviBgColor = "#0F0F00";
+        // 服务条款页面导航栏
+        viewModel.webNaviTitle = "一键登录Unity服务条款";
+        viewModel.webNaviTitleColor = "#1F90FF";
+        viewModel.webNaviTitleFont = 20;
+        viewModel.webNaviBgColor = "#0F0F00";
 
-    // 未勾选服务条款勾选框时，点击授权按钮的提示
-    viewModel.notCheckProtocolHint = "请先阅读服务条款";
+        // 未勾选服务条款勾选框时，点击授权按钮的提示
+        viewModel.notCheckProtocolHint = "请先阅读服务条款";
 
-    // modal style
-    viewModel.modalPresentationStyle = 0;
+        // modal style
+        viewModel.modalPresentationStyle = 0;
 
-    // pull auth viewcontroller style
-    viewModel.pullAuthVCStyle = 0;
+        // pull auth viewcontroller style
+        viewModel.pullAuthVCStyle = 0;
 
-    // user interface style
-    viewModel.userInterfaceStyle = 0;
+        // user interface style
+        viewModel.userInterfaceStyle = 0;
 
-    // authVCTransitionBlock
-    viewModel.authVCTransitionBlock = "authVCTransitionBlock";
+        // authVCTransitionBlock
+        viewModel.authVCTransitionBlock = "authVCTransitionBlock";
 
-    // tapAuthBackgroundBlock
-    viewModel.tapAuthBackgroundBlock = "tapAuthBackground";
+        // tapAuthBackgroundBlock
+        viewModel.tapAuthBackgroundBlock = "tapAuthBackground";
 
-    // viewLifeCycleBlock
-    viewModel.viewLifeCycleBlock = "viewLifeCycle";
+        // viewLifeCycleBlock
+        viewModel.viewLifeCycleBlock = "viewLifeCycle";
 
-    // clickBackButtonBlock
-    viewModel.clickBackButtonBlock = "clickBackButton";
+        // clickBackButtonBlock
+        viewModel.clickBackButtonBlock = "clickBackButton";
 
-    // clickSwitchButtonBlock
-    viewModel.clickSwitchButtonBlock = "clickSwitchButton";
+        // clickSwitchButtonBlock
+        viewModel.clickSwitchButtonBlock = "clickSwitchButton";
 
-    // clickCheckboxBlock
-    viewModel.clickCheckboxBlock = "clickCheckbox";
+        // clickCheckboxBlock
+        viewModel.clickCheckboxBlock = "clickCheckbox";
+        
+        // hintBlock
+        viewModel.hintBlock = "hintCustom";
 
-    // widgets
-    double screenWidth = UnityEngine.Screen.width/2;
-    double screenHeight = UnityEngine.Screen.height/2;
-    Console.WriteLine("============ screenWidth: {0}, screenHeight: {1} ============", screenWidth, screenHeight);
+        // widgets
+        double screenWidth = UnityEngine.Screen.width/3;
+        double screenHeight = UnityEngine.Screen.height/3;
+        Console.WriteLine("============ screenWidth: {0}, screenHeight: {1} ============", screenWidth, screenHeight);
 
-    // viewModel.widgets = new string[3];
+        // viewModel.widgets = new string[3];
+    
+        // string widget0 = "{\"type\":\"UIButton\", \"image\":\"qq_icon\", \"action\":\"qqLoginAction\", \"frame\":\"" + (screenWidth/2 - 45 - 10).ToString() + "," + (screenHeight - 200).ToString() + ",45,45\"}";
+        // Console.WriteLine("============ widget0: {0} ============ ", widget0);
+        // viewModel.widgets[0] = widget0;
+        // string widget1 = "{\"type\":\"UIButton\", \"image\":\"weixin_icon\", \"action\":\"weixinLoginAction\", \"frame\":\"" + (screenWidth/2 + 10).ToString() + "," + (screenHeight - 200).ToString() + ",45,45\"}";
+        // Console.WriteLine("============ widget1: {0} ============ ", widget1);
+        // viewModel.widgets[1] = widget1;
+        // string widget2 = "{\"type\":\"UILabel\", \"textColor\":\"#D98866\", \"font\":15, \"textAlignment\":1, \"text\":\"三方登录\", \"frame\":\"" + ((screenWidth - 120)/2).ToString() + "," + (screenHeight - 250).ToString() + ",120,20\"}";
+        // viewModel.widgets[2] = widget2;
 
-    // string widget0 = "{\"type\":\"UIButton\", \"image\":\"qq_icon\", \"action\":\"qqLoginAction\", \"frame\":\"" + (screenWidth/2 - 45 - 10).ToString() + "," + (screenHeight - 200).ToString() + ",45,45\"}";
-    // Console.WriteLine("============ widget0: {0} ============ ", widget0);
-    // viewModel.widgets[0] = widget0;
-    // string widget1 = "{\"type\":\"UIButton\", \"image\":\"weixin_icon\", \"action\":\"weixinLoginAction\", \"frame\":\"" + (screenWidth/2 + 10).ToString() + "," + (screenHeight - 200).ToString() + ",45,45\"}";
-    // Console.WriteLine("============ widget1: {0} ============ ", widget1);
-    // viewModel.widgets[1] = widget1;
-    // string widget2 = "{\"type\":\"UILabel\", \"textColor\":\"#D98866\", \"font\":15, \"textAlignment\":1, \"text\":\"三方登录\", \"frame\":\"" + ((screenWidth - 120)/2).ToString() + "," + (screenHeight - 250).ToString() + ",120,20\"}";
-    // viewModel.widgets[2] = widget2;
+        // 添加自定义控件
+        OLWidget[] widgets = new OLWidget[3];
 
-    // 添加自定义控件
-    OLWidget[] widgets = new OLWidget[3];
+        // 自定义 UIButton
+        OLWidget widget0 = new OLWidget();
+        widget0.type = "UIButton";
+        widget0.image = "qq_icon";
+        widget0.action = "qqLoginAction";
+        widget0.frame = new double[4];
+        widget0.frame[0] = screenWidth/2 - 45 - 10;
+        widget0.frame[1] = screenHeight - 200;
+        widget0.frame[2] = 45;
+        widget0.frame[3] = 45;
+        widgets[0] = widget0;
 
-    // 自定义 UIButton
-    OLWidget widget0 = new OLWidget();
-    widget0.type = "UIButton";
-    widget0.image = "qq_icon";
-    widget0.action = "qqLoginAction";
-    widget0.frame = new double[4];
-    widget0.frame[0] = screenWidth/2 - 45 - 10;
-    widget0.frame[1] = screenHeight - 200;
-    widget0.frame[2] = 45;
-    widget0.frame[3] = 45;
-    widgets[0] = widget0;
+        // 自定义 UIButton
+        OLWidget widget1 = new OLWidget();
+        widget1.type = "UIButton";
+        widget1.image = "weixin_icon";
+        widget1.action = "weixinLoginAction";
+        widget1.frame = new double[4];
+        widget1.frame[0] = screenWidth/2 + 10;
+        widget1.frame[1] = screenHeight - 200;
+        widget1.frame[2] = 45;
+        widget1.frame[3] = 45;
+        widgets[1] = widget1;
 
-    // 自定义 UIButton
-    OLWidget widget1 = new OLWidget();
-    widget1.type = "UIButton";
-    widget1.image = "weixin_icon";
-    widget1.action = "weixinLoginAction";
-    widget1.frame = new double[4];
-    widget1.frame[0] = screenWidth/2 + 10;
-    widget1.frame[1] = screenHeight - 200;
-    widget1.frame[2] = 45;
-    widget1.frame[3] = 45;
-    widgets[1] = widget1;
+        // 自定义 UILabel
+        OLWidget widget2 = new OLWidget();
+        widget2.type = "UILabel";
+        widget2.textColor = "#D98866";
+        widget2.text = "三方登录";
+        widget2.font = 15;
+        widget2.textAlignment = 1;
+        widget2.frame = new double[4];
+        widget2.frame[0] = (screenWidth - 120)/2;
+        widget2.frame[1] = screenHeight - 250;
+        widget2.frame[2] = 120;
+        widget2.frame[3] = 20;
+        widgets[2] = widget2;
 
-    // 自定义 UILabel
-    OLWidget widget2 = new OLWidget();
-    widget2.type = "UILabel";
-    widget2.textColor = "#D98866";
-    widget2.text = "三方登录";
-    widget2.font = 15;
-    widget2.textAlignment = 1;
-    widget2.frame = new double[4];
-    widget2.frame[0] = (screenWidth - 120)/2;
-    widget2.frame[1] = screenHeight - 250;
-    widget2.frame[2] = 120;
-    widget2.frame[3] = 20;
-    widgets[2] = widget2;
-
-    int len = widgets.Length;
-    string[] widgetsString = new string[len];
-    for (int i = 0; i < len; i++) {
-        OLWidget widget = widgets[i];
-        string widgetString = JsonUtility.ToJson(widget);
-        Console.WriteLine("============ widgetString: {0} ============", widgetString);
-        if (null != widgetString) {
-            widgetsString[i] = widgetString;
+        int len = widgets.Length;
+        string[] widgetsString = new string[len];
+        for (int i = 0; i < len; i++) {
+            OLWidget widget = widgets[i];
+            string widgetString = JsonUtility.ToJson(widget);
+            Console.WriteLine("============ widgetString: {0} ============", widgetString);
+            if (null != widgetString) {
+                widgetsString[i] = widgetString;
+            }
         }
-    }
-	
-	// 进入授权页面
-	enterAuthController(serializeModelToJsonString(viewModel), widgetsString);
+		
+		// 进入授权页面
+		enterAuthController(serializeModelToJsonString(viewModel), widgetsString);
 }
 ```
 
